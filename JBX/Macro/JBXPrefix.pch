@@ -1,0 +1,19 @@
+//
+//  JBXPrefix.pch
+//  JBX
+//
+//  Created by 证 on 2017/12/3.
+//  Copyright © 2017年 证. All rights reserved.
+//
+
+#ifndef JBXPrefix_pch
+#define JBXPrefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "MarcoUtils.h"
+#import "ControllerMacro.h"
+#import "AppMacro.h"
+
+#endif /* JBXPrefix_pch */
