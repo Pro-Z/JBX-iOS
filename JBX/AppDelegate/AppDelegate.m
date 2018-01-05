@@ -19,6 +19,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:APP_BOUNDS];
+    //适配iOS11
+    if (@available(ios 11.0,*)) {
+        UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        UITableView.appearance.estimatedRowHeight = 0;
+        UITableView.appearance.estimatedSectionFooterHeight = 0;
+        UITableView.appearance.estimatedSectionHeaderHeight = 0;
+        
+    }
     BOOL isFirst = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirst1"];
     DebugLog(@"打印%@",isFirst?@"YES":@"NO");
     if (!isFirst) {

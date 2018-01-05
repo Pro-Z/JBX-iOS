@@ -101,10 +101,14 @@
     [header setTitle:@"开始刷新" forState:(MJRefreshStateIdle)];
     [header setTitle:@"松开刷新" forState:MJRefreshStatePulling];
     [header setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
+    [header setTitle:@"即将开始刷新~" forState:MJRefreshStateWillRefresh];
     self.newsTableView.mj_header = header;
 //    [header beginRefreshing];
     MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreDataFromNet)];
     [footer setTitle:@"加载中..." forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"已经到底了~" forState:MJRefreshStateNoMoreData];
+    [footer setTitle:@"松开加载更多..." forState:MJRefreshStatePulling];
+    [footer setTitle:@"即将开始加载..." forState:MJRefreshStateWillRefresh];
     self.newsTableView.mj_footer = footer;
 }
 // 上啦刷新
@@ -114,8 +118,16 @@
 }
 // 下拉加载
 - (void) loadMoreDataFromNet {
-    _indexPage += 1;
-    [self initData:_currentNewsID withPage:_indexPage withSearchTxt:_searchTxt];
+    
+    // 提示停止没有更多数据了
+    NSInteger total = [_newsListModel.data.total integerValue];
+//    DebugLog(@"打印的数据为%ld",total);
+    if (_indexPage*10>=total) {
+        [self.newsTableView.mj_footer endRefreshingWithNoMoreData];
+    }else {
+        _indexPage += 1;
+        [self initData:_currentNewsID withPage:_indexPage withSearchTxt:_searchTxt];
+    }
 }
 // 停止刷新
 - (void) stopAllRefreshAction {
@@ -147,6 +159,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DEFAULTS_SET_INTEGER(2, @"WEBTYPE");
     IronMasterVC *ironMasterVC = [IronMasterVC new];
+    self.newsEcInformationArrModel = [MTLJSONAdapter modelOfClass:[NewsEcInformationArrModel class] fromJSONDictionary:_dataSource[indexPath.row] error:nil];
     ironMasterVC.content = _newsEcInformationArrModel.content;
     ironMasterVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:ironMasterVC animated:YES];
@@ -154,12 +167,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
 }
-
-//-(void)dealloc {
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

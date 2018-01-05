@@ -152,6 +152,7 @@
 		4C51470D1FF5FBC200280C43 /* NewsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListVC.m; sourceTree = "<group>"; };
 		4C641E3D1FF27184008CB06A /* PartmentAndMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentAndMemberModel.h; sourceTree = "<group>"; };
 		4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentAndMemberModel.m; sourceTree = "<group>"; };
+		4C65BB521FFFBAD2002546DE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		4C8349321FF63CB9008A3A6E /* NewsListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListModel.h; sourceTree = "<group>"; };
 		4C8349331FF63CB9008A3A6E /* NewsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListModel.m; sourceTree = "<group>"; };
 		4C9025041FEA0F82004DEA7C /* AddtionalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddtionalVC.h; sourceTree = "<group>"; };
@@ -821,6 +822,7 @@
 		FEFB32E249277AF27233330A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C65BB521FFFBAD2002546DE /* libxml2.tbd */,
 				DA76E0FEC3BDE6B4A9582978 /* Pods_JBX.framework */,
 			);
 			name = Frameworks;
@@ -1267,6 +1269,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZKGAJVAP47;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JBX/Macro/JBXPrefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "JBX/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ki1lt0.JBX;
@@ -1283,6 +1286,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZKGAJVAP47;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JBX/Macro/JBXPrefix.pch";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "JBX/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ki1lt0.JBX;
