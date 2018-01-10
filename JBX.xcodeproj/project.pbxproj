@@ -82,6 +82,16 @@
 		4CEF52C11FD41AE8000CA8C4 /* MineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF52C01FD41AE8000CA8C4 /* MineVC.m */; };
 		4CEF52C51FD41ED5000CA8C4 /* BaseNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF52C31FD41ED5000CA8C4 /* BaseNavigationVC.m */; };
 		4CEF52C81FD429A1000CA8C4 /* CoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF52C61FD429A1000CA8C4 /* CoverVC.m */; };
+		4CF02D3D2005B5EA00D57007 /* JobVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D3C2005B5EA00D57007 /* JobVC.m */; };
+		4CF02D472005E35600D57007 /* MYPresentAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D412005E35500D57007 /* MYPresentAnimationManager.m */; };
+		4CF02D482005E35600D57007 /* MYPresentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D432005E35600D57007 /* MYPresentedController.m */; };
+		4CF02D492005E35600D57007 /* MYPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D442005E35600D57007 /* MYPresentationController.m */; };
+		4CF02D4A2005E35600D57007 /* MYColorBackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D462005E35600D57007 /* MYColorBackView.m */; };
+		4CF02D4D2005E40600D57007 /* TipsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D4C2005E40600D57007 /* TipsVC.m */; };
+		4CF02D502005F77400D57007 /* HotTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D4F2005F77400D57007 /* HotTVC.m */; };
+		4CF02D53200609B900D57007 /* hotCateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D52200609B900D57007 /* hotCateCell.m */; };
+		4CF02D5820061B6500D57007 /* JobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D5720061B6500D57007 /* JobCell.m */; };
+		4CF02D5B20062ED000D57007 /* DetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02D5A20062ED000D57007 /* DetailVC.m */; };
 		4CF07C8E1FE8BF7400274862 /* GetPartmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF07C8D1FE8BF7400274862 /* GetPartmentListModel.m */; };
 		4CF07C941FE8DF7800274862 /* PartmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF07C931FE8DF7800274862 /* PartmentListModel.m */; };
 		4CFBD8D42003A0930009124A /* DZTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD8D32003A0930009124A /* DZTabBar.m */; };
@@ -272,6 +282,26 @@
 		4CEF52C41FD41ED5000CA8C4 /* BaseNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationVC.h; sourceTree = "<group>"; };
 		4CEF52C61FD429A1000CA8C4 /* CoverVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverVC.m; sourceTree = "<group>"; };
 		4CEF52C71FD429A1000CA8C4 /* CoverVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverVC.h; sourceTree = "<group>"; };
+		4CF02D3B2005B5EA00D57007 /* JobVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobVC.h; sourceTree = "<group>"; };
+		4CF02D3C2005B5EA00D57007 /* JobVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobVC.m; sourceTree = "<group>"; };
+		4CF02D3F2005E35500D57007 /* MYPresentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPresentedController.h; sourceTree = "<group>"; };
+		4CF02D402005E35500D57007 /* MYPresentAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPresentAnimationManager.h; sourceTree = "<group>"; };
+		4CF02D412005E35500D57007 /* MYPresentAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPresentAnimationManager.m; sourceTree = "<group>"; };
+		4CF02D422005E35600D57007 /* MYPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYPresentationController.h; sourceTree = "<group>"; };
+		4CF02D432005E35600D57007 /* MYPresentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPresentedController.m; sourceTree = "<group>"; };
+		4CF02D442005E35600D57007 /* MYPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYPresentationController.m; sourceTree = "<group>"; };
+		4CF02D452005E35600D57007 /* MYColorBackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYColorBackView.h; sourceTree = "<group>"; };
+		4CF02D462005E35600D57007 /* MYColorBackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYColorBackView.m; sourceTree = "<group>"; };
+		4CF02D4B2005E40600D57007 /* TipsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipsVC.h; sourceTree = "<group>"; };
+		4CF02D4C2005E40600D57007 /* TipsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipsVC.m; sourceTree = "<group>"; };
+		4CF02D4E2005F77400D57007 /* HotTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotTVC.h; sourceTree = "<group>"; };
+		4CF02D4F2005F77400D57007 /* HotTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotTVC.m; sourceTree = "<group>"; };
+		4CF02D51200609B900D57007 /* hotCateCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hotCateCell.h; sourceTree = "<group>"; };
+		4CF02D52200609B900D57007 /* hotCateCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hotCateCell.m; sourceTree = "<group>"; };
+		4CF02D5620061B6500D57007 /* JobCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobCell.h; sourceTree = "<group>"; };
+		4CF02D5720061B6500D57007 /* JobCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobCell.m; sourceTree = "<group>"; };
+		4CF02D5920062ED000D57007 /* DetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailVC.h; sourceTree = "<group>"; };
+		4CF02D5A20062ED000D57007 /* DetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailVC.m; sourceTree = "<group>"; };
 		4CF07C8C1FE8BF7400274862 /* GetPartmentListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetPartmentListModel.h; sourceTree = "<group>"; };
 		4CF07C8D1FE8BF7400274862 /* GetPartmentListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartmentListModel.m; sourceTree = "<group>"; };
 		4CF07C921FE8DF7800274862 /* PartmentListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentListModel.h; sourceTree = "<group>"; };
@@ -337,6 +367,7 @@
 		4C0BCAB11FDA7E1E009B3CEC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4CF02D3E2005E34700D57007 /* PopWindowView */,
 				4C7A51412004DF6000971BB7 /* LWLoadingView */,
 				4CFBD8DB2003B11A0009124A /* FKGPopOption.h */,
 				4CFBD8DC2003B11A0009124A /* FKGPopOption.m */,
@@ -519,6 +550,14 @@
 				4C51470D1FF5FBC200280C43 /* NewsListVC.m */,
 				4C7A51482004E42100971BB7 /* FindVC.h */,
 				4C7A51492004E42100971BB7 /* FindVC.m */,
+				4CF02D3B2005B5EA00D57007 /* JobVC.h */,
+				4CF02D3C2005B5EA00D57007 /* JobVC.m */,
+				4CF02D4B2005E40600D57007 /* TipsVC.h */,
+				4CF02D4C2005E40600D57007 /* TipsVC.m */,
+				4CF02D4E2005F77400D57007 /* HotTVC.h */,
+				4CF02D4F2005F77400D57007 /* HotTVC.m */,
+				4CF02D5920062ED000D57007 /* DetailVC.h */,
+				4CF02D5A20062ED000D57007 /* DetailVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -535,6 +574,10 @@
 				4C7A514F2004ED1500971BB7 /* FindListCell.m */,
 				4C161AF02005ADCD00EF810B /* DZFindSearchView.h */,
 				4C161AF12005ADCD00EF810B /* DZFindSearchView.m */,
+				4CF02D51200609B900D57007 /* hotCateCell.h */,
+				4CF02D52200609B900D57007 /* hotCateCell.m */,
+				4CF02D5620061B6500D57007 /* JobCell.h */,
+				4CF02D5720061B6500D57007 /* JobCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -914,6 +957,21 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		4CF02D3E2005E34700D57007 /* PopWindowView */ = {
+			isa = PBXGroup;
+			children = (
+				4CF02D452005E35600D57007 /* MYColorBackView.h */,
+				4CF02D462005E35600D57007 /* MYColorBackView.m */,
+				4CF02D402005E35500D57007 /* MYPresentAnimationManager.h */,
+				4CF02D412005E35500D57007 /* MYPresentAnimationManager.m */,
+				4CF02D422005E35600D57007 /* MYPresentationController.h */,
+				4CF02D442005E35600D57007 /* MYPresentationController.m */,
+				4CF02D3F2005E35500D57007 /* MYPresentedController.h */,
+				4CF02D432005E35600D57007 /* MYPresentedController.m */,
+			);
+			path = PopWindowView;
+			sourceTree = "<group>";
+		};
 		FEFB32E249277AF27233330A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,6 +1209,7 @@
 				4CEBA97E1FEBBDA7009F12BE /* NSDate+Lazy.m in Sources */,
 				4C194E461FDFA66700D7C0B7 /* MineListCell.m in Sources */,
 				4C8349341FF63CB9008A3A6E /* NewsListModel.m in Sources */,
+				4CF02D4A2005E35600D57007 /* MYColorBackView.m in Sources */,
 				4CB0A1731FE002F700154AE6 /* LoginModel.m in Sources */,
 				4C05B5F51FDA1FEE00220C42 /* WorkHeaderReusableView.m in Sources */,
 				4CFBD8D92003A0C30009124A /* UIImage+Image.m in Sources */,
@@ -1177,12 +1236,14 @@
 				4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */,
 				4CAEC3731FD8CC1E00F4664E /* NetRequestClient.m in Sources */,
 				4C51470A1FF5F6DF00280C43 /* UIView+DZBadge.m in Sources */,
+				4CF02D472005E35600D57007 /* MYPresentAnimationManager.m in Sources */,
 				4C7A51502004ED1500971BB7 /* FindListCell.m in Sources */,
 				4CFCE3CB1FE4C2E000C0F069 /* OrganizeHeaderCell.m in Sources */,
 				4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */,
 				4CEF52BE1FD41ADC000CA8C4 /* WorkVC.m in Sources */,
 				4C50DDC01FE7E29E0088E36F /* SelectOrganCell.m in Sources */,
 				4C9A5DDA1FD51DD900899CE8 /* UILabel+Lazy.m in Sources */,
+				4CF02D492005E35600D57007 /* MYPresentationController.m in Sources */,
 				4CFCE3C21FE4028900C0F069 /* OrganizeVC.m in Sources */,
 				4C0C99991FDE4CB10065BF49 /* DZSearchBarWithIcon.m in Sources */,
 				4C7A514D2004EB7900971BB7 /* FindHeaderCell.m in Sources */,
@@ -1192,15 +1253,22 @@
 				4CB0A1741FE002F700154AE6 /* RegisterModel.m in Sources */,
 				4C161AF22005ADCD00EF810B /* DZFindSearchView.m in Sources */,
 				4CFBD8DD2003B11A0009124A /* FKGPopOption.m in Sources */,
+				4CF02D4D2005E40600D57007 /* TipsVC.m in Sources */,
 				4CEF52C51FD41ED5000CA8C4 /* BaseNavigationVC.m in Sources */,
 				4C50DDC31FE7F4C00088E36F /* SetOrganIDModel.m in Sources */,
 				4CFCE3CE1FE5041F00C0F069 /* DZCenterSearchBar.m in Sources */,
 				4CEF52AC1FD4174B000CA8C4 /* LaunchVC.m in Sources */,
 				4CEF529F1FD41247000CA8C4 /* GuideVC.m in Sources */,
+				4CF02D53200609B900D57007 /* hotCateCell.m in Sources */,
+				4CF02D502005F77400D57007 /* HotTVC.m in Sources */,
 				4C05B5FE1FDA60A700220C42 /* WorkWithBannerReusableView.m in Sources */,
 				4CEF52B21FD41A29000CA8C4 /* TabBarVC.m in Sources */,
 				4C9A5DDB1FD51DD900899CE8 /* NSString+Lazy.m in Sources */,
 				4C05B6011FDA70A700220C42 /* UIView+FontSize.m in Sources */,
+				4CF02D482005E35600D57007 /* MYPresentedController.m in Sources */,
+				4CF02D5820061B6500D57007 /* JobCell.m in Sources */,
+				4CF02D3D2005B5EA00D57007 /* JobVC.m in Sources */,
+				4CF02D5B20062ED000D57007 /* DetailVC.m in Sources */,
 				4CB0A1721FE002F700154AE6 /* BaseModel.m in Sources */,
 				4C05B5FB1FDA422600220C42 /* WorkFooterReusableView.m in Sources */,
 				4CAEC36B1FD8CB9D00F4664E /* ForgetVC.m in Sources */,

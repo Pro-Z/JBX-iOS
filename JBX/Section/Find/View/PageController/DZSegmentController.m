@@ -65,6 +65,7 @@ typedef void(^DZViewControllerIndexBlock)(NSUInteger, UIButton *, UIViewControll
     
     UIButton *button = _segmentView.buttons.firstObject;
     _offsetSize = CGSizeMake(_segmentView.buttonSpace, (SegmentHeight - [@"DZZ" sizeWithAttributes:@{NSFontAttributeName: button.titleLabel.font}].height) / 2);
+   
 }
 
 - (void)containerViewSetting {
@@ -214,12 +215,12 @@ typedef void(^DZViewControllerIndexBlock)(NSUInteger, UIButton *, UIViewControll
     return nil;
 }
 
-- (void)addSegmentController:(DZSegmentController *)segment {
+- (void)addSegmentController:(DZSegmentController *)segment withView:(UIView*)view {
     if (self == segment) {
         return;
     }
     
-    [self.view addSubview:segment.view];
+    [view addSubview:segment.view];
     [self addChildViewController:segment];
     
     // 默认加入第一个控制器

@@ -68,7 +68,7 @@
 
 #define APP_IMAGE_URL  @"http://oot34wnx6.bkt.clouddn.com/"
 
-#define APP_BASE_URL   @"http://172.16.3.5:8085"
+#define APP_BASE_URL   @"http://172.16.39.205:8085"
 
 #define APP_WHOLE_URL  @"http://172.16.3.8:8085/rest-api/api/sms/getSmsCode"
 
@@ -86,7 +86,13 @@
 
 #define APP_ADD_PARTMENT_URL @"/rest-api/api/dept/add"
 
-#define APP_IRON_MASETER_URL @"http://106.14.154.136:8081/GCGL/html/wap/gc/html/login2.html?u="
+
+/**
+ 测试环境 钣金大师http
+ @return return value description
+ */
+#define APP_IRON_MASETER_URL @"http://172.16.3.8:8081/GCGL/html/wap/gc/html/index.html?token="
+
 #define APP_GET_PARTMENT_BY_PARENTID_URL  @"/rest-api/api/dept/queryByParentId"
 
 #define APP_GET_PARTMENT_AND_MEMBER_URL  @"/rest-api/admin/dept/queryDeptAndMember"

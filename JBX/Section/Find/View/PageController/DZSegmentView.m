@@ -158,10 +158,10 @@ int const SegmentHeight = 48;//可根据项目需求设置高度
     NSUInteger index = self.index;
     CGSize titleSize = [_selectedButton.titleLabel.text sizeWithAttributes:@{NSFontAttributeName: _font}];
     [UIView animateWithDuration:_duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        if (_style == SegmentStyleDefault) {
-            _indicateView.frame = CGRectMake(CGRectGetMinX(_selectedButton.frame) + _buttonSpace, CGRectGetMinY(_indicateView.frame), titleSize.width, _indicateHeight);
-        } else {
+        if (_style == SegmentStyleFlush) {
             _indicateView.frame = CGRectMake(CGRectGetMinX(_selectedButton.frame), CGRectGetMinY(_indicateView.frame), [self widthAtIndex:index], _indicateHeight);
+        } else {
+            _indicateView.frame = CGRectMake(CGRectGetMinX(_selectedButton.frame) + _buttonSpace, CGRectGetMinY(_indicateView.frame), titleSize.width, _indicateHeight);
         }
     } completion:nil];
 }

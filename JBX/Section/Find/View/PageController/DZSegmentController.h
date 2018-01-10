@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIViewController (ZWMSegment)
 @property (nonatomic, strong, readonly, nullable) DZSegmentController *segmentController;
-- (void)addSegmentController:(DZSegmentController *)segment;
+- (void)addSegmentController:(DZSegmentController *)segment withView:(UIView*)view;
 @end
 
 NS_ASSUME_NONNULL_END

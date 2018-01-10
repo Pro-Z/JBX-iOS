@@ -10,7 +10,7 @@
 #import "FindHeaderCell.h"
 #import "FindListCell.h"
 #import "NewsListCell.h"
-
+#import "JobVC.h"
 
 @interface FindVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) DZFindSearchView *centerSearchView;
@@ -239,6 +239,14 @@
 #pragma mark -- UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击了第 %zd组 第%zd个",indexPath.section, indexPath.row);
+    
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        JobVC *jov = [JobVC new];
+//        BaseNavigationVC *naviVC = [[BaseNavigationVC alloc] initWithRootViewController:jov];
+        jov.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:jov animated:YES];
+        
+    }
 }
 
 #pragma mark mark  - uitableview 代理方法

@@ -130,7 +130,7 @@
     self.segmentVC.segmentView.style = SegmentStyleFlush;
     //    }
     //    [self.segmentVC  enumerateBadges:@[@(1),@10]];
-    [self addSegmentController:self.segmentVC];
+    [self addSegmentController:self.segmentVC withView:self.view];
     [self.segmentVC  setSelectedAtIndex:0];
     
     
