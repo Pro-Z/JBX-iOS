@@ -179,6 +179,11 @@
     _mineListTableView.dataSource = self;
     _mineListTableView.bounces = NO;
     _mineListTableView.tableHeaderView = _headView;
+    if (@available(ios 11.0,*)) {
+        _mineListTableView.contentInsetAdjustmentBehavior = NO;
+    }else{
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     [_mineListTableView registerClass:[MineListCell class] forCellReuseIdentifier:@"MineListCell"];
     [self.view addSubview:_mineListTableView];
     _weekSelf(weakSelf)
@@ -218,7 +223,7 @@
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 180;
+    return 0;
 }
 
 

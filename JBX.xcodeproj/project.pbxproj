@@ -21,6 +21,7 @@
 		4C0C99991FDE4CB10065BF49 /* DZSearchBarWithIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C99981FDE4CB10065BF49 /* DZSearchBarWithIcon.m */; };
 		4C0C999C1FDE5EDB0065BF49 /* ShopListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C999B1FDE5EDB0065BF49 /* ShopListCell.m */; };
 		4C12D41C1FEA57B2007D62E5 /* AddPartmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D41B1FEA57B2007D62E5 /* AddPartmentModel.m */; };
+		4C161AF22005ADCD00EF810B /* DZFindSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C161AF12005ADCD00EF810B /* DZFindSearchView.m */; };
 		4C194E461FDFA66700D7C0B7 /* MineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C194E451FDFA66700D7C0B7 /* MineListCell.m */; };
 		4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C61FF37B46009A95F7 /* NewsTitleListModel.m */; };
 		4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C91FF38F8F009A95F7 /* FastModel.m */; };
@@ -33,6 +34,12 @@
 		4C51470B1FF5F6DF00280C43 /* DZSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5147091FF5F6DF00280C43 /* DZSegmentView.m */; };
 		4C51470E1FF5FBC200280C43 /* NewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51470D1FF5FBC200280C43 /* NewsListVC.m */; };
 		4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */; };
+		4C7A51402004D2EA00971BB7 /* IronMVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A513F2004D2EA00971BB7 /* IronMVC.m */; };
+		4C7A51462004DF6000971BB7 /* LWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A51432004DF6000971BB7 /* LWLoadingView.m */; };
+		4C7A51472004DF6000971BB7 /* LWLoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A51452004DF6000971BB7 /* LWLoadingAnimationView.m */; };
+		4C7A514A2004E42100971BB7 /* FindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A51492004E42100971BB7 /* FindVC.m */; };
+		4C7A514D2004EB7900971BB7 /* FindHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A514C2004EB7900971BB7 /* FindHeaderCell.m */; };
+		4C7A51502004ED1500971BB7 /* FindListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A514F2004ED1500971BB7 /* FindListCell.m */; };
 		4C8349341FF63CB9008A3A6E /* NewsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8349331FF63CB9008A3A6E /* NewsListModel.m */; };
 		4C9025061FEA0F82004DEA7C /* AddtionalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9025051FEA0F82004DEA7C /* AddtionalVC.m */; };
 		4C9A5DD91FD51DD900899CE8 /* UITextField+Lazy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9A5DD31FD51DD900899CE8 /* UITextField+Lazy.m */; };
@@ -77,6 +84,10 @@
 		4CEF52C81FD429A1000CA8C4 /* CoverVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF52C61FD429A1000CA8C4 /* CoverVC.m */; };
 		4CF07C8E1FE8BF7400274862 /* GetPartmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF07C8D1FE8BF7400274862 /* GetPartmentListModel.m */; };
 		4CF07C941FE8DF7800274862 /* PartmentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF07C931FE8DF7800274862 /* PartmentListModel.m */; };
+		4CFBD8D42003A0930009124A /* DZTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD8D32003A0930009124A /* DZTabBar.m */; };
+		4CFBD8D92003A0C30009124A /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD8D52003A0C20009124A /* UIImage+Image.m */; };
+		4CFBD8DA2003A0C30009124A /* UIView+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD8D62003A0C20009124A /* UIView+LBExtension.m */; };
+		4CFBD8DD2003B11A0009124A /* FKGPopOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFBD8DC2003B11A0009124A /* FKGPopOption.m */; };
 		4CFCE3C21FE4028900C0F069 /* OrganizeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3C11FE4028900C0F069 /* OrganizeVC.m */; };
 		4CFCE3C81FE4C16500C0F069 /* OrganizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3C71FE4C16500C0F069 /* OrganizeCell.m */; };
 		4CFCE3CB1FE4C2E000C0F069 /* OrganizeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3CA1FE4C2E000C0F069 /* OrganizeHeaderCell.m */; };
@@ -128,6 +139,8 @@
 		4C0C999B1FDE5EDB0065BF49 /* ShopListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopListCell.m; sourceTree = "<group>"; };
 		4C12D41A1FEA57B2007D62E5 /* AddPartmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPartmentModel.h; sourceTree = "<group>"; };
 		4C12D41B1FEA57B2007D62E5 /* AddPartmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPartmentModel.m; sourceTree = "<group>"; };
+		4C161AF02005ADCD00EF810B /* DZFindSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DZFindSearchView.h; sourceTree = "<group>"; };
+		4C161AF12005ADCD00EF810B /* DZFindSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZFindSearchView.m; sourceTree = "<group>"; };
 		4C194E441FDFA66700D7C0B7 /* MineListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineListCell.h; sourceTree = "<group>"; };
 		4C194E451FDFA66700D7C0B7 /* MineListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineListCell.m; sourceTree = "<group>"; };
 		4C4153C51FF37B46009A95F7 /* NewsTitleListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTitleListModel.h; sourceTree = "<group>"; };
@@ -153,6 +166,18 @@
 		4C641E3D1FF27184008CB06A /* PartmentAndMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentAndMemberModel.h; sourceTree = "<group>"; };
 		4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentAndMemberModel.m; sourceTree = "<group>"; };
 		4C65BB521FFFBAD2002546DE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C7A513E2004D2EA00971BB7 /* IronMVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IronMVC.h; sourceTree = "<group>"; };
+		4C7A513F2004D2EA00971BB7 /* IronMVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IronMVC.m; sourceTree = "<group>"; };
+		4C7A51422004DF6000971BB7 /* LWLoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLoadingAnimationView.h; sourceTree = "<group>"; };
+		4C7A51432004DF6000971BB7 /* LWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLoadingView.m; sourceTree = "<group>"; };
+		4C7A51442004DF6000971BB7 /* LWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLoadingView.h; sourceTree = "<group>"; };
+		4C7A51452004DF6000971BB7 /* LWLoadingAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLoadingAnimationView.m; sourceTree = "<group>"; };
+		4C7A51482004E42100971BB7 /* FindVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindVC.h; sourceTree = "<group>"; };
+		4C7A51492004E42100971BB7 /* FindVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindVC.m; sourceTree = "<group>"; };
+		4C7A514B2004EB7900971BB7 /* FindHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindHeaderCell.h; sourceTree = "<group>"; };
+		4C7A514C2004EB7900971BB7 /* FindHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindHeaderCell.m; sourceTree = "<group>"; };
+		4C7A514E2004ED1500971BB7 /* FindListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindListCell.h; sourceTree = "<group>"; };
+		4C7A514F2004ED1500971BB7 /* FindListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindListCell.m; sourceTree = "<group>"; };
 		4C8349321FF63CB9008A3A6E /* NewsListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListModel.h; sourceTree = "<group>"; };
 		4C8349331FF63CB9008A3A6E /* NewsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListModel.m; sourceTree = "<group>"; };
 		4C9025041FEA0F82004DEA7C /* AddtionalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddtionalVC.h; sourceTree = "<group>"; };
@@ -251,6 +276,14 @@
 		4CF07C8D1FE8BF7400274862 /* GetPartmentListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetPartmentListModel.m; sourceTree = "<group>"; };
 		4CF07C921FE8DF7800274862 /* PartmentListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentListModel.h; sourceTree = "<group>"; };
 		4CF07C931FE8DF7800274862 /* PartmentListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentListModel.m; sourceTree = "<group>"; };
+		4CFBD8D22003A0930009124A /* DZTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZTabBar.h; sourceTree = "<group>"; };
+		4CFBD8D32003A0930009124A /* DZTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZTabBar.m; sourceTree = "<group>"; };
+		4CFBD8D52003A0C20009124A /* UIImage+Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Image.m"; sourceTree = "<group>"; };
+		4CFBD8D62003A0C20009124A /* UIView+LBExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LBExtension.m"; sourceTree = "<group>"; };
+		4CFBD8D72003A0C30009124A /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
+		4CFBD8D82003A0C30009124A /* UIView+LBExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LBExtension.h"; sourceTree = "<group>"; };
+		4CFBD8DB2003B11A0009124A /* FKGPopOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FKGPopOption.h; sourceTree = "<group>"; };
+		4CFBD8DC2003B11A0009124A /* FKGPopOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FKGPopOption.m; sourceTree = "<group>"; };
 		4CFCE3C01FE4028900C0F069 /* OrganizeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrganizeVC.h; sourceTree = "<group>"; };
 		4CFCE3C11FE4028900C0F069 /* OrganizeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrganizeVC.m; sourceTree = "<group>"; };
 		4CFCE3C61FE4C16500C0F069 /* OrganizeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrganizeCell.h; sourceTree = "<group>"; };
@@ -304,6 +337,11 @@
 		4C0BCAB11FDA7E1E009B3CEC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C7A51412004DF6000971BB7 /* LWLoadingView */,
+				4CFBD8DB2003B11A0009124A /* FKGPopOption.h */,
+				4CFBD8DC2003B11A0009124A /* FKGPopOption.m */,
+				4CFBD8D22003A0930009124A /* DZTabBar.h */,
+				4CFBD8D32003A0930009124A /* DZTabBar.m */,
 				4C0BCAB21FDA7E56009B3CEC /* DZSearchBar.h */,
 				4C0BCAB31FDA7E56009B3CEC /* DZSearchBar.m */,
 			);
@@ -321,6 +359,50 @@
 				4C5147041FF5F65100280C43 /* DZSegmentController.m */,
 			);
 			path = PageController;
+			sourceTree = "<group>";
+		};
+		4C7A51372004D13E00971BB7 /* IronMaster */ = {
+			isa = PBXGroup;
+			children = (
+				4C7A513A2004D15D00971BB7 /* Controller */,
+				4C7A51382004D15C00971BB7 /* Model */,
+				4C7A51392004D15D00971BB7 /* View */,
+			);
+			path = IronMaster;
+			sourceTree = "<group>";
+		};
+		4C7A51382004D15C00971BB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C7A51392004D15D00971BB7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C7A513A2004D15D00971BB7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4C7A513E2004D2EA00971BB7 /* IronMVC.h */,
+				4C7A513F2004D2EA00971BB7 /* IronMVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4C7A51412004DF6000971BB7 /* LWLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				4C7A51422004DF6000971BB7 /* LWLoadingAnimationView.h */,
+				4C7A51432004DF6000971BB7 /* LWLoadingView.m */,
+				4C7A51442004DF6000971BB7 /* LWLoadingView.h */,
+				4C7A51452004DF6000971BB7 /* LWLoadingAnimationView.m */,
+			);
+			path = LWLoadingView;
 			sourceTree = "<group>";
 		};
 		4C9A5DBE1FD519A600899CE8 /* Controller */ = {
@@ -435,6 +517,8 @@
 				4CEF52BA1FD41ACD000CA8C4 /* NewsVC.m */,
 				4C51470C1FF5FBC200280C43 /* NewsListVC.h */,
 				4C51470D1FF5FBC200280C43 /* NewsListVC.m */,
+				4C7A51482004E42100971BB7 /* FindVC.h */,
+				4C7A51492004E42100971BB7 /* FindVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -445,6 +529,12 @@
 				4C5147021FF5F51E00280C43 /* PageController */,
 				4CCD2E431FDD54F30027BFAE /* NewsListCell.h */,
 				4CCD2E441FDD54F30027BFAE /* NewsListCell.m */,
+				4C7A514B2004EB7900971BB7 /* FindHeaderCell.h */,
+				4C7A514C2004EB7900971BB7 /* FindHeaderCell.m */,
+				4C7A514E2004ED1500971BB7 /* FindListCell.h */,
+				4C7A514F2004ED1500971BB7 /* FindListCell.m */,
+				4C161AF02005ADCD00EF810B /* DZFindSearchView.h */,
+				4C161AF12005ADCD00EF810B /* DZFindSearchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +578,10 @@
 		4C9A5DD01FD51D6D00899CE8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4CFBD8D72003A0C30009124A /* UIImage+Image.h */,
+				4CFBD8D52003A0C20009124A /* UIImage+Image.m */,
+				4CFBD8D82003A0C30009124A /* UIView+LBExtension.h */,
+				4CFBD8D62003A0C20009124A /* UIView+LBExtension.m */,
 				4CFCE3D01FE5044D00C0F069 /* UIImage+Tool.h */,
 				4CFCE3CF1FE5044D00C0F069 /* UIImage+Tool.m */,
 				4C0BCAB51FDA8320009B3CEC /* UIView+Extension.h */,
@@ -700,10 +794,11 @@
 		4CD67A671FD14F8B0003D5DA /* Section */ = {
 			isa = PBXGroup;
 			children = (
+				4C7A51372004D13E00971BB7 /* IronMaster */,
 				4CAEC35F1FD8CB0F00F4664E /* Login */,
 				4CD67A681FD14F8B0003D5DA /* Shop */,
 				4CD67A691FD14F8B0003D5DA /* Message */,
-				4CD67A6A1FD14F8B0003D5DA /* News */,
+				4CD67A6A1FD14F8B0003D5DA /* Find */,
 				4CD67A6B1FD14F8B0003D5DA /* Work */,
 				4CD67A6C1FD14F8B0003D5DA /* Mine */,
 			);
@@ -730,14 +825,14 @@
 			path = Message;
 			sourceTree = "<group>";
 		};
-		4CD67A6A1FD14F8B0003D5DA /* News */ = {
+		4CD67A6A1FD14F8B0003D5DA /* Find */ = {
 			isa = PBXGroup;
 			children = (
 				4C9A5DC71FD519BF00899CE8 /* Controller */,
 				4C9A5DC91FD519BF00899CE8 /* Model */,
 				4C9A5DC81FD519BF00899CE8 /* View */,
 			);
-			path = News;
+			path = Find;
 			sourceTree = "<group>";
 		};
 		4CD67A6B1FD14F8B0003D5DA /* Work */ = {
@@ -1037,12 +1132,16 @@
 				4CEF52B51FD41AAD000CA8C4 /* ShopVC.m in Sources */,
 				4C50DDB41FE7A7700088E36F /* TokenModel.m in Sources */,
 				4C50DDBD1FE7C7CA0088E36F /* SelectVC.m in Sources */,
+				4C7A51462004DF6000971BB7 /* LWLoadingView.m in Sources */,
 				4CB0A1751FE002F700154AE6 /* RequestModel.m in Sources */,
 				4CAEC36E1FD8CBB200F4664E /* ConfirmVC.m in Sources */,
 				4CFCE3D11FE5044D00C0F069 /* UIImage+Tool.m in Sources */,
+				4CFBD8DA2003A0C30009124A /* UIView+LBExtension.m in Sources */,
 				4CF07C941FE8DF7800274862 /* PartmentListModel.m in Sources */,
 				4CEBA9851FEBC3BD009F12BE /* GTMBase64.m in Sources */,
 				4CAF0B501FE0DA03001150A2 /* ForgetPawModel.m in Sources */,
+				4C7A51472004DF6000971BB7 /* LWLoadingAnimationView.m in Sources */,
+				4C7A51402004D2EA00971BB7 /* IronMVC.m in Sources */,
 				4CCD2E451FDD54F30027BFAE /* NewsListCell.m in Sources */,
 				4C05B5F81FDA20C900220C42 /* WorkCollectionViewCell.m in Sources */,
 				4CAEC3741FD8CC1E00F4664E /* NetAPIManager.m in Sources */,
@@ -1054,6 +1153,7 @@
 				4C8349341FF63CB9008A3A6E /* NewsListModel.m in Sources */,
 				4CB0A1731FE002F700154AE6 /* LoginModel.m in Sources */,
 				4C05B5F51FDA1FEE00220C42 /* WorkHeaderReusableView.m in Sources */,
+				4CFBD8D92003A0C30009124A /* UIImage+Image.m in Sources */,
 				4CAEC3621FD8CB3200F4664E /* LoginVC.m in Sources */,
 				4C12D41C1FEA57B2007D62E5 /* AddPartmentModel.m in Sources */,
 				4CEBA9841FEBC3BD009F12BE /* desFile.m in Sources */,
@@ -1067,14 +1167,17 @@
 				4CAEC3681FD8CB8E00F4664E /* RegisterVC.m in Sources */,
 				4C9A5DDC1FD51DD900899CE8 /* UIButton+Lazy.m in Sources */,
 				4CAEC3771FD8D07900F4664E /* NSObject+ProgressHUD.m in Sources */,
+				4CFBD8D42003A0930009124A /* DZTabBar.m in Sources */,
 				4CAF0B531FE10D1B001150A2 /* SendSmsModel.m in Sources */,
 				4CCD5D841FF09CE60052367D /* SecondOrganVC.m in Sources */,
 				4CEF52C81FD429A1000CA8C4 /* CoverVC.m in Sources */,
 				4C0BCAB71FDA8320009B3CEC /* UIView+Extension.m in Sources */,
+				4C7A514A2004E42100971BB7 /* FindVC.m in Sources */,
 				4C0BCAB41FDA7E56009B3CEC /* DZSearchBar.m in Sources */,
 				4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */,
 				4CAEC3731FD8CC1E00F4664E /* NetRequestClient.m in Sources */,
 				4C51470A1FF5F6DF00280C43 /* UIView+DZBadge.m in Sources */,
+				4C7A51502004ED1500971BB7 /* FindListCell.m in Sources */,
 				4CFCE3CB1FE4C2E000C0F069 /* OrganizeHeaderCell.m in Sources */,
 				4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */,
 				4CEF52BE1FD41ADC000CA8C4 /* WorkVC.m in Sources */,
@@ -1082,10 +1185,13 @@
 				4C9A5DDA1FD51DD900899CE8 /* UILabel+Lazy.m in Sources */,
 				4CFCE3C21FE4028900C0F069 /* OrganizeVC.m in Sources */,
 				4C0C99991FDE4CB10065BF49 /* DZSearchBarWithIcon.m in Sources */,
+				4C7A514D2004EB7900971BB7 /* FindHeaderCell.m in Sources */,
 				4CEF52B81FD41ABE000CA8C4 /* MessageVC.m in Sources */,
 				4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */,
 				4C9025061FEA0F82004DEA7C /* AddtionalVC.m in Sources */,
 				4CB0A1741FE002F700154AE6 /* RegisterModel.m in Sources */,
+				4C161AF22005ADCD00EF810B /* DZFindSearchView.m in Sources */,
+				4CFBD8DD2003B11A0009124A /* FKGPopOption.m in Sources */,
 				4CEF52C51FD41ED5000CA8C4 /* BaseNavigationVC.m in Sources */,
 				4C50DDC31FE7F4C00088E36F /* SetOrganIDModel.m in Sources */,
 				4CFCE3CE1FE5041F00C0F069 /* DZCenterSearchBar.m in Sources */,

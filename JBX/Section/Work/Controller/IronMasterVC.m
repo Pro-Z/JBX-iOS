@@ -8,9 +8,11 @@
 
 #import "IronMasterVC.h"
 
-@interface IronMasterVC ()
+
+@interface IronMasterVC ()<WKUIDelegate,WKNavigationDelegate>
 @property (nonatomic,strong) UIWebView *ironMasterView;
 @property (nonatomic,assign) NSInteger type;
+@property (nonatomic,strong) WKWebView *wkWebView;
 @end
 
 @implementation IronMasterVC
@@ -24,7 +26,10 @@
 //    APP_IRON_MASETER_URL
     [self initNavigationView];
     
-    [self initH5WebView];
+//    [self initH5WebView];
+    [self initWKWebView];
+    
+    
 }
 
 - (void) initNavigationView {
@@ -51,6 +56,35 @@
 - (void) goToBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+// 初始化wkwebview
+- (void) initWKWebView {
+    self.wkWebView = [WKWebView new];
+    _wkWebView.UIDelegate = self;
+    _wkWebView.navigationDelegate = self;
+    [self.view addSubview:_wkWebView];
+    _weekSelf(weakSelf)
+    [_wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.view).offset(0);
+        make.left.equalTo(weakSelf.view).offset(0);
+        make.right.equalTo(weakSelf.view).offset(10);
+        make.bottom.equalTo(weakSelf.view);
+    }];
+    if (_type ==1) {
+        NSString *urlStr = [APP_IRON_MASETER_URL stringByAppendingString:DEFAULTS_GET_OBJ(@"BASE64")];
+        NSURL *baseUrl = [NSURL URLWithString:urlStr];
+        NSURLRequest *request = [NSURLRequest requestWithURL:baseUrl];
+        [_wkWebView loadRequest:request];
+    }else if(_type == 2){
+        NSString *css = @"<head><style>img{max-width:340px !important;}</style></head>";
+        [_wkWebView loadHTMLString:[css stringByAppendingString:_content] baseURL:nil];
+    }
+    
+    
+}
+#pragma mark mark -- 初始化wkwebview的代理方法
+
+
 
 // 初始化钣金大师
 - (void) initH5WebView {

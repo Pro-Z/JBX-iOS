@@ -27,21 +27,21 @@
 //        _goPic.backgroundColor = [UIColor blueColor];
         _weekSelf(weakSelf)
         [_firstIconPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.contentView).offset(17);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(5);
+            make.top.equalTo(weakSelf.contentView).offset(17);
+            make.left.equalTo(weakSelf.contentView).offset(5);
 //            make.rightMargin.equalTo(weakSelf.firstLabel.mas_left).offset(-10);
             make.height.equalTo(@22);
             make.width.equalTo(@22);
         }];
         [_firstLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.contentView).offset(17);
-            make.leftMargin.equalTo(weakSelf.firstIconPic.mas_right).offset(15);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(-30);
+            make.top.equalTo(weakSelf.contentView).offset(17);
+            make.left.equalTo(weakSelf.firstIconPic.mas_right).offset(10);
+            make.right.equalTo(weakSelf.contentView).offset(-30);
             make.height.equalTo(@22);
         }];
         [_goPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.contentView).offset(21);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(-10);
+            make.top.equalTo(weakSelf.contentView).offset(21);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
             make.height.equalTo(@14);
             make.width.equalTo(@10);
         }];
@@ -49,28 +49,30 @@
         UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(243, 243, 243, 1)];
         [self.contentView addSubview:lineView];
         [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.firstLabel.mas_bottom).offset(20);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(-12);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(12);
+            make.top.equalTo(weakSelf.firstLabel.mas_bottom).offset(15);
+            make.left.equalTo(weakSelf.contentView).offset(5);
+            make.right.equalTo(weakSelf.contentView).offset(0);
             make.height.equalTo(@2);
         }];
+        
         [self.contentView addSubview:self.horiztalCollectionView];
         _horiztalCollectionView.backgroundColor = [UIColor whiteColor];
         [_horiztalCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(lineView.mas_bottom).offset(20);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(0);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(12);
+            make.top.equalTo(lineView.mas_bottom).offset(0);
+            make.left.equalTo(weakSelf.contentView).offset(5);
+            make.right.equalTo(weakSelf.contentView).offset(12);
 //            make.height.equalTo(@170);
-            make.bottomMargin.equalTo(weakSelf.contentView).offset(-20);
+            make.bottom.equalTo(weakSelf.contentView).offset(-20);
         }];
         UIView *bottomView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(243, 243, 243, 1)];
         [self.contentView addSubview:bottomView];
+        
         [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.horiztalCollectionView.mas_bottom).offset(20);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(-12);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(12);
+          make.top.equalTo(weakSelf.horiztalCollectionView.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(0);
+            make.right.equalTo(weakSelf.contentView).offset(0);
 //            make.height.equalTo(@10);
-            make.bottomMargin.equalTo(weakSelf.contentView).offset(0);
+            make.bottom.equalTo(weakSelf.contentView).offset(0);
         }];
         
     
@@ -113,6 +115,7 @@
         _horiztalCollectionView.delegate = self;
         _horiztalCollectionView.dataSource = self;
         _horiztalCollectionView.bounces = NO;
+        
         _horiztalCollectionView.showsHorizontalScrollIndicator = NO;
         [_horiztalCollectionView registerClass:[ShopListItemCell class] forCellWithReuseIdentifier:@"ShopListItemCell"];
     }
@@ -160,7 +163,7 @@
 /** 每个cell的尺寸*/
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(110, 170);
+    return CGSizeMake(110, 150);
 }
 
 ///** 头部的尺寸*/

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tabbar_icon_job_nor@1.5x.png",
+      "filename" : "shop_icon@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tabbar_icon_job_nor@2x.png",
+      "filename" : "shop_icon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tabbar_icon_job_nor@3x.png",
+      "filename" : "shop_icon@3x.png",
       "scale" : "3x"
     }
   ],

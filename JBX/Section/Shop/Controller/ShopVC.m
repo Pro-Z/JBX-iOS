@@ -109,6 +109,8 @@
 
 // 初始化商品界面
 - (void) initShopListView {
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.conte
     self.hortoalTableView = [[UITableView alloc] initWithFrame:CGRectZero style:(UITableViewStylePlain)];
     _hortoalTableView.delegate = self;
     _hortoalTableView.dataSource = self;
@@ -148,7 +150,7 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 260;
+    return 251;
 }
 
 

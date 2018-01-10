@@ -15,23 +15,24 @@
         [self.contentView addSubview:self.itemPic];
         [self.contentView addSubview:self.itemFirstLabel];
         [self.contentView addSubview:self.itemSecondLabel];
+//        self.contentView.backgroundColor = [UIColor greenColor];
         _weekSelf(weakSelf)
         [_itemPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.contentView).offset(15);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(0);
+            make.top.equalTo(weakSelf.contentView).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(0);
             make.height.equalTo(@90);
             make.width.equalTo(@90);
         }];
         [_itemFirstLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.itemPic.mas_bottom).offset(15);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(0);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(0);
+            make.top.equalTo(weakSelf.itemPic.mas_bottom).offset(15);
+            make.left.equalTo(weakSelf.contentView).offset(0);
+            make.right.equalTo(weakSelf.contentView).offset(0);
             make.height.equalTo(@20);
         }];
         [_itemSecondLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.itemFirstLabel.mas_bottom).offset(10);
-            make.leftMargin.equalTo(weakSelf.contentView).offset(0);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(0);
+            make.top.equalTo(weakSelf.itemFirstLabel.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(0);
+            make.right.equalTo(weakSelf.contentView).offset(0);
             make.height.equalTo(@20);
         }];
         
