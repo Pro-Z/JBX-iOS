@@ -54,7 +54,7 @@
 #import "NSObject+ProgressHUD.h"
 #import "UIImageView+Lazy.h"
 #import "UIView+Lazy.h"
-#import "UIView+FontSize.h"
+//#import "UIView+FontSize.h"
 #import "UIView+Extension.h"
 #import "UIImage+Tool.h"
 #import "NSDate+Lazy.h"

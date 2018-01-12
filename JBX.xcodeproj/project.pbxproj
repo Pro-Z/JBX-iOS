@@ -14,7 +14,6 @@
 		4C05B5F81FDA20C900220C42 /* WorkCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C05B5F71FDA20C900220C42 /* WorkCollectionViewCell.m */; };
 		4C05B5FB1FDA422600220C42 /* WorkFooterReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C05B5FA1FDA422600220C42 /* WorkFooterReusableView.m */; };
 		4C05B5FE1FDA60A700220C42 /* WorkWithBannerReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C05B5FD1FDA60A700220C42 /* WorkWithBannerReusableView.m */; };
-		4C05B6011FDA70A700220C42 /* UIView+FontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C05B5FF1FDA70A700220C42 /* UIView+FontSize.m */; };
 		4C06C7371FDE7D63003F4278 /* ShopListItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06C7361FDE7D63003F4278 /* ShopListItemCell.m */; };
 		4C0BCAB41FDA7E56009B3CEC /* DZSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BCAB31FDA7E56009B3CEC /* DZSearchBar.m */; };
 		4C0BCAB71FDA8320009B3CEC /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BCAB61FDA8320009B3CEC /* UIView+Extension.m */; };
@@ -23,6 +22,15 @@
 		4C12D41C1FEA57B2007D62E5 /* AddPartmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12D41B1FEA57B2007D62E5 /* AddPartmentModel.m */; };
 		4C161AF22005ADCD00EF810B /* DZFindSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C161AF12005ADCD00EF810B /* DZFindSearchView.m */; };
 		4C194E461FDFA66700D7C0B7 /* MineListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C194E451FDFA66700D7C0B7 /* MineListCell.m */; };
+		4C1BC8BC200858B10005CCCD /* FindThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8BB200858B10005CCCD /* FindThreeVC.m */; };
+		4C1BC8C3200860AA0005CCCD /* FindThreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8C1200860AA0005CCCD /* FindThreeCell.m */; };
+		4C1BC8C8200889DB0005CCCD /* MineWorkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8C6200889DB0005CCCD /* MineWorkCell.m */; };
+		4C1BC8C9200889DB0005CCCD /* MineWorkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BC8C7200889DB0005CCCD /* MineWorkCell.xib */; };
+		4C1BC8CC200898520005CCCD /* FindAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8CB200898520005CCCD /* FindAddVC.m */; };
+		4C1BC8DA2008BCBE0005CCCD /* LabelWithTFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8D92008BCBE0005CCCD /* LabelWithTFView.m */; };
+		4C1BC8DC2008BCD80005CCCD /* LabelWithTFView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BC8DB2008BCD80005CCCD /* LabelWithTFView.xib */; };
+		4C1BC8DF2008CFDF0005CCCD /* SelectWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BC8DE2008CFDF0005CCCD /* SelectWordView.m */; };
+		4C1BC8E32008D1790005CCCD /* SelectWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BC8E22008D1790005CCCD /* SelectWordView.xib */; };
 		4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C61FF37B46009A95F7 /* NewsTitleListModel.m */; };
 		4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C91FF38F8F009A95F7 /* FastModel.m */; };
 		4C50DDB41FE7A7700088E36F /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50DDB31FE7A7700088E36F /* TokenModel.m */; };
@@ -34,6 +42,7 @@
 		4C51470B1FF5F6DF00280C43 /* DZSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5147091FF5F6DF00280C43 /* DZSegmentView.m */; };
 		4C51470E1FF5FBC200280C43 /* NewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51470D1FF5FBC200280C43 /* NewsListVC.m */; };
 		4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */; };
+		4C75FDAD2008E5E2000422E6 /* UIView+FontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C75FDAC2008E5E2000422E6 /* UIView+FontSize.m */; };
 		4C7A51402004D2EA00971BB7 /* IronMVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A513F2004D2EA00971BB7 /* IronMVC.m */; };
 		4C7A51462004DF6000971BB7 /* LWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A51432004DF6000971BB7 /* LWLoadingView.m */; };
 		4C7A51472004DF6000971BB7 /* LWLoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A51452004DF6000971BB7 /* LWLoadingAnimationView.m */; };
@@ -153,6 +162,21 @@
 		4C161AF12005ADCD00EF810B /* DZFindSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZFindSearchView.m; sourceTree = "<group>"; };
 		4C194E441FDFA66700D7C0B7 /* MineListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineListCell.h; sourceTree = "<group>"; };
 		4C194E451FDFA66700D7C0B7 /* MineListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineListCell.m; sourceTree = "<group>"; };
+		4C1BC8BA200858B10005CCCD /* FindThreeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindThreeVC.h; sourceTree = "<group>"; };
+		4C1BC8BB200858B10005CCCD /* FindThreeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindThreeVC.m; sourceTree = "<group>"; };
+		4C1BC8C0200860AA0005CCCD /* FindThreeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindThreeCell.h; sourceTree = "<group>"; };
+		4C1BC8C1200860AA0005CCCD /* FindThreeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindThreeCell.m; sourceTree = "<group>"; };
+		4C1BC8C5200889DB0005CCCD /* MineWorkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineWorkCell.h; sourceTree = "<group>"; };
+		4C1BC8C6200889DB0005CCCD /* MineWorkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineWorkCell.m; sourceTree = "<group>"; };
+		4C1BC8C7200889DB0005CCCD /* MineWorkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MineWorkCell.xib; sourceTree = "<group>"; };
+		4C1BC8CA200898520005CCCD /* FindAddVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindAddVC.h; sourceTree = "<group>"; };
+		4C1BC8CB200898520005CCCD /* FindAddVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindAddVC.m; sourceTree = "<group>"; };
+		4C1BC8D82008BCBE0005CCCD /* LabelWithTFView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LabelWithTFView.h; sourceTree = "<group>"; };
+		4C1BC8D92008BCBE0005CCCD /* LabelWithTFView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LabelWithTFView.m; sourceTree = "<group>"; };
+		4C1BC8DB2008BCD80005CCCD /* LabelWithTFView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithTFView.xib; sourceTree = "<group>"; };
+		4C1BC8DD2008CFDF0005CCCD /* SelectWordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectWordView.h; sourceTree = "<group>"; };
+		4C1BC8DE2008CFDF0005CCCD /* SelectWordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectWordView.m; sourceTree = "<group>"; };
+		4C1BC8E22008D1790005CCCD /* SelectWordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectWordView.xib; sourceTree = "<group>"; };
 		4C4153C51FF37B46009A95F7 /* NewsTitleListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsTitleListModel.h; sourceTree = "<group>"; };
 		4C4153C61FF37B46009A95F7 /* NewsTitleListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTitleListModel.m; sourceTree = "<group>"; };
 		4C4153C81FF38F8F009A95F7 /* FastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastModel.h; sourceTree = "<group>"; };
@@ -176,6 +200,8 @@
 		4C641E3D1FF27184008CB06A /* PartmentAndMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentAndMemberModel.h; sourceTree = "<group>"; };
 		4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentAndMemberModel.m; sourceTree = "<group>"; };
 		4C65BB521FFFBAD2002546DE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C75FDAB2008E5E2000422E6 /* UIView+FontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FontSize.h"; sourceTree = "<group>"; };
+		4C75FDAC2008E5E2000422E6 /* UIView+FontSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FontSize.m"; sourceTree = "<group>"; };
 		4C7A513E2004D2EA00971BB7 /* IronMVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IronMVC.h; sourceTree = "<group>"; };
 		4C7A513F2004D2EA00971BB7 /* IronMVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IronMVC.m; sourceTree = "<group>"; };
 		4C7A51422004DF6000971BB7 /* LWLoadingAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLoadingAnimationView.h; sourceTree = "<group>"; };
@@ -558,6 +584,10 @@
 				4CF02D4F2005F77400D57007 /* HotTVC.m */,
 				4CF02D5920062ED000D57007 /* DetailVC.h */,
 				4CF02D5A20062ED000D57007 /* DetailVC.m */,
+				4C1BC8BA200858B10005CCCD /* FindThreeVC.h */,
+				4C1BC8BB200858B10005CCCD /* FindThreeVC.m */,
+				4C1BC8CA200898520005CCCD /* FindAddVC.h */,
+				4C1BC8CB200898520005CCCD /* FindAddVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -578,6 +608,17 @@
 				4CF02D52200609B900D57007 /* hotCateCell.m */,
 				4CF02D5620061B6500D57007 /* JobCell.h */,
 				4CF02D5720061B6500D57007 /* JobCell.m */,
+				4C1BC8C0200860AA0005CCCD /* FindThreeCell.h */,
+				4C1BC8C1200860AA0005CCCD /* FindThreeCell.m */,
+				4C1BC8C5200889DB0005CCCD /* MineWorkCell.h */,
+				4C1BC8C6200889DB0005CCCD /* MineWorkCell.m */,
+				4C1BC8C7200889DB0005CCCD /* MineWorkCell.xib */,
+				4C1BC8D82008BCBE0005CCCD /* LabelWithTFView.h */,
+				4C1BC8D92008BCBE0005CCCD /* LabelWithTFView.m */,
+				4C1BC8DB2008BCD80005CCCD /* LabelWithTFView.xib */,
+				4C1BC8DD2008CFDF0005CCCD /* SelectWordView.h */,
+				4C1BC8DE2008CFDF0005CCCD /* SelectWordView.m */,
+				4C1BC8E22008D1790005CCCD /* SelectWordView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -621,6 +662,8 @@
 		4C9A5DD01FD51D6D00899CE8 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				4C75FDAB2008E5E2000422E6 /* UIView+FontSize.h */,
+				4C75FDAC2008E5E2000422E6 /* UIView+FontSize.m */,
 				4CFBD8D72003A0C30009124A /* UIImage+Image.h */,
 				4CFBD8D52003A0C20009124A /* UIImage+Image.m */,
 				4CFBD8D82003A0C30009124A /* UIView+LBExtension.h */,
@@ -1090,9 +1133,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1BC8E32008D1790005CCCD /* SelectWordView.xib in Resources */,
 				4CD67A3C1FD14DCB0003D5DA /* LaunchScreen.storyboard in Resources */,
+				4C1BC8C9200889DB0005CCCD /* MineWorkCell.xib in Resources */,
 				4CD67A391FD14DCB0003D5DA /* Assets.xcassets in Resources */,
 				4CD67A371FD14DCB0003D5DA /* Main.storyboard in Resources */,
+				4C1BC8DC2008BCD80005CCCD /* LabelWithTFView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1204,16 +1250,20 @@
 				4C05B5F81FDA20C900220C42 /* WorkCollectionViewCell.m in Sources */,
 				4CAEC3741FD8CC1E00F4664E /* NetAPIManager.m in Sources */,
 				4CEF52BB1FD41ACD000CA8C4 /* NewsVC.m in Sources */,
+				4C1BC8CC200898520005CCCD /* FindAddVC.m in Sources */,
 				4C06C7371FDE7D63003F4278 /* ShopListItemCell.m in Sources */,
 				4CF07C8E1FE8BF7400274862 /* GetPartmentListModel.m in Sources */,
+				4C1BC8C3200860AA0005CCCD /* FindThreeCell.m in Sources */,
 				4CEBA97E1FEBBDA7009F12BE /* NSDate+Lazy.m in Sources */,
 				4C194E461FDFA66700D7C0B7 /* MineListCell.m in Sources */,
 				4C8349341FF63CB9008A3A6E /* NewsListModel.m in Sources */,
 				4CF02D4A2005E35600D57007 /* MYColorBackView.m in Sources */,
 				4CB0A1731FE002F700154AE6 /* LoginModel.m in Sources */,
 				4C05B5F51FDA1FEE00220C42 /* WorkHeaderReusableView.m in Sources */,
+				4C1BC8DF2008CFDF0005CCCD /* SelectWordView.m in Sources */,
 				4CFBD8D92003A0C30009124A /* UIImage+Image.m in Sources */,
 				4CAEC3621FD8CB3200F4664E /* LoginVC.m in Sources */,
+				4C1BC8DA2008BCBE0005CCCD /* LabelWithTFView.m in Sources */,
 				4C12D41C1FEA57B2007D62E5 /* AddPartmentModel.m in Sources */,
 				4CEBA9841FEBC3BD009F12BE /* desFile.m in Sources */,
 				4CD67A3F1FD14DCB0003D5DA /* main.m in Sources */,
@@ -1225,6 +1275,7 @@
 				4C0C999C1FDE5EDB0065BF49 /* ShopListCell.m in Sources */,
 				4CAEC3681FD8CB8E00F4664E /* RegisterVC.m in Sources */,
 				4C9A5DDC1FD51DD900899CE8 /* UIButton+Lazy.m in Sources */,
+				4C1BC8C8200889DB0005CCCD /* MineWorkCell.m in Sources */,
 				4CAEC3771FD8D07900F4664E /* NSObject+ProgressHUD.m in Sources */,
 				4CFBD8D42003A0930009124A /* DZTabBar.m in Sources */,
 				4CAF0B531FE10D1B001150A2 /* SendSmsModel.m in Sources */,
@@ -1264,7 +1315,7 @@
 				4C05B5FE1FDA60A700220C42 /* WorkWithBannerReusableView.m in Sources */,
 				4CEF52B21FD41A29000CA8C4 /* TabBarVC.m in Sources */,
 				4C9A5DDB1FD51DD900899CE8 /* NSString+Lazy.m in Sources */,
-				4C05B6011FDA70A700220C42 /* UIView+FontSize.m in Sources */,
+				4C75FDAD2008E5E2000422E6 /* UIView+FontSize.m in Sources */,
 				4CF02D482005E35600D57007 /* MYPresentedController.m in Sources */,
 				4CF02D5820061B6500D57007 /* JobCell.m in Sources */,
 				4CF02D3D2005B5EA00D57007 /* JobVC.m in Sources */,
@@ -1276,6 +1327,7 @@
 				4C05B5AB1FD8E9F600220C42 /* UIImageView+Lazy.m in Sources */,
 				4CEBA9781FEBBA8F009F12BE /* IronMasterVC.m in Sources */,
 				4C9A5DD91FD51DD900899CE8 /* UITextField+Lazy.m in Sources */,
+				4C1BC8BC200858B10005CCCD /* FindThreeVC.m in Sources */,
 				4CFCE3C81FE4C16500C0F069 /* OrganizeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1440,6 +1492,7 @@
 			baseConfigurationReference = 6E49A1F8939B8A3E0F86666F /* Pods-JBX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZKGAJVAP47;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JBX/Macro/JBXPrefix.pch";
@@ -1457,6 +1510,7 @@
 			baseConfigurationReference = 6AA1905A6C8B17465AA4397D /* Pods-JBX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZKGAJVAP47;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/JBX/Macro/JBXPrefix.pch";

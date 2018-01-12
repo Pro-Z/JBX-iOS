@@ -56,8 +56,13 @@
 ////    DebugLog("当前事件%@",nowTime);
 //    NSString *des = [desFile encryptWithText:[nowTime stringByAppendingString:@"73"]];
 //    NSString *base = [GTMBase64 encodeBase64String:des];
-    
-    NSString *urlStr = [APP_IRON_MASETER_URL stringByAppendingString:DEFAULTS_GET_OBJ(@"token")];
+    NSString *urlStr = @"";
+    if (DEFAULTS_GET_OBJ(@"token") != nil) {
+        urlStr = [APP_IRON_MASETER_URL stringByAppendingString:DEFAULTS_GET_OBJ(@"token")];
+    }else{
+        [NSObject showInfoHudTipStr:@"请先登录!"];
+        return;
+    }
     DebugLog(@"钣金大师的访问路径%@",urlStr);
     
     NSURL *baseUrl = [NSURL URLWithString:urlStr];

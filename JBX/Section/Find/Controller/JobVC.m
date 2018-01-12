@@ -10,6 +10,7 @@
 #import "TipsVC.h"
 #import "HotTVC.h"
 #import "hotCateCell.h"
+#import "FindThreeVC.h"
 
 @interface JobVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong) UIView *hotTitleView;
@@ -62,16 +63,22 @@
     // 退出一个下拉框
     TipsVC *tipsVC = [[TipsVC alloc] initWithShowFrame:VIEWFRAME(0, NAVIGATION_HEIGHTS+STATUS_BAR_HEIGHT, SCREEN_WIDTH, 92) ShowStyle:1 callback:^(id callback) {
         if ([callback isEqual:[NSNumber numberWithInteger:0]]) {
-            NSLog(@"你选择了第一个选项");
+            [self initJumpToThreeView:0 withTitle:@"我的简历"];
         }else if ([callback isEqual:[NSNumber numberWithInteger:1]]) {
-            NSLog(@"你选择了第二个选项");
+            [self initJumpToThreeView:1 withTitle:@"我的求职"];
         }else {
-            NSLog(@"你选择了第三个选项");
-            
+            [self initJumpToThreeView:2 withTitle:@"我要招人"];
         }
     }];
     [self presentViewController:tipsVC animated:YES completion:nil];
 }
+- (void) initJumpToThreeView:(NSInteger) currentID withTitle:(NSString*)titles {
+    FindThreeVC *findThreeVC = [FindThreeVC new];
+    findThreeVC.currentID = currentID;
+    findThreeVC.titleStr = titles;
+    [self.navigationController pushViewController:findThreeVC animated:YES];
+}
+
 
 - (void) initDataSource {
     self.dataArr = @[

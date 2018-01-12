@@ -13,6 +13,7 @@
 @property (nonatomic,strong) UIScrollView *detailSV;
 @property (nonatomic,strong) UIButton *applyBtn,*bottomBtn;
 @property (nonatomic,strong) UIImageView *locationPic,*recoPic;
+@property (nonatomic,strong) UIView *contentView;
 @end
 
 @implementation DetailVC
@@ -52,10 +53,24 @@
  推荐工作详情
  */
 - (void) initDetailView {
-    self.detailSV = [[UIScrollView alloc] initWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, SCREEN_WIDTH-44)];
-    _detailSV.contentSize = CGSizeMake(SCREEN_WIDTH, 1000);;
+    self.detailSV = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    
+    _detailSV.bounces = YES;
     _detailSV.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_detailSV];
+    
+    _weekSelf(weakSelf)
+    [_detailSV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.view);
+    }];
+    
+    self.contentView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor whiteColor]];
+    [_detailSV addSubview:_contentView];
+    
+    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.detailSV);
+        make.width.equalTo(weakSelf.detailSV);
+    }];
     
     self.bottomBtn = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
                                               withFrame:CGRectZero
@@ -65,7 +80,7 @@
                                                withFont:PINGFANG_FONT_SIZE(15)];
     [self.view addSubview:_bottomBtn];
     
-    _weekSelf(weakSelf)
+    
     [_bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.view).offset(0);
         make.left.equalTo(weakSelf.view).offset(0);
@@ -80,7 +95,7 @@
                                         withFont:PINGFANG_FONT_SIZE_BOLD(16)
                                      withGbColor:[UIColor whiteColor]
                                withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_nameLab];
+    [_contentView addSubview:_nameLab];
     
     [_nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.detailSV).offset(15);
@@ -95,7 +110,7 @@
                                          withFont:PINGFANG_FONT_SIZE(16)
                                       withGbColor:[UIColor whiteColor]
                                 withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_priceLab];
+    [_contentView addSubview:_priceLab];
     [_priceLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.nameLab.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.detailSV).offset(16);
@@ -109,7 +124,7 @@
                                           withFont:PINGFANG_FONT_SIZE(12)
                                        withGbColor:[UIColor whiteColor]
                                  withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_updateLab];
+    [_contentView addSubview:_updateLab];
     
 //    double padding = SCREEN_WIDTH/4;
     [_updateLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -125,7 +140,7 @@
                                           withFont:PINGFANG_FONT_SIZE(12)
                                        withGbColor:[UIColor whiteColor]
                                  withTextAlignment:NSTextAlignmentCenter];
-    [_detailSV addSubview:_browserLab];
+    [_contentView addSubview:_browserLab];
     
     [_browserLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.priceLab.mas_bottom).offset(10);
@@ -140,7 +155,7 @@
                                           withFont:PINGFANG_FONT_SIZE(12)
                                        withGbColor:[UIColor whiteColor]
                                  withTextAlignment:NSTextAlignmentRight];
-    [_detailSV addSubview:_applyLab];
+    [_contentView addSubview:_applyLab];
     
     [_applyLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.priceLab.mas_bottom).offset(10);
@@ -150,7 +165,7 @@
     }];
     
     UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
-    [_detailSV addSubview:lineView];
+    [_contentView addSubview:lineView];
     
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.updateLab.mas_bottom).offset(10);
@@ -165,7 +180,7 @@
                                          withFont:PINGFANG_FONT_SIZE(15)
                                       withGbColor:[UIColor whiteColor]
                                 withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_offerLab];
+    [_contentView addSubview:_offerLab];
     
     [_offerLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView).offset(15);
@@ -180,7 +195,7 @@
                                          withFont:PINGFANG_FONT_SIZE(15)
                                       withGbColor:[UIColor whiteColor]
                                 withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_requireLab];
+    [_contentView addSubview:_requireLab];
     
     [_requireLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.offerLab.mas_bottom).offset(10);
@@ -195,7 +210,7 @@
                                            withFont:PINGFANG_FONT_SIZE(15)
                                         withGbColor:[UIColor whiteColor]
                                   withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_goodLab];
+    [_contentView addSubview:_goodLab];
     
     [_goodLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.requireLab.mas_bottom).offset(10);
@@ -205,7 +220,7 @@
     }];
     
     UIView *lineView1 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
-    [_detailSV addSubview:lineView1];
+    [_contentView addSubview:lineView1];
     
     [lineView1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.goodLab.mas_bottom).offset(10);
@@ -220,7 +235,7 @@
                                            withFont:PINGFANG_FONT_SIZE(15)
                                         withGbColor:[UIColor whiteColor]
                                   withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_addressLab];
+    [_contentView addSubview:_addressLab];
    
     [_addressLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView1.mas_bottom).offset(15);
@@ -230,7 +245,7 @@
     }];
     
     UIView *lineView2 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
-    [_detailSV addSubview:lineView2];
+    [_contentView addSubview:lineView2];
    
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.addressLab.mas_bottom).offset(10);
@@ -240,7 +255,7 @@
     }];
     
     self.locationPic = [UIImageView initWithImageViewWithFrame:CGRectZero withImageName:@"icon_map"];
-    [_detailSV addSubview:_locationPic];
+    [_contentView addSubview:_locationPic];
     
     [_locationPic mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView2.mas_bottom).offset(10);
@@ -255,16 +270,16 @@
                                                  withFont:PINGFANG_FONT_SIZE(15)
                                               withGbColor:[UIColor whiteColor]
                                         withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_addressDetailLab];
+    [_contentView addSubview:_addressDetailLab];
     
     [_addressDetailLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView2.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.locationPic.mas_right).offset(5);
-        make.right.equalTo(weakSelf.view).offset(0);
+        make.right.equalTo(weakSelf.view).offset(-16);
 //        make.height.equalTo(@21);
     }];
     UIView *lineView3 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
-    [_detailSV addSubview:lineView3];
+    [_contentView addSubview:lineView3];
     
     [lineView3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.locationPic.mas_bottom).offset(10);
@@ -279,7 +294,7 @@
                                          withFont:PINGFANG_FONT_SIZE(15)
                                       withGbColor:[UIColor whiteColor]
                                 withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_jobDesLab];
+    [_contentView addSubview:_jobDesLab];
     
     [_jobDesLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView3.mas_bottom).offset(10);
@@ -289,7 +304,7 @@
     }];
     
     UIView *lineView4 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
-    [_detailSV addSubview:lineView4];
+    [_contentView addSubview:lineView4];
     
     [lineView4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.jobDesLab.mas_bottom).offset(10);
@@ -305,7 +320,7 @@
                                               withGbColor:[UIColor whiteColor]
                                         withTextAlignment:NSTextAlignmentLeft];
     _jobDesContentLab.numberOfLines = 0;
-    [_detailSV addSubview:_jobDesContentLab];
+    [_contentView addSubview:_jobDesContentLab];
     
     [_jobDesContentLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView4.mas_bottom).offset(10);
@@ -314,7 +329,7 @@
     }];
     
     UIView *lineView5 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
-    [_detailSV addSubview:lineView5];
+    [_contentView addSubview:lineView5];
     
     [lineView5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.jobDesContentLab.mas_bottom).offset(10);
@@ -329,7 +344,7 @@
                                            withFont:PINGFANG_FONT_SIZE(15)
                                         withGbColor:[UIColor whiteColor]
                                   withTextAlignment:NSTextAlignmentLeft];
-    [_detailSV addSubview:_companyLab];
+    [_contentView addSubview:_companyLab];
     
     [_companyLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView5.mas_bottom).offset(10);
@@ -338,7 +353,7 @@
         make.height.equalTo(@21);
     }];
     UIView *lineView6 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
-    [_detailSV addSubview:lineView6];
+    [_contentView addSubview:lineView6];
     
     [lineView6 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.companyLab.mas_bottom).offset(10);
@@ -347,11 +362,126 @@
         make.height.equalTo(@1);
     }];
     
+    self.companyNameLab = [UILabel initUILabelWithFrame:CGRectZero
+                                               withText:@"天津金利恒发有限公司"
+                                          withTextColor:[UIColor blackColor]
+                                               withFont:PINGFANG_FONT_SIZE(14)
+                                            withGbColor:[UIColor whiteColor]
+                                      withTextAlignment:NSTextAlignmentLeft];
+    [_contentView addSubview:_companyNameLab];
+    
+    [_companyNameLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(lineView6.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+    }];
+    self.guimoLab = [UILabel initUILabelWithFrame:CGRectZero
+                                         withText:@"规模: 100~400人"
+                                    withTextColor:RGBA(135, 135, 135, 1)
+                                         withFont:PINGFANG_FONT_SIZE(14)
+                                      withGbColor:[UIColor whiteColor]
+                                withTextAlignment:NSTextAlignmentLeft];
+    [_contentView addSubview:_guimoLab];
+    
+    [_guimoLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.companyNameLab.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+    }];
+    
+    self.propertyLab = [UILabel initUILabelWithFrame:CGRectZero
+                                         withText:@"性质: 贸易商,生产商"
+                                    withTextColor:RGBA(135, 135, 135, 1)
+                                         withFont:PINGFANG_FONT_SIZE(14)
+                                      withGbColor:[UIColor whiteColor]
+                                withTextAlignment:NSTextAlignmentLeft];
+    [_contentView addSubview:_propertyLab];
+    
+    [_propertyLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.guimoLab.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+    }];
+    
+    self.companyAddressLab = [UILabel initUILabelWithFrame:CGRectZero
+                                            withText:@"地址: 天津市南开区长江道94号C区11号-19号"
+                                       withTextColor:RGBA(135, 135, 135, 1)
+                                            withFont:PINGFANG_FONT_SIZE(14)
+                                         withGbColor:[UIColor whiteColor]
+                                   withTextAlignment:NSTextAlignmentLeft];
+    [_contentView addSubview:_companyAddressLab];
+    
+    [_companyAddressLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.propertyLab.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+    }];
+    
+    UIView *lineView7 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
+    [_contentView addSubview:lineView7];
+    
+    [lineView7 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.companyAddressLab.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(0);
+        make.right.equalTo(weakSelf.view).offset(0);
+        make.height.equalTo(@1);
+    }];
+    
+    self.companyIntroLB = [UILabel initUILabelWithFrame:CGRectZero
+                                           withText:@"公司简介"
+                                      withTextColor:[UIColor blackColor]
+                                           withFont:PINGFANG_FONT_SIZE(15)
+                                        withGbColor:[UIColor whiteColor]
+                                  withTextAlignment:NSTextAlignmentLeft];
+    [_contentView addSubview:_companyIntroLB];
+    
+    [_companyIntroLB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(lineView7.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+        make.height.equalTo(@21);
+    }];
+    UIView *lineView8 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
+    [_contentView addSubview:lineView8];
+
+    [lineView8 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.companyIntroLB.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(0);
+        make.right.equalTo(weakSelf.view).offset(0);
+        make.height.equalTo(@1);
+    }];
+    
+    self.companyIntroContentLB = [UILabel initUILabelWithFrame:CGRectZero
+                                                      withText:@"专注装饰不锈钢的研发、生产、加工、销售，形成以装饰不锈钢产、销为主体，配套加工为支持，承接不锈钢制品及工程的经营模式。并在全国设立多家分公司，重视人才梯队建设，合理绩效机制，员工可持续发展晋升通道。"
+                                            withTextColor:RGBA(102, 102, 102, 1)
+                                                 withFont:PINGFANG_FONT_SIZE(15)
+                                              withGbColor:[UIColor whiteColor]
+                                        withTextAlignment:NSTextAlignmentLeft];
+    _companyIntroContentLB.numberOfLines = 0;
+    [_contentView addSubview:_companyIntroContentLB];
+    
+    [_companyIntroContentLB mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(lineView8.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+    }];
+    
+    UIView *lineView9 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(240, 240, 240, 1)];
+    [_contentView addSubview:lineView9];
+    
+    [lineView9 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.companyIntroContentLB.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(0);
+        make.right.equalTo(weakSelf.view).offset(0);
+        make.height.equalTo(@10);
+    }];
+    // 为了约束scrollview
+    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(lineView9.mas_bottom).offset(54);
+    }];
     
     
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

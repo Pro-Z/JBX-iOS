@@ -88,10 +88,10 @@
 
 
 /**
- 测试环境 钣金大师http
- @return return value description
+ 测试环境 钣金大师  http://172.16.3.8:8081
+ @return return 测试服务
  */
-#define APP_IRON_MASETER_URL @"http://172.16.3.8:8081/GCGL/html/wap/gc/html/index.html?token="
+#define APP_IRON_MASETER_URL @"http://172.16.39.203:8080/GCGL/html/wap/gc/html/index.html?token="
 
 #define APP_GET_PARTMENT_BY_PARENTID_URL  @"/rest-api/api/dept/queryByParentId"
 
