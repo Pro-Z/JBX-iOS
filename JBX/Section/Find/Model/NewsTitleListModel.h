@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @class NewsDataArrModel;
+@class NewsTitleListDicModel;
 @interface NewsTitleListModel : BaseModel
-@property (nonatomic,strong) NSArray *data;
+@property (nonatomic,strong) NewsTitleListDicModel *data;
 @end
+
+@interface NewsTitleListDicModel : BaseModel
+@property (nonatomic,strong) NSArray *EcInformationCat;
+@end
+
 @interface NewsDataArrModel : BaseModel
 @property (nonatomic,strong) NSString *ids,*key_name;
 @end

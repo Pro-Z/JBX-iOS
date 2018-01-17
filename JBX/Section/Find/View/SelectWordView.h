@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLB;
 - (void) setTitleLBName:(NSString*)name withSubTitle:(NSString*)subTitle;
+@property (nonatomic,strong) NSString *text;
+- (void)setText:(NSString *)text;
 @end

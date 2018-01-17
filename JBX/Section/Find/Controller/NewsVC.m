@@ -88,13 +88,13 @@
         self.newsTitleListModel = [MTLJSONAdapter modelOfClass:[NewsTitleListModel class] fromJSONDictionary:data error:nil];
         if (_newsTitleListModel.code == 200) {
             [NSObject showSuccessHudTipStr:@"标题返回成功!"];
-            for (int i = 0; i<_newsTitleListModel.data.count; i++) {
-                DebugLog(@"打印的数据为%@",[_newsTitleListModel.data[i] key_name]);
-                 [_titleArr addObject:[_newsTitleListModel.data[i] key_name]];
-                [_newsIDArr addObject:[_newsTitleListModel.data[i] ids]];
-            }
-            self.currentNewsID = _newsIDArr[0];
-            [self initTabLayout];
+//            for (int i = 0; i<_newsTitleListModel.data.count; i++) {
+//                DebugLog(@"打印的数据为%@",[_newsTitleListModel.data[i] key_name]);
+//                 [_titleArr addObject:[_newsTitleListModel.data[i] key_name]];
+//                [_newsIDArr addObject:[_newsTitleListModel.data[i] ids]];
+//            }
+//            self.currentNewsID = _newsIDArr[0];
+//            [self initTabLayout];
         }else{
             [NSObject showHudTipStr:_newsTitleListModel.msg];
         }

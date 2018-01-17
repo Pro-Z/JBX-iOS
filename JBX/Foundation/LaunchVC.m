@@ -51,29 +51,29 @@
  每次启动检查网络情况
  */
 - (void)checkNetWorking {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
-    //    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
-    [SVProgressHUD setRingThickness:4];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
+    [SVProgressHUD setRingThickness:2];
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:
-                [SVProgressHUD showInfoWithStatus:@"未知网络"];
+//                [SVProgressHUD showInfoWithStatus:@"未知网络"];
                 break;
             case AFNetworkReachabilityStatusNotReachable:
-                [SVProgressHUD showInfoWithStatus:@"请检查网络链接！"];
+                [SVProgressHUD showInfoWithStatus:@"网络出错!请检查网络连接!"];
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
-                [SVProgressHUD showInfoWithStatus:@"已连接WIFI!"];
+//                [SVProgressHUD showInfoWithStatus:@"已连接WIFI!"];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                [SVProgressHUD showInfoWithStatus:@"手机网络！"];
+//                [SVProgressHUD showInfoWithStatus:@"手机网络！"];
                 break;
             default:
                 break;
         }
     }];
-    //    [manager startMonitoring];
+    [manager startMonitoring];
 }
 
 /**

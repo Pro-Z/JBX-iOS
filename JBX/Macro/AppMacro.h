@@ -68,9 +68,9 @@
 
 #define APP_IMAGE_URL  @"http://oot34wnx6.bkt.clouddn.com/"
 
-#define APP_BASE_URL   @"http://172.16.39.205:8085"
+#define APP_BASE_URL   @"http://172.16.3.5:8085"
 
-#define APP_WHOLE_URL  @"http://172.16.3.8:8085/rest-api/api/sms/getSmsCode"
+#define APP_WHOLE_URL  @"http://172.16.3.5:8085/rest-api/api/sms/getSmsCode"
 
 #define APP_LOGIN_URL   @"/rest-api/api/token/getToken"
 

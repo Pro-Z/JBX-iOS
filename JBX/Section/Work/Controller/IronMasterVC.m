@@ -9,7 +9,7 @@
 #import "IronMasterVC.h"
 
 
-@interface IronMasterVC ()<WKUIDelegate,WKNavigationDelegate>
+@interface IronMasterVC ()<WKUIDelegate,WKNavigationDelegate,UIWebViewDelegate>
 @property (nonatomic,strong) UIWebView *ironMasterView;
 @property (nonatomic,assign) NSInteger type;
 @property (nonatomic,strong) WKWebView *wkWebView;
@@ -26,10 +26,11 @@
 //    APP_IRON_MASETER_URL
     [self initNavigationView];
     
-//    [self initH5WebView];
-    [self initWKWebView];
-    
-    
+    if (_type == 1) {
+        [self initWKWebView];
+    }else if(_type == 2){
+        [self initH5WebView];
+    }
 }
 
 - (void) initNavigationView {
@@ -59,15 +60,29 @@
 
 // 初始化wkwebview
 - (void) initWKWebView {
+    
+    WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
+    
+//    // 自适应屏幕宽度js
+//
+//    NSString *jSString = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+//
+//    WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jSString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+//
+//    // 添加自适应屏幕宽度js调用的方法
+//
+//    [wkUController addUserScript:wkUserScript];
+//    
+    
     self.wkWebView = [WKWebView new];
     _wkWebView.UIDelegate = self;
     _wkWebView.navigationDelegate = self;
     [self.view addSubview:_wkWebView];
     _weekSelf(weakSelf)
     [_wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view).offset(0);
-        make.left.equalTo(weakSelf.view).offset(0);
-        make.right.equalTo(weakSelf.view).offset(10);
+        make.top.equalTo(weakSelf.view).offset(10);
+        make.left.equalTo(weakSelf.view).offset(10);
+        make.right.equalTo(weakSelf.view).offset(-10);
         make.bottom.equalTo(weakSelf.view);
     }];
     if (_type ==1) {
@@ -76,13 +91,64 @@
         NSURLRequest *request = [NSURLRequest requestWithURL:baseUrl];
         [_wkWebView loadRequest:request];
     }else if(_type == 2){
-        NSString *css = @"<head><style>img{max-width:340px !important;}</style></head>";
-        [_wkWebView loadHTMLString:[css stringByAppendingString:_content] baseURL:nil];
+        
+        
+//        NSString *css = [NSString stringWithFormat:@"<html><head><style type=\"text/css\"> body {font-size:30px!important};img {width:100%%!important;}</style></head><body><script type='text/javascript'>window.onload = function(){var $img = document.getElementsByTagName('img');for(var p in  $img){$img[p].style.width = '100%%';$img[p].style.height ='auto'}</script>%@</body></html>",_content];
+//        DebugLog(@"输出的html%@",css);
+        
+        
+        [_wkWebView loadHTMLString:_content baseURL:nil];
     }
     
     
 }
 #pragma mark mark -- 初始化wkwebview的代理方法
+
+// 页面开始加载时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    [LWLoadingView showInView:_wkWebView];
+//    [ _wkWebView evaluateJavaScript:[NSString stringWithFormat:@"<html><head><style type=\"text/css\"> body {font-size:30px!important};img {width:100%%!important;}</style></head><body><script type='text/javascript'>window.onload = function(){var $img = document.getElementsByTagName('img');for(var p in  $img){$img[p].style.width = '100%%';$img[p].style.height ='auto'}</script>%@</body></html>",_content] completionHandler:nil];
+    [ _wkWebView evaluateJavaScript:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#222222'" completionHandler:nil];
+}
+// 当内容开始返回时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    
+}
+// 页面加载完成之后调用
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [LWLoadingView hideInViwe:_wkWebView];
+}
+// 页面加载失败时调用
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{
+    [LWLoadingView hideInViwe:_wkWebView];
+}
+
+#pragma mark mark -- webview
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    [LWLoadingView showInView:_ironMasterView];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [LWLoadingView hideInViwe:_ironMasterView];
+}
+//- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+//    // 图片缩放的js代码
+//    NSString *js = @"var count = document.images.length;for (var i = 0; i < count; i++) {var image = document.images[i];image.style.width=320;};window.alert('找到' + count + '张图');";
+//    // 根据JS字符串初始化WKUserScript对象
+//    WKUserScript *script = [[WKUserScript alloc] initWithSource:js injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+//    // 根据生成的WKUserScript对象，初始化WKWebViewConfiguration
+//    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+//    [config.userContentController addUserScript:script];
+//    _wkWebView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+//    [_wkWebView loadHTMLString:_content baseURL:nil];
+//    [self.view addSubview:_wkWebView];
+//
+//
+//}
+
+
+
 
 
 
@@ -90,6 +156,7 @@
 - (void) initH5WebView {
     self.ironMasterView = [[UIWebView alloc] initWithFrame:CGRectZero];
     _ironMasterView.backgroundColor = [UIColor whiteColor];
+    _ironMasterView.delegate = self;
     if (_type ==1) {
         //    _ironMasterView
         NSString *urlStr = [APP_IRON_MASETER_URL stringByAppendingString:DEFAULTS_GET_OBJ(@"BASE64")];

@@ -16,16 +16,22 @@
         self = [[bundle loadNibNamed:@"SelectWordView" owner:self options:nil] lastObject];
         if (self) {
             self.frame = frame;
-            
+            self.subtitleLB.text = _text;
             
             
         }
     }
     return self;
 }
+- (void)setText:(NSString *)text {
+    self.subtitleLB.text = text;
+}
+
 - (void)setTitleLBName:(NSString *)name withSubTitle:(NSString *)subTitle{
     self.titleLB.text = name;
     self.subtitleLB.text = subTitle;
+    self.subtitleLB.textAlignment = NSTextAlignmentRight;
+    self.subtitleLB.textColor = RGBA(102, 102, 102, 1);
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -8,6 +8,7 @@
 
 #import "MineVC.h"
 #import "MineListCell.h"
+#import "MineOfferVC.h"
 
 @interface MineVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UIView *cardView;
@@ -64,11 +65,11 @@
                          @"itemPic":@"my_list_follow"
                          },
                      @{
-                         @"itemTxt":@"发票设置",
+                         @"itemTxt":@"我的报价",
                          @"itemPic":@"my_list_invoice"
                          },
                      @{
-                         @"itemTxt":@"收货地址",
+                         @"itemTxt":@"我的询价",
                          @"itemPic":@"my_list_address"
                          },
                      @{
@@ -220,6 +221,13 @@
     return 48;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 2||indexPath.row == 3) {
+        // 我的询价 我的报价
+        MineOfferVC *mineOffAC = [MineOfferVC new];
+        mineOffAC.currentID = indexPath.row;
+        mineOffAC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mineOffAC animated:YES];
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

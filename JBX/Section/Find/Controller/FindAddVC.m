@@ -9,10 +9,14 @@
 #import "FindAddVC.h"
 #import "LabelWithTFView.h"
 #import "SelectWordView.h"
+#import "XTextField.h"
+#import "NSDate+BRAdd.h"
+
 @interface FindAddVC ()
-@property (nonatomic,strong) LabelWithTFView *labelWithTFView;
+@property (nonatomic,strong) LabelWithTFView *titleView;
 @property (nonatomic,strong) UIScrollView *scrollView,*scrollView1;
 @property (nonatomic,strong) UIButton *saveBtn,*saveBtn1;
+@property (nonatomic,strong) SelectWordView *selectSexView,*selectBirthdayView;
 //@property (nonatomic,strong) SelectWordView *selectWordView;
 @end
 
@@ -71,20 +75,21 @@
     }];
 
 
-    self.labelWithTFView = [[LabelWithTFView alloc] initWithFrame:CGRectZero];
-    [_labelWithTFView setTitleLBName:@"标题" withSubPlacerholder:@"请填写标题"];
-    [contentView addSubview:_labelWithTFView];
-    [_labelWithTFView mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.titleView = [[LabelWithTFView alloc] initWithFrame:CGRectZero];
+    [_titleView setTitleLBName:@"标题" withSubPlacerholder:@"请填写标题"];
+    [contentView addSubview:_titleView];
+    [_titleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contentView).offset(0);
         make.left.equalTo(weakSelf.view).offset(0);
         make.right.equalTo(weakSelf.view).offset(0);
         make.height.equalTo(@50);
     }];
+    
     UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [contentView addSubview:lineView];
 
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.labelWithTFView.mas_bottom).offset(10);
+        make.top.equalTo(weakSelf.titleView.mas_bottom).offset(10);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
         make.height.equalTo(@1);
@@ -110,31 +115,41 @@
         make.height.equalTo(@1);
     }];
 
-    SelectWordView *selectView = [[SelectWordView alloc] initWithFrame:CGRectZero];
-    [selectView setTitleLBName:@"性别" withSubTitle:@"请选择性别"];
-    [contentView addSubview:selectView];
+    self.selectSexView = [[SelectWordView alloc] initWithFrame:CGRectZero];
+    [_selectSexView setTitleLBName:@"性别" withSubTitle:@"请选择性别"];
+    _selectSexView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectSexAction)];
+    [_selectSexView addGestureRecognizer:tap];
+    [contentView addSubview:_selectSexView];
 
-    [selectView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_selectSexView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView1.mas_bottom).offset(0);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
         make.height.equalTo(@50);
     }];
+    
+    
+    
     UIView *lineView2 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [contentView addSubview:lineView2];
+    
 
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(selectView.mas_bottom).offset(10);
+        make.top.equalTo(weakSelf.selectSexView.mas_bottom).offset(10);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
         make.height.equalTo(@1);
     }];
 
-    SelectWordView *selectView1 = [[SelectWordView alloc] initWithFrame:CGRectZero];
-    [selectView1 setTitleLBName:@"出生年月" withSubTitle:@"请选择出生年月"];
-    [contentView addSubview:selectView1];
+    self.selectBirthdayView = [[SelectWordView alloc] initWithFrame:CGRectZero];
+    [_selectBirthdayView setTitleLBName:@"出生年月" withSubTitle:@"请选择出生年月"];
+    _selectBirthdayView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectBirthdayAction)];
+    [_selectBirthdayView addGestureRecognizer:tap1];
+    [contentView addSubview:_selectBirthdayView];
 
-    [selectView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_selectBirthdayView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView2.mas_bottom).offset(0);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
@@ -144,7 +159,7 @@
     [contentView addSubview:lineView3];
 
     [lineView3 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(selectView1.mas_bottom).offset(10);
+        make.top.equalTo(weakSelf.selectBirthdayView.mas_bottom).offset(10);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
         make.height.equalTo(@1);
@@ -293,6 +308,26 @@
 
 }
 
+// 选择性别
+- (void) selectSexAction {
+    _weekSelf(weakSelf);
+    [BRStringPickerView showStringPickerWithTitle:@"" dataSource:@[@"男", @"女", @"其他"] defaultSelValue:@"男" isAutoSelect:YES resultBlock:^(id selectValue) {
+//        NSString *title = [NSString stringWithFormat:@"%@", selectValue ];
+        [weakSelf.selectSexView setText:selectValue];
+    }];
+}
+// 选择出生年月
+- (void) selectBirthdayAction {
+    _weekSelf(weakSelf);
+    [BRDatePickerView showDatePickerWithTitle:@"" dateType:UIDatePickerModeDate defaultSelValue:@"" minDateStr:nil maxDateStr:[NSDate currentDateString] isAutoSelect:YES themeColor:nil resultBlock:^(NSString *selectValue) {
+        [weakSelf.selectBirthdayView setText:selectValue];
+    } cancelBlock:^{
+        NSLog(@"点击了背景或取消按钮");
+    }];
+}
+
+
+
 // 添加招聘信息
 - (void) initAddHrView {
     self.scrollView1 = [[UIScrollView alloc] initWithFrame:CGRectZero];
@@ -422,30 +457,28 @@
         make.right.equalTo(contentView).offset(-16);
     }];
     
-    UITextField *introTF = [UITextField initWithTextFiledWithFrame:CGRectZero
-                                                          withName:@""
-                                                   withPlaceholder:@"【示例】本人已从事不锈钢行业10年，熟练掌握各种专业技能，性格热情开朗，待人友好，为人诚实谦虚。"
-                                                     withHintColor:RGBA(213, 213, 213, 1)
-                                                      withHintSize:PINGFANG_FONT_SIZE(15)
-                                                 withTextAlignment:NSTextAlignmentLeft
-                                                      withFontSize:PINGFANG_FONT_SIZE(15)
-                                                     withTextColor:RGBA(102, 102, 102, 1)
-                                                      withDelegate:self];
-    //    introTF.adjustsFontSizeToFitWidth = YES;
-    
-    [contentView addSubview:introTF];
-    
-    [introTF mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIView *introView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor clearColor]];
+    [contentView addSubview:introView];
+    [introView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(introLB.mas_bottom).offset(15);
-        make.left.equalTo(contentView).offset(16);
-        make.right.equalTo(contentView).offset(-16);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+        make.height.equalTo(@80);
     }];
+
+    XTextField *introTV = [[XTextField alloc] initWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH-32, 80)];
+    introTV.backgroundColor = [UIColor whiteColor];
+    introTV.placehoder = @"【示例】本人已从事不锈钢行业10年，熟练掌握各种专业技能，性格热情开朗，待人友好，为人诚实谦虚。";
+    introTV.placehoderColor = RGBA(213, 213, 213, 1);
+    introTV.font = PINGFANG_FONT_SIZE(15);
+    introTV.textColor = RGBA(102, 102, 102, 1);
+    [introView addSubview:introTV];
     
     UIView *lineView8 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [contentView addSubview:lineView8];
     
     [lineView8 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introTF.mas_bottom).offset(15);
+        make.top.equalTo(introView.mas_bottom).offset(15);
         make.left.equalTo(contentView).offset(0);
         make.right.equalTo(contentView).offset(0);
         make.height.equalTo(@124);

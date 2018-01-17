@@ -9,6 +9,8 @@
 #import "NSObject+ProgressHUD.h"
 #import "AppDelegate.h"
 
+
+
 @implementation NSObject (ProgressHUD)
 
 
@@ -40,7 +42,7 @@
     [SVProgressHUD showSuccessWithStatus:tipStr];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD dismissWithDelay:0.5];
-//    [SVProgressHUD showSuccessWithStatus:tipStr maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD show];
 }
 
 + (void)showInfoHudTipStr:(NSString *)tipStr {
@@ -49,7 +51,7 @@
     [SVProgressHUD showInfoWithStatus:tipStr];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [SVProgressHUD dismissWithDelay:0.5];
-//    [SVProgressHUD showInfoWithStatus:tipStr maskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD show];
 }
 
 + (void)showHudTipStr:(NSString *)tipStr{
@@ -67,11 +69,11 @@
 }
 
 + (void)showProgressHUD {
-    //    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6] ];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.6] ];
     [SVProgressHUD setBackgroundColor:[UIColor whiteColor] ];
-    [SVProgressHUD setForegroundColor:APP_COLOR_BASE_BUTTON_RED ];
+    [SVProgressHUD setForegroundColor:[UIColor blackColor] ];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-//    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD show];
 }
 
 + (void)dismissProgressHUD {

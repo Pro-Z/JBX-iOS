@@ -74,6 +74,7 @@ static NetRequestClient *_sharedNetAPIClient = nil;
     if (autoShowProgressHUD) {
         // 显示加载狂
         DebugLog(@"菊花转");
+        
         [NSObject showProgressHUD];
         
     }

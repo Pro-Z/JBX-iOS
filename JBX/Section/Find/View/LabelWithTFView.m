@@ -28,6 +28,8 @@
     self.titleLB.text = name;
     self.titleTF.placeholder = placerholder;
     self.titleTF.textColor = RGBA(102, 102, 102, 102);
+    self.titleTF.textAlignment = NSTextAlignmentRight;
+    self.titleTF.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 /*

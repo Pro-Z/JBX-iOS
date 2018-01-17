@@ -7,7 +7,25 @@
 		<key>JBX.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>13</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4CD67A2B1FD14DCB0003D5DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CD67A431FD14DCB0003D5DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CD67A4E1FD14DCB0003D5DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "GuideVC.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:APP_BOUNDS];
+    
+    // 配置键盘
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    
+    
+    
     //适配iOS11
     if (@available(ios 11.0,*)) {
         UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

@@ -16,11 +16,22 @@
              @"data":@"data"
              };
 }
-+(NSValueTransformer*)dataJSONTransformer {
+
+@end
+
+@implementation NewsTitleListDicModel
++(NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"EcInformationCat":@"EcInformationCat"
+             };
+}
++(NSValueTransformer*)EcInformationCatJSONTransformer {
     return [MTLJSONAdapter arrayTransformerWithModelClass:NewsDataArrModel.class];
 }
 
 @end
+
+
 @implementation NewsDataArrModel
 +(NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{

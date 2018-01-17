@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsListVC : UIViewController
-@property (nonatomic,strong) NSString *pageID;
+@property (nonatomic,strong) NSString *pageID,*titleStr;
 @end

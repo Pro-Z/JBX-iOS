@@ -62,13 +62,13 @@
     [[UITabBar appearance] setBackgroundColor:RGBA(238, 238, 238, 1)];
     UITabBarItem *tabBarItem         = [[UITabBarItem new] initWithTitle:@"商家" image:[UIImage imageNamed:@"first_unselect"] selectedImage:[UIImage imageNamed:@"first_select"] ];
     self.workTab.tabBarItem           = tabBarItem;
-    tabBarItem = [[UITabBarItem new] initWithTitle:@"发现" image:[UIImage imageNamed:@"second_unselect"] selectedImage:[UIImage imageNamed:@"second_select"]];
+    tabBarItem = [[UITabBarItem new] initWithTitle:@"精品" image:[UIImage imageNamed:@"second_unselect"] selectedImage:[UIImage imageNamed:@"second_select"]];
     self.messageTab.tabBarItem = tabBarItem;
     
 //    tabBarItem = [UITabBarItem new];
 //    self.shopTab.tabBarItem = tabBarItem;
     
-    tabBarItem = [[UITabBarItem new] initWithTitle:@"精品" image:[UIImage imageNamed:@"four_unselect"] selectedImage:[UIImage imageNamed:@"four_select"]];
+    tabBarItem = [[UITabBarItem new] initWithTitle:@"发现" image:[UIImage imageNamed:@"four_unselect"] selectedImage:[UIImage imageNamed:@"four_select"]];
     self.findTab.tabBarItem = tabBarItem;
     tabBarItem = [[UITabBarItem new] initWithTitle:@"我的" image:[UIImage imageNamed:@"five_unselect"] selectedImage:[UIImage imageNamed:@"five_select"]];
     self.mineTab.tabBarItem = tabBarItem;
