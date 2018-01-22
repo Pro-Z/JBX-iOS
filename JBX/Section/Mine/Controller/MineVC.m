@@ -40,10 +40,6 @@
     UIButton *rightBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     rightBtn.frame = CGRectMake(0, 0, 44, 44);
     [rightBtn setImage:[UIImage imageNamed:@"my_nav_invitation"] forState:(UIControlStateNormal)];
-//    [rightBtn setTitle:@"通讯录" forState:(UIControlStateNormal)];
-//    [rightBtn setTintColor:[UIColor whiteColor]];
-//    rightBtn.titleLabel.font = PINGFANG_FONT_SIZE(15);
-//        rightBtn.backgroundColor = [UIColor orangeColor];
     UIBarButtonItem *rightBarBtn = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightBarBtn;
     [rightBtn addTarget:self action:@selector(contactBtn) forControlEvents:(UIControlEventTouchUpInside)];

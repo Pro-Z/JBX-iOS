@@ -49,6 +49,10 @@
 		4C1BC8E32008D1790005CCCD /* SelectWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BC8E22008D1790005CCCD /* SelectWordView.xib */; };
 		4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C61FF37B46009A95F7 /* NewsTitleListModel.m */; };
 		4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4153C91FF38F8F009A95F7 /* FastModel.m */; };
+		4C49313E2015768900A680AB /* OfferListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C49313D2015768900A680AB /* OfferListCell.m */; };
+		4C4931412015CA1700A680AB /* OfferListAutoSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4931402015CA1700A680AB /* OfferListAutoSizeCell.m */; };
+		4C4931442015D86300A680AB /* ComSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4931432015D86300A680AB /* ComSecondVC.m */; };
+		4C4931472015DA3F00A680AB /* BussListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C4931462015DA3F00A680AB /* BussListCell.m */; };
 		4C50DDB41FE7A7700088E36F /* TokenModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50DDB31FE7A7700088E36F /* TokenModel.m */; };
 		4C50DDBD1FE7C7CA0088E36F /* SelectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50DDBC1FE7C7CA0088E36F /* SelectVC.m */; };
 		4C50DDC01FE7E29E0088E36F /* SelectOrganCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C50DDBF1FE7E29E0088E36F /* SelectOrganCell.m */; };
@@ -89,6 +93,9 @@
 		4CBE972D200C99E600D195EA /* NSDate+BRAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE972C200C99E600D195EA /* NSDate+BRAdd.m */; };
 		4CCD2E451FDD54F30027BFAE /* NewsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD2E441FDD54F30027BFAE /* NewsListCell.m */; };
 		4CCD5D841FF09CE60052367D /* SecondOrganVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD5D831FF09CE60052367D /* SecondOrganVC.m */; };
+		4CD18ADA2010872000884977 /* BoutiqueListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD18AD92010872000884977 /* BoutiqueListVC.m */; };
+		4CD18ADD20108B6900884977 /* BoutiqueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD18ADC20108B6900884977 /* BoutiqueCell.m */; };
+		4CD18AE0201098F400884977 /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD18ADE201098F400884977 /* ItemModel.m */; };
 		4CD67A311FD14DCB0003D5DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD67A301FD14DCB0003D5DA /* AppDelegate.m */; };
 		4CD67A371FD14DCB0003D5DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD67A351FD14DCB0003D5DA /* Main.storyboard */; };
 		4CD67A391FD14DCB0003D5DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD67A381FD14DCB0003D5DA /* Assets.xcassets */; };
@@ -137,6 +144,9 @@
 		4CFCE3CB1FE4C2E000C0F069 /* OrganizeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3CA1FE4C2E000C0F069 /* OrganizeHeaderCell.m */; };
 		4CFCE3CE1FE5041F00C0F069 /* DZCenterSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3CD1FE5041F00C0F069 /* DZCenterSearchBar.m */; };
 		4CFCE3D11FE5044D00C0F069 /* UIImage+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFCE3CF1FE5044D00C0F069 /* UIImage+Tool.m */; };
+		4CFDA6E62016009D001D9909 /* ComThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDA6E52016009D001D9909 /* ComThreeVC.m */; };
+		4CFDA6E9201609EC001D9909 /* LookOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDA6E8201609EC001D9909 /* LookOrderCell.m */; };
+		4CFDA6EC201624CB001D9909 /* OrderDetailListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CFDA6EB201624CB001D9909 /* OrderDetailListCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +247,14 @@
 		4C4153C61FF37B46009A95F7 /* NewsTitleListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsTitleListModel.m; sourceTree = "<group>"; };
 		4C4153C81FF38F8F009A95F7 /* FastModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastModel.h; sourceTree = "<group>"; };
 		4C4153C91FF38F8F009A95F7 /* FastModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastModel.m; sourceTree = "<group>"; };
+		4C49313C2015768900A680AB /* OfferListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfferListCell.h; sourceTree = "<group>"; };
+		4C49313D2015768900A680AB /* OfferListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfferListCell.m; sourceTree = "<group>"; };
+		4C49313F2015CA1700A680AB /* OfferListAutoSizeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfferListAutoSizeCell.h; sourceTree = "<group>"; };
+		4C4931402015CA1700A680AB /* OfferListAutoSizeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfferListAutoSizeCell.m; sourceTree = "<group>"; };
+		4C4931422015D86300A680AB /* ComSecondVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComSecondVC.h; sourceTree = "<group>"; };
+		4C4931432015D86300A680AB /* ComSecondVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComSecondVC.m; sourceTree = "<group>"; };
+		4C4931452015DA3F00A680AB /* BussListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BussListCell.h; sourceTree = "<group>"; };
+		4C4931462015DA3F00A680AB /* BussListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BussListCell.m; sourceTree = "<group>"; };
 		4C50DDB21FE7A7700088E36F /* TokenModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenModel.h; sourceTree = "<group>"; };
 		4C50DDB31FE7A7700088E36F /* TokenModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenModel.m; sourceTree = "<group>"; };
 		4C50DDBB1FE7C7CA0088E36F /* SelectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectVC.h; sourceTree = "<group>"; };
@@ -318,6 +336,12 @@
 		4CCD2E441FDD54F30027BFAE /* NewsListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListCell.m; sourceTree = "<group>"; };
 		4CCD5D821FF09CE60052367D /* SecondOrganVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondOrganVC.h; sourceTree = "<group>"; };
 		4CCD5D831FF09CE60052367D /* SecondOrganVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondOrganVC.m; sourceTree = "<group>"; };
+		4CD18AD82010872000884977 /* BoutiqueListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoutiqueListVC.h; sourceTree = "<group>"; };
+		4CD18AD92010872000884977 /* BoutiqueListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoutiqueListVC.m; sourceTree = "<group>"; };
+		4CD18ADB20108B6900884977 /* BoutiqueCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoutiqueCell.h; sourceTree = "<group>"; };
+		4CD18ADC20108B6900884977 /* BoutiqueCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoutiqueCell.m; sourceTree = "<group>"; };
+		4CD18ADE201098F400884977 /* ItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemModel.m; sourceTree = "<group>"; };
+		4CD18ADF201098F400884977 /* ItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemModel.h; sourceTree = "<group>"; };
 		4CD67A2C1FD14DCB0003D5DA /* JBX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD67A2F1FD14DCB0003D5DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CD67A301FD14DCB0003D5DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -425,6 +449,12 @@
 		4CFCE3CD1FE5041F00C0F069 /* DZCenterSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DZCenterSearchBar.m; sourceTree = "<group>"; };
 		4CFCE3CF1FE5044D00C0F069 /* UIImage+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tool.m"; sourceTree = "<group>"; };
 		4CFCE3D01FE5044D00C0F069 /* UIImage+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tool.h"; sourceTree = "<group>"; };
+		4CFDA6E42016009D001D9909 /* ComThreeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComThreeVC.h; sourceTree = "<group>"; };
+		4CFDA6E52016009D001D9909 /* ComThreeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComThreeVC.m; sourceTree = "<group>"; };
+		4CFDA6E7201609EC001D9909 /* LookOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LookOrderCell.h; sourceTree = "<group>"; };
+		4CFDA6E8201609EC001D9909 /* LookOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LookOrderCell.m; sourceTree = "<group>"; };
+		4CFDA6EA201624CB001D9909 /* OrderDetailListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailListCell.h; sourceTree = "<group>"; };
+		4CFDA6EB201624CB001D9909 /* OrderDetailListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailListCell.m; sourceTree = "<group>"; };
 		6AA1905A6C8B17465AA4397D /* Pods-JBX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBX.release.xcconfig"; path = "Pods/Target Support Files/Pods-JBX/Pods-JBX.release.xcconfig"; sourceTree = "<group>"; };
 		6E49A1F8939B8A3E0F86666F /* Pods-JBX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JBX.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JBX/Pods-JBX.debug.xcconfig"; sourceTree = "<group>"; };
 		DA76E0FEC3BDE6B4A9582978 /* Pods_JBX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JBX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -673,6 +703,8 @@
 			children = (
 				4CEF52B61FD41ABE000CA8C4 /* MessageVC.h */,
 				4CEF52B71FD41ABE000CA8C4 /* MessageVC.m */,
+				4CD18AD82010872000884977 /* BoutiqueListVC.h */,
+				4CD18AD92010872000884977 /* BoutiqueListVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -680,6 +712,8 @@
 		4C9A5DC51FD519B600899CE8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4CD18ADB20108B6900884977 /* BoutiqueCell.h */,
+				4CD18ADC20108B6900884977 /* BoutiqueCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -687,6 +721,8 @@
 		4C9A5DC61FD519B600899CE8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4CD18ADF201098F400884977 /* ItemModel.h */,
+				4CD18ADE201098F400884977 /* ItemModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -769,6 +805,10 @@
 				4CEB3D1D200D8F0100DA91CD /* MineOfferVC.m */,
 				4CEB3D1F200D929D00DA91CD /* MineOfferListVC.h */,
 				4CEB3D20200D929D00DA91CD /* MineOfferListVC.m */,
+				4C4931422015D86300A680AB /* ComSecondVC.h */,
+				4C4931432015D86300A680AB /* ComSecondVC.m */,
+				4CFDA6E42016009D001D9909 /* ComThreeVC.h */,
+				4CFDA6E52016009D001D9909 /* ComThreeVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -778,6 +818,16 @@
 			children = (
 				4C194E441FDFA66700D7C0B7 /* MineListCell.h */,
 				4C194E451FDFA66700D7C0B7 /* MineListCell.m */,
+				4C49313C2015768900A680AB /* OfferListCell.h */,
+				4C49313D2015768900A680AB /* OfferListCell.m */,
+				4C49313F2015CA1700A680AB /* OfferListAutoSizeCell.h */,
+				4C4931402015CA1700A680AB /* OfferListAutoSizeCell.m */,
+				4C4931452015DA3F00A680AB /* BussListCell.h */,
+				4C4931462015DA3F00A680AB /* BussListCell.m */,
+				4CFDA6E7201609EC001D9909 /* LookOrderCell.h */,
+				4CFDA6E8201609EC001D9909 /* LookOrderCell.m */,
+				4CFDA6EA201624CB001D9909 /* OrderDetailListCell.h */,
+				4CFDA6EB201624CB001D9909 /* OrderDetailListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1015,7 +1065,7 @@
 				4C7A51372004D13E00971BB7 /* IronMaster */,
 				4CAEC35F1FD8CB0F00F4664E /* Login */,
 				4CD67A681FD14F8B0003D5DA /* Shop */,
-				4CD67A691FD14F8B0003D5DA /* Message */,
+				4CD67A691FD14F8B0003D5DA /* Boutique */,
 				4CD67A6A1FD14F8B0003D5DA /* Find */,
 				4CD67A6B1FD14F8B0003D5DA /* Work */,
 				4CD67A6C1FD14F8B0003D5DA /* Mine */,
@@ -1033,14 +1083,14 @@
 			path = Shop;
 			sourceTree = "<group>";
 		};
-		4CD67A691FD14F8B0003D5DA /* Message */ = {
+		4CD67A691FD14F8B0003D5DA /* Boutique */ = {
 			isa = PBXGroup;
 			children = (
 				4C9A5DC41FD519B600899CE8 /* Controller */,
 				4C9A5DC61FD519B600899CE8 /* Model */,
 				4C9A5DC51FD519B600899CE8 /* View */,
 			);
-			path = Message;
+			path = Boutique;
 			sourceTree = "<group>";
 		};
 		4CD67A6A1FD14F8B0003D5DA /* Find */ = {
@@ -1318,6 +1368,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-JBX/Pods-JBX-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/BRPickerView/BRPickerView.framework",
+				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
@@ -1327,12 +1378,14 @@
 				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRPickerView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
@@ -1342,6 +1395,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1391,6 +1445,7 @@
 			files = (
 				4CEF52B51FD41AAD000CA8C4 /* ShopVC.m in Sources */,
 				4C50DDB41FE7A7700088E36F /* TokenModel.m in Sources */,
+				4C4931442015D86300A680AB /* ComSecondVC.m in Sources */,
 				4C50DDBD1FE7C7CA0088E36F /* SelectVC.m in Sources */,
 				4C7A51462004DF6000971BB7 /* LWLoadingView.m in Sources */,
 				4CB0A1751FE002F700154AE6 /* RequestModel.m in Sources */,
@@ -1400,11 +1455,13 @@
 				4CEB3D6D200D9C4400DA91CD /* LYEmptyView.m in Sources */,
 				4CFBD8DA2003A0C30009124A /* UIView+LBExtension.m in Sources */,
 				4CF07C941FE8DF7800274862 /* PartmentListModel.m in Sources */,
+				4CD18ADA2010872000884977 /* BoutiqueListVC.m in Sources */,
 				4CEB3D6A200D9C4400DA91CD /* LYEmptyBaseView.m in Sources */,
 				4CEBA9851FEBC3BD009F12BE /* GTMBase64.m in Sources */,
 				4C10F5CB200F3D2B00891BB4 /* LWImageItem.m in Sources */,
 				4CAF0B501FE0DA03001150A2 /* ForgetPawModel.m in Sources */,
 				4C7A51472004DF6000971BB7 /* LWLoadingAnimationView.m in Sources */,
+				4CD18ADD20108B6900884977 /* BoutiqueCell.m in Sources */,
 				4C7A51402004D2EA00971BB7 /* IronMVC.m in Sources */,
 				4CCD2E451FDD54F30027BFAE /* NewsListCell.m in Sources */,
 				4C05B5F81FDA20C900220C42 /* WorkCollectionViewCell.m in Sources */,
@@ -1447,6 +1504,7 @@
 				4CAEC3681FD8CB8E00F4664E /* RegisterVC.m in Sources */,
 				4C9A5DDC1FD51DD900899CE8 /* UIButton+Lazy.m in Sources */,
 				4C1BC8C8200889DB0005CCCD /* MineWorkCell.m in Sources */,
+				4CFDA6EC201624CB001D9909 /* OrderDetailListCell.m in Sources */,
 				4CAEC3771FD8D07900F4664E /* NSObject+ProgressHUD.m in Sources */,
 				4CFBD8D42003A0930009124A /* DZTabBar.m in Sources */,
 				4C10F5C6200F3D2B00891BB4 /* LWAlertView.m in Sources */,
@@ -1455,6 +1513,7 @@
 				4CCD5D841FF09CE60052367D /* SecondOrganVC.m in Sources */,
 				4CEF52C81FD429A1000CA8C4 /* CoverVC.m in Sources */,
 				4C0BCAB71FDA8320009B3CEC /* UIView+Extension.m in Sources */,
+				4C49313E2015768900A680AB /* OfferListCell.m in Sources */,
 				4C7A514A2004E42100971BB7 /* FindVC.m in Sources */,
 				4C0BCAB41FDA7E56009B3CEC /* DZSearchBar.m in Sources */,
 				4C4153C71FF37B46009A95F7 /* NewsTitleListModel.m in Sources */,
@@ -1465,12 +1524,15 @@
 				4CFCE3CB1FE4C2E000C0F069 /* OrganizeHeaderCell.m in Sources */,
 				4C4153CA1FF38F8F009A95F7 /* FastModel.m in Sources */,
 				4CEF52BE1FD41ADC000CA8C4 /* WorkVC.m in Sources */,
+				4CD18AE0201098F400884977 /* ItemModel.m in Sources */,
 				4C50DDC01FE7E29E0088E36F /* SelectOrganCell.m in Sources */,
 				4C9A5DDA1FD51DD900899CE8 /* UILabel+Lazy.m in Sources */,
 				4CF02D492005E35600D57007 /* MYPresentationController.m in Sources */,
+				4CFDA6E9201609EC001D9909 /* LookOrderCell.m in Sources */,
 				4CFCE3C21FE4028900C0F069 /* OrganizeVC.m in Sources */,
 				4C0C99991FDE4CB10065BF49 /* DZSearchBarWithIcon.m in Sources */,
 				4C7A514D2004EB7900971BB7 /* FindHeaderCell.m in Sources */,
+				4CFDA6E62016009D001D9909 /* ComThreeVC.m in Sources */,
 				4C10F5D1200F3D2B00891BB4 /* UIImage+ImageEffects.m in Sources */,
 				4CEF52B81FD41ABE000CA8C4 /* MessageVC.m in Sources */,
 				4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */,
@@ -1487,6 +1549,7 @@
 				4C50DDC31FE7F4C00088E36F /* SetOrganIDModel.m in Sources */,
 				4CFCE3CE1FE5041F00C0F069 /* DZCenterSearchBar.m in Sources */,
 				4CEF52AC1FD4174B000CA8C4 /* LaunchVC.m in Sources */,
+				4C4931412015CA1700A680AB /* OfferListAutoSizeCell.m in Sources */,
 				4CEF529F1FD41247000CA8C4 /* GuideVC.m in Sources */,
 				4CF02D53200609B900D57007 /* hotCateCell.m in Sources */,
 				4CF02D502005F77400D57007 /* HotTVC.m in Sources */,
@@ -1504,6 +1567,7 @@
 				4CAEC36B1FD8CB9D00F4664E /* ForgetVC.m in Sources */,
 				4CD67A311FD14DCB0003D5DA /* AppDelegate.m in Sources */,
 				4C05B5AB1FD8E9F600220C42 /* UIImageView+Lazy.m in Sources */,
+				4C4931472015DA3F00A680AB /* BussListCell.m in Sources */,
 				4CEBA9781FEBBA8F009F12BE /* IronMasterVC.m in Sources */,
 				4C9A5DD91FD51DD900899CE8 /* UITextField+Lazy.m in Sources */,
 				4C10F5DB200F7E7D00891BB4 /* NoNetView.m in Sources */,

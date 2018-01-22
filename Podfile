@@ -14,6 +14,8 @@ target 'JBX' do
 	pod 'SDCycleScrollView',   '~>1.74'
 	pod 'BRPickerView',	   '~>1.3.0'
 	pod 'IQKeyboardManager',   '~>5.0.7'
+	pod 'CHTCollectionViewWaterfallLayout',   '~>0.9.7'
+	pod 'UITableView+FDTemplateLayoutCell',   '~>1.6'
 end
 
 
