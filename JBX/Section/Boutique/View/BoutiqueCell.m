@@ -10,44 +10,185 @@
 
 @implementation BoutiqueCell
 
+/**
+ @method 获取指定宽度width的字符串在UITextView上的高度
+ @param value 待计算的UITextView
+ @param width 限制字符串显示区域的宽度
+ @result float 返回的高度
+ */
+- (float) heightForString:(NSString *)value andWidth:(float)width{
+//    CGSize sizeToFit = [textView sizeThatFits:CGSizeMake(width, MAXFLOAT)];
+//    return sizeToFit.height;
+    
+    CGSize titleSize = [value boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10]} context:nil].size;
+    return titleSize.height;
+}
+
+
+
+- (CGFloat)heightForCellWithContent:(NSString *)text {
+    return 94+[self heightForString:text andWidth:(SCREEN_WIDTH-10)/2];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self.contentView addSubview:self.pic];
-        
+       
+        self.contentView.backgroundColor = [UIColor whiteColor];
+        [self.contentView addSubview:self.headerPic];
         _weekSelf(weakSelf);
-        [_pic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(weakSelf.contentView);
+        [_headerPic mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.contentView).offset(15);
+            make.left.equalTo(weakSelf.contentView).offset(10);
+            make.width.equalTo(@26);
+            make.height.equalTo(@26);
         }];
-        [self.pic addSubview:self.txt];
-        [_txt mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(weakSelf.pic.mas_left).offset(0);
-            make.right.equalTo(weakSelf.pic.mas_right).offset(0);
-            make.bottom.equalTo(weakSelf.pic.mas_bottom).offset(0);
-            make.height.equalTo(@20);
+        
+        [self.contentView addSubview:self.nameLB];
+        
+        [_nameLB mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(weakSelf.headerPic.mas_centerY).offset(0);
+            make.left.equalTo(weakSelf.headerPic.mas_right).offset(5);
+            make.right.equalTo(weakSelf.contentView).offset(-56);
+        }];
+        [self.contentView addSubview:self.timeLB];
+        
+        [_timeLB mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(weakSelf.headerPic.mas_centerY).offset(0);
+            make.left.equalTo(weakSelf.nameLB.mas_right).offset(5);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
+        }];
+       
+        [self.contentView addSubview:self.partPic];
+        
+        [_partPic mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.headerPic.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(10);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
+            make.height.equalTo(@85);
+        }];
+        
+        [self.contentView addSubview:self.contentLB];
+       
+        [_contentLB mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.partPic.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(10);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
+        }];
+        
+        [self.contentView addSubview:self.firstBTN];
+        
+        [_firstBTN mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.contentLB.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(10);
+            make.width.equalTo(@40);
+        }];
+        
+        [self.contentView addSubview:self.secondBTN];
+        
+        [_secondBTN mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.contentLB.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.firstBTN.mas_right).offset(10);
+            make.width.equalTo(@40);
+        }];
+        
+        UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor whiteColor]];
+        [self.contentView addSubview:lineView];
+        
+        [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(weakSelf.firstBTN.mas_bottom).offset(10);
+            make.left.equalTo(weakSelf.contentView).offset(0);
+            make.right.equalTo(weakSelf.contentView).offset(0);
+            make.bottom.equalTo(weakSelf.contentView);
         }];
         
     }
     return self;
 }
-- (UIImageView *)pic {
-    if (_pic==nil) {
-        self.pic = [UIImageView initWithImageViewWithFrame:CGRectZero
+- (UIImageView *)headerPic {
+    if (_headerPic==nil) {
+        self.headerPic = [UIImageView initWithImageViewWithFrame:CGRectZero
                                                                 withImageName:@"placerholder"];
-        _pic.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        _pic.contentMode = UIViewContentModeScaleAspectFit;
+        
+        ViewRadius(_headerPic, 13);
     }
-    return _pic;
+    return _headerPic;
 }
-- (UILabel *)txt {
-    if (_txt==nil) {
-        self.txt = [UILabel initUILabelWithFrame:CGRectZero
+
+- (UILabel *)nameLB {
+    if (_nameLB==nil) {
+        self.nameLB = [UILabel initUILabelWithFrame:CGRectZero
+                                                           withText:@""
+                                                      withTextColor:RGBA(102, 102, 102, 1)
+                                                           withFont:PINGFANG_FONT_SIZE(11)
+                                                        withGbColor:[UIColor whiteColor]
+                                                  withTextAlignment:NSTextAlignmentLeft];
+        
+    }
+    return _nameLB;
+}
+- (UILabel *)timeLB {
+    if (_timeLB==nil) {
+        self.timeLB = [UILabel initUILabelWithFrame:CGRectZero
+                                                           withText:@""
+                                                      withTextColor:RGBA(102, 102, 102, 1)
+                                                           withFont:PINGFANG_FONT_SIZE(9)
+                                                        withGbColor:[UIColor whiteColor]
+                                                  withTextAlignment:NSTextAlignmentRight];
+        
+    }
+    return _timeLB;
+}
+
+- (UIImageView *)partPic {
+    if (_partPic==nil) {
+        self.partPic = [UIImageView initWithImageViewWithFrame:CGRectZero
+                                                                withImageName:@"placerholder"];
+//        _partPic.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//        _partPic.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _partPic;
+}
+
+- (UILabel *)contentLB {
+    if (_contentLB==nil) {
+        self.contentLB = [UILabel initUILabelWithFrame:CGRectZero
                                                            withText:@""
                                                       withTextColor:[UIColor blackColor]
-                                                           withFont:PINGFANG_FONT_SIZE(15)
+                                                           withFont:PINGFANG_FONT_SIZE(10)
                                                         withGbColor:[UIColor whiteColor]
                                                   withTextAlignment:NSTextAlignmentCenter];
+         _contentLB.numberOfLines = 0;
     }
-    return _txt;
+    return _contentLB;
 }
+
+- (UIButton *)firstBTN {
+    if (_firstBTN==nil) {
+        self.firstBTN = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
+                                                               withFrame:CGRectZero
+                                                               withTitle:@""
+                                                          withTitleColor:RGBA(3, 115, 228, 1)
+                                                                  withGB:[UIColor whiteColor]
+                                                                withFont:PINGFANG_FONT_SIZE(9)];
+        
+        
+    }
+    return _firstBTN;
+}
+
+- (UIButton *)secondBTN {
+    if (_secondBTN==nil) {
+        self.secondBTN = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
+                                                 withFrame:CGRectZero
+                                                 withTitle:@""
+                                            withTitleColor:RGBA(3, 115, 228, 1)
+                                                    withGB:[UIColor whiteColor]
+                                                  withFont:PINGFANG_FONT_SIZE(9)];
+        
+        
+    }
+    return _secondBTN;
+}
+
 
 @end

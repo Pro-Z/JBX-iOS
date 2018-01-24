@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface BoutiqueCell : UICollectionViewCell
-@property (nonatomic,strong) UIImageView *pic;
-@property (nonatomic,strong) UILabel *txt;
+@property (nonatomic,strong) UIImageView *headerPic,*partPic;
+@property (nonatomic,strong) UILabel *nameLB,*timeLB,*contentLB;
+@property (nonatomic,strong) UIButton *firstBTN,*secondBTN;
+- (CGFloat)heightForCellWithContent:(NSString*)text;
 @end

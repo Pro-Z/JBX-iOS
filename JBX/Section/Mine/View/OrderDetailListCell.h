@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailListCell : UITableViewCell
-
+@property (nonatomic,strong) UIImageView *firstPic;
+@property (nonatomic,strong) UILabel *materialLB,*numberLB,*heightLB,*flowerRoadLB,*itchLB,*towardLB,*colorLB,*profileLB,*technologyLB,*xlwidthLB,*partNameLB,*partHeightLB,*partNumLB,*partNameContentLB,*partHeightContentLB,*partNumContentLB;
 @end

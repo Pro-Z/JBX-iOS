@@ -114,6 +114,8 @@
     self.newsTableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"placerholder" titleStr:@"网络断开" detailStr:@"请检查网络连接" btnTitleStr:@"重新加载" btnClickBlock:^{
 
     }];
+    
+    _newsTableView.zh_reloadAnimationType = zhTableViewAnimationTypeSlideFromLeft;
     [self.view addSubview:_newsTableView];
     _weekSelf(weakSelf)
     [_newsTableView mas_makeConstraints:^(MASConstraintMaker *make) {

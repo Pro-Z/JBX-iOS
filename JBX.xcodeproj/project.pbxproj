@@ -61,6 +61,7 @@
 		4C51470A1FF5F6DF00280C43 /* UIView+DZBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5147061FF5F6DE00280C43 /* UIView+DZBadge.m */; };
 		4C51470B1FF5F6DF00280C43 /* DZSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5147091FF5F6DF00280C43 /* DZSegmentView.m */; };
 		4C51470E1FF5FBC200280C43 /* NewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51470D1FF5FBC200280C43 /* NewsListVC.m */; };
+		4C5CCCD5201832100020C91A /* BoutiqueDetalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CCCD4201832100020C91A /* BoutiqueDetalVC.m */; };
 		4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */; };
 		4C75A038200E386D00C4880D /* HorizontalFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C75A037200E386D00C4880D /* HorizontalFlowLayout.m */; };
 		4C75FDAD2008E5E2000422E6 /* UIView+FontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C75FDAC2008E5E2000422E6 /* UIView+FontSize.m */; };
@@ -271,6 +272,8 @@
 		4C5147091FF5F6DF00280C43 /* DZSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZSegmentView.m; sourceTree = "<group>"; };
 		4C51470C1FF5FBC200280C43 /* NewsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsListVC.h; sourceTree = "<group>"; };
 		4C51470D1FF5FBC200280C43 /* NewsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsListVC.m; sourceTree = "<group>"; };
+		4C5CCCD3201832100020C91A /* BoutiqueDetalVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BoutiqueDetalVC.h; sourceTree = "<group>"; };
+		4C5CCCD4201832100020C91A /* BoutiqueDetalVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoutiqueDetalVC.m; sourceTree = "<group>"; };
 		4C641E3D1FF27184008CB06A /* PartmentAndMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentAndMemberModel.h; sourceTree = "<group>"; };
 		4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentAndMemberModel.m; sourceTree = "<group>"; };
 		4C65BB521FFFBAD2002546DE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
@@ -705,6 +708,8 @@
 				4CEF52B71FD41ABE000CA8C4 /* MessageVC.m */,
 				4CD18AD82010872000884977 /* BoutiqueListVC.h */,
 				4CD18AD92010872000884977 /* BoutiqueListVC.m */,
+				4C5CCCD3201832100020C91A /* BoutiqueDetalVC.h */,
+				4C5CCCD4201832100020C91A /* BoutiqueDetalVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1380,6 +1385,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${BUILT_PRODUCTS_DIR}/zhUITableViewAnimations/zhUITableViewAnimations.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1397,6 +1403,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zhUITableViewAnimations.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1526,6 +1533,7 @@
 				4CEF52BE1FD41ADC000CA8C4 /* WorkVC.m in Sources */,
 				4CD18AE0201098F400884977 /* ItemModel.m in Sources */,
 				4C50DDC01FE7E29E0088E36F /* SelectOrganCell.m in Sources */,
+				4C5CCCD5201832100020C91A /* BoutiqueDetalVC.m in Sources */,
 				4C9A5DDA1FD51DD900899CE8 /* UILabel+Lazy.m in Sources */,
 				4CF02D492005E35600D57007 /* MYPresentationController.m in Sources */,
 				4CFDA6E9201609EC001D9909 /* LookOrderCell.m in Sources */,

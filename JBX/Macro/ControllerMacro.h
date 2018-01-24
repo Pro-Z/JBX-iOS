@@ -49,6 +49,7 @@
 #import "LYEmptyViewHeader.h" // 空页面 --- > 断网和没数据的时候出现
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "UITableView+FDTemplateLayoutCell.h"
+#import "zhTableViewAnimations.h"
 
 #pragma mark - Categories
 #import "UILabel+Lazy.h"

@@ -9,10 +9,12 @@
 #import "BoutiqueListVC.h"
 #import "BoutiqueCell.h"
 #import "ItemModel.h"
+#import "BoutiqueDetalVC.h"
 @interface BoutiqueListVC ()<UICollectionViewDelegate,UICollectionViewDataSource,CHTCollectionViewDelegateWaterfallLayout>
 @property (nonatomic,strong) UICollectionView *boutiqueCollectionView;
 @property (nonatomic,strong) NSArray *picArr;
 @property (nonatomic,strong) NSMutableArray *dataSource;
+@property (nonatomic,strong) NSArray *titleArr;
 @end
 
 @implementation BoutiqueListVC
@@ -43,6 +45,23 @@
 
 
 - (void) initDataSource {
+    self.titleArr = @[@"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿",
+                      @"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿的珠宝零售店",
+                      @"测试标题",
+                      @"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿",
+                      @"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿的珠宝零售店",
+                      @"测试标题",
+                      @"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿",
+                      @"位于澳大利亚帕丁顿的珠宝零售店是由Landini Associates设计，这是一家珠宝定制店…",
+                      @"位于澳大利亚帕丁顿的珠宝零售店"
+                      ];
+    
+    
     self.picArr = @[
                         @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516276552636&di=07b1d664a8f47fc1d346d4455763aebb&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F08f790529822720ef2a7e06771cb0a46f31fabc6.jpg",
                         @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516871674&di=dbe76b3a7a11a2d7adc08171bf673375&imgtype=jpg&er=1&src=http%3A%2F%2Fb.zol-img.com.cn%2Fsjbizhi%2Fimages%2F7%2F320x510%2F1415695092182.jpg",
@@ -69,9 +88,7 @@
         model.imageUrl = item;
         [self.dataSource addObject:model];
     }
-    
-    
-   
+
 }
 
 
@@ -83,7 +100,7 @@
 //    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 //    [flowLayout setScrollDirection:(UICollectionViewScrollDirectionVertical)];
     self.boutiqueCollectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
-    _boutiqueCollectionView.backgroundColor = [UIColor whiteColor];
+    _boutiqueCollectionView.backgroundColor = RGBA(243, 243, 243, 1);
     _boutiqueCollectionView.delegate = self;
     _boutiqueCollectionView.dataSource = self;
     [_boutiqueCollectionView registerClass:[BoutiqueCell class] forCellWithReuseIdentifier:@"BoutiqueCell"];
@@ -115,15 +132,29 @@
     ItemModel *model = [self.dataSource objectAtIndex:indexPath.row];
     
     NSString *imgUrlString = model.imageUrl;
+    cell.nameLB.text = @"厦门钢鲸科技";
+    cell.timeLB.text = @"2-09";
+    [cell.firstBTN setTitle:@"#精品" forState:(UIControlStateNormal)];
+    [cell.secondBTN setTitle:@"#最新" forState:UIControlStateNormal];
+    cell.contentLB.text = _titleArr[indexPath.row];
+    CGFloat currentHeight = [cell heightForCellWithContent:_titleArr[indexPath.row]];
     
-    [cell.pic sd_setImageWithURL:[NSURL URLWithString:imgUrlString] placeholderImage:[UIImage imageNamed:@"placerholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    
+    [cell.partPic sd_setImageWithURL:[NSURL URLWithString:imgUrlString] placeholderImage:[UIImage imageNamed:@"placerholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (image) {
+            
+//            (SCREEN_WIDTH/2-5)/image.size.width *image.size.height
             if (!CGSizeEqualToSize(model.imageSize, image.size)) {
-                model.imageSize = image.size;
+                model.imageSize = CGSizeMake(SCREEN_WIDTH/2-5, 100 + currentHeight);
                 [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//                DebugLog(@"当前cell的宽高为%f",(SCREEN_WIDTH/2-5)/image.size.width *image.size.height);
+                
+
+                
             }
         }
     }];
+//    [collectionView reloadItemsAtIndexPaths:@[indexPath]];
     
     
     return cell;
@@ -153,19 +184,26 @@
 }
 
 #pragma mark -- UICollectionViewDelegateFlowLayout
-/** 每个cell的尺寸*/
+///** 每个cell的尺寸*/
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 //{
-//    return CGSizeMake(80, 75);
+//
+//    ItemModel *model = [self.dataSource objectAtIndex:indexPath.row];
+//    if (!CGSizeEqualToSize(model.imageSize, CGSizeZero)) {
+//        return model.imageSize;
+//    }
+//
+//    return CGSizeMake(0, 0);
 //}
 
 #pragma mark - CHTCollectionViewDelegateWaterfallLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+
     ItemModel *model = [self.dataSource objectAtIndex:indexPath.row];
     if (!CGSizeEqualToSize(model.imageSize, CGSizeZero)) {
         return model.imageSize;
     }
+
     return CGSizeMake(150, 150);
 }
 
@@ -191,6 +229,10 @@
 
 #pragma mark -- UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    BoutiqueDetalVC *detailVC = [BoutiqueDetalVC new];
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
 }
 
 

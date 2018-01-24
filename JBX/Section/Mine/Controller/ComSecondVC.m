@@ -138,14 +138,34 @@
         OrderDetailListCell *cell=[tableView dequeueReusableCellWithIdentifier:rid forIndexPath:indexPath];
         [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
         
+        cell.materialLB.text = @"材质：201";
+        cell.numberLB.text = @"个数(个)：2";
+        cell.heightLB.text = @"厚度：0.3";
+        cell.flowerRoadLB.text = @"纹路：无";
+        cell.itchLB.text = @"内尺：外尺";
+        cell.towardLB.text = @"面朝向：朝内";
+        cell.colorLB.text = @"颜色：宝石蓝拉丝";
+        cell.profileLB.text = @"剖面：198";
+        cell.technologyLB.text = @"工艺：";
+        cell.xlwidthLB.text = @"下料宽度：193";
+        cell.partNameLB.text = @"部件名称";
+        cell.partHeightLB.text = @"长度";
+        cell.partNumLB.text = @"数量";
+        cell.partNameContentLB.text = @"7#2#";
+        cell.partHeightContentLB.text = @"10";
+        cell.partNumContentLB.text = @"12";
+        
         return cell;
     }
     return nil;
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ComThreeVC *threeVC = [ComThreeVC new];
-    [self.navigationController pushViewController:threeVC animated:YES];
+    if ([tableView isEqual:_busTableView]) {
+        ComThreeVC *threeVC = [ComThreeVC new];
+        [self.navigationController pushViewController:threeVC animated:YES];
+        
+    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -16,6 +16,7 @@ target 'JBX' do
 	pod 'IQKeyboardManager',   '~>5.0.7'
 	pod 'CHTCollectionViewWaterfallLayout',   '~>0.9.7'
 	pod 'UITableView+FDTemplateLayoutCell',   '~>1.6'
+	pod 'zhUITableViewAnimations',  	  '~>0.1.0'
 end
 
 
