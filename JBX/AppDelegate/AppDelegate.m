@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GuideVC.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import <UMShare/UMShare.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +20,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:APP_BOUNDS];
+//    self.window = [[UIWindow alloc] initWithFrame:APP_BOUNDS];
+    
+    // 配置友盟分享
+    [[UMSocialManager defaultManager] openLog:YES];
+    // 设置友盟key
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@"5a686f2ef43e485abc00002a"];
+    // 设置qq
+    [[UMSocialManager defaultManager] setPlaform:(UMSocialPlatformType_QQ) appKey:@"1106627131" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    // 设置微信
+    [[UMSocialManager defaultManager] setPlaform:(UMSocialPlatformType_WechatSession) appKey:@"" appSecret:@"" redirectURL:@"http://mobile.umeng.com/social"];
+    
     
     // 配置键盘
     [IQKeyboardManager sharedManager].enable = YES;
@@ -49,6 +60,17 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+// 支持所有iOS系统
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
 }
 
 

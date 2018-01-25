@@ -17,6 +17,11 @@ target 'JBX' do
 	pod 'CHTCollectionViewWaterfallLayout',   '~>0.9.7'
 	pod 'UITableView+FDTemplateLayoutCell',   '~>1.6'
 	pod 'zhUITableViewAnimations',  	  '~>0.1.0'
+	pod 'UMCCommon'
+	pod 'UMCSecurityPlugins'
+	pod 'UMCShare/UI'
+	pod 'UMCShare/Social/WeChat'
+	pod 'UMCShare/Social/QQ'
 end
 
 

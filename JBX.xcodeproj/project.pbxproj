@@ -63,6 +63,7 @@
 		4C51470E1FF5FBC200280C43 /* NewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51470D1FF5FBC200280C43 /* NewsListVC.m */; };
 		4C5CCCD5201832100020C91A /* BoutiqueDetalVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5CCCD4201832100020C91A /* BoutiqueDetalVC.m */; };
 		4C641E3F1FF27184008CB06A /* PartmentAndMemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */; };
+		4C74377A20199F83000D12DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C74377920199F82000D12DC /* Main.storyboard */; };
 		4C75A038200E386D00C4880D /* HorizontalFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C75A037200E386D00C4880D /* HorizontalFlowLayout.m */; };
 		4C75FDAD2008E5E2000422E6 /* UIView+FontSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C75FDAC2008E5E2000422E6 /* UIView+FontSize.m */; };
 		4C7A51402004D2EA00971BB7 /* IronMVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7A513F2004D2EA00971BB7 /* IronMVC.m */; };
@@ -98,7 +99,6 @@
 		4CD18ADD20108B6900884977 /* BoutiqueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD18ADC20108B6900884977 /* BoutiqueCell.m */; };
 		4CD18AE0201098F400884977 /* ItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD18ADE201098F400884977 /* ItemModel.m */; };
 		4CD67A311FD14DCB0003D5DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD67A301FD14DCB0003D5DA /* AppDelegate.m */; };
-		4CD67A371FD14DCB0003D5DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD67A351FD14DCB0003D5DA /* Main.storyboard */; };
 		4CD67A391FD14DCB0003D5DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD67A381FD14DCB0003D5DA /* Assets.xcassets */; };
 		4CD67A3C1FD14DCB0003D5DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD67A3A1FD14DCB0003D5DA /* LaunchScreen.storyboard */; };
 		4CD67A3F1FD14DCB0003D5DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CD67A3E1FD14DCB0003D5DA /* main.m */; };
@@ -277,6 +277,7 @@
 		4C641E3D1FF27184008CB06A /* PartmentAndMemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PartmentAndMemberModel.h; sourceTree = "<group>"; };
 		4C641E3E1FF27184008CB06A /* PartmentAndMemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PartmentAndMemberModel.m; sourceTree = "<group>"; };
 		4C65BB521FFFBAD2002546DE /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		4C74377920199F82000D12DC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C75A036200E386D00C4880D /* HorizontalFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalFlowLayout.h; sourceTree = "<group>"; };
 		4C75A037200E386D00C4880D /* HorizontalFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalFlowLayout.m; sourceTree = "<group>"; };
 		4C75FDAB2008E5E2000422E6 /* UIView+FontSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FontSize.h"; sourceTree = "<group>"; };
@@ -348,7 +349,6 @@
 		4CD67A2C1FD14DCB0003D5DA /* JBX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD67A2F1FD14DCB0003D5DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CD67A301FD14DCB0003D5DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4CD67A361FD14DCB0003D5DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CD67A381FD14DCB0003D5DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CD67A3B1FD14DCB0003D5DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD67A3D1FD14DCB0003D5DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1021,8 +1021,8 @@
 		4CD67A631FD14F8A0003D5DA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4C74377920199F82000D12DC /* Main.storyboard */,
 				4CD67A3D1FD14DCB0003D5DA /* Info.plist */,
-				4CD67A351FD14DCB0003D5DA /* Main.storyboard */,
 				4CD67A3A1FD14DCB0003D5DA /* LaunchScreen.storyboard */,
 				4CD67A3E1FD14DCB0003D5DA /* main.m */,
 			);
@@ -1341,8 +1341,8 @@
 				4C1BC8E32008D1790005CCCD /* SelectWordView.xib in Resources */,
 				4CD67A3C1FD14DCB0003D5DA /* LaunchScreen.storyboard in Resources */,
 				4C1BC8C9200889DB0005CCCD /* MineWorkCell.xib in Resources */,
+				4C74377A20199F83000D12DC /* Main.storyboard in Resources */,
 				4CD67A391FD14DCB0003D5DA /* Assets.xcassets in Resources */,
-				4CD67A371FD14DCB0003D5DA /* Main.storyboard in Resources */,
 				4C1BC8DC2008BCD80005CCCD /* LabelWithTFView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1416,9 +1416,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-JBX/Pods-JBX-resources.sh",
+				"${PODS_ROOT}/UMCShare/UMShare/UMSocialSDKPlugin/UMSocialSDKPromptResources.bundle",
+				"${PODS_ROOT}/UMCShare/UMShare/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
+				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1616,14 +1621,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4CD67A351FD14DCB0003D5DA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CD67A361FD14DCB0003D5DA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4CD67A3A1FD14DCB0003D5DA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

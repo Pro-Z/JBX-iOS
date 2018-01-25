@@ -50,6 +50,8 @@
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "zhTableViewAnimations.h"
+#import <UMCommon/UMCommon.h>
+#import <UShareUI/UShareUI.h>
 
 #pragma mark - Categories
 #import "UILabel+Lazy.h"

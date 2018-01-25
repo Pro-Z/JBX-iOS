@@ -83,6 +83,7 @@
     self.shareBTN = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [_shareBTN setImage:[UIImage imageNamed:@"icon_in_more"] forState:(UIControlStateNormal)];
     [self.contentView addSubview:_shareBTN];
+    [_shareBTN addTarget:self action:@selector(shareForFriend) forControlEvents:(UIControlEventTouchUpInside)];
 
     [_shareBTN mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.contentView).offset(15+STATUS_BAR_HEIGHT);
@@ -439,6 +440,46 @@
 
 - (void) handleBack {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+/**
+ * 分享到朋友圈
+ */
+- (void) shareForFriend {
+    DebugLog(@"开始分享");
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
+    
+    [UMSocialShareUIConfig shareInstance].shareTitleViewConfig.shareTitleViewTitleString=@"分享给好友...";//标题的名字
+    [UMSocialShareUIConfig shareInstance].shareCancelControlConfig.isShow=false;//不显示取消按钮
+//    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewBackgroundColor=[UIColor whiteColor];//屏幕中间显示
+    
+    [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType=UMSocialSharePageGroupViewPositionType_Middle;//屏幕中间显示
+    
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        DebugLog(@"当前的平台为%ld",(long)platformType);
+        // 创建分享对象
+        UMSocialMessageObject *messageObj = [UMSocialMessageObject messageObject];
+        // 设置文本
+        messageObj.text = @"测试分享";
+        // 分享
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObj currentViewController:self completion:^(id result, NSError *error) {
+            if(error){
+                UMSocialLogInfo(@"*******分享失败:%@",error);
+            }else{
+                if([result isKindOfClass:[UMSocialShareResponse class]]){
+                    UMSocialShareResponse *resp = result;
+                    // 分享结果
+                }
+            }
+            
+            
+            
+        }];
+        
+        
+    }];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

@@ -16,8 +16,61 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>qq</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent1106627131</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+        <string>weixin</string>
+        <string>mqq</string>
+        <string>mqqapi</string>
+        <string>mqqwpa</string>
+        <string>mqqbrowser</string>
+        <string>mttbrowser</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>mqqopensdkapiV4</string>
+        <string>wtloginmqq2</string>
+        <string>mqzone</string>
+        <string>mqzoneopensdk</string>
+        <string>mqzoneopensdkapi</string>
+        <string>mqzoneopensdkapi19</string>
+        <string>mqzoneopensdkapiV2</string>
+        <string>mqqapiwallet</string>
+        <string>mqqopensdkfriend</string>
+        <string>mqqopensdkdataline</string>
+        <string>mqqgamebindinggroup</string>
+        <string>mqqopensdkgrouptribeshare</string>
+        <string>tencentapi.qq.reqContent</string>
+        <string>tencentapi.qzone.reqContent</string>
+        <string>tim</string>
+        <string>timapi</string>
+        <string>timopensdkfriend</string>
+        <string>timwpa</string>
+        <string>timgamebindinggroup</string>
+        <string>timapiwallet</string>
+        <string>timOpensdkSSoLogin</string>
+        <string>wtlogintim</string>
+        <string>timopensdkgrouptribeshare</string>
+        <string>timopensdkapiV4</string>
+        <string>timgamebindinggroup</string>
+        <string>timopensdkdataline</string>
+        <string>wtlogintimV1</string>
+        <string>timapiV1</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -43,8 +96,6 @@
 	</array>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -58,5 +109,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
