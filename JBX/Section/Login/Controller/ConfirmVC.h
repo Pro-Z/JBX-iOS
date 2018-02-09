@@ -10,5 +10,5 @@
 
 @interface ConfirmVC : UIViewController
 @property (nonatomic,copy) NSString *phoneStr;
-@property (nonatomic,copy) NSString *verifyCodeStr;
+@property (nonatomic,copy) NSString *verifyCodeStr,*codeData;
 @end

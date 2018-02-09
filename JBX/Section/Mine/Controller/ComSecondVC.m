@@ -11,13 +11,15 @@
 #import "ComThreeVC.h"
 #import "XTextField.h"
 #import "OrderDetailListCell.h"
+#import "MineOfferListModel.h"
+#import "OrderDetalModel.h"
 
-@interface ComSecondVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface ComSecondVC ()<UITableViewDelegate,UITableViewDataSource,UITextViewDelegate>
 @property (nonatomic,strong) UITableView *busTableView;
 @property (nonatomic,strong) UIButton *bottomBtn;
 // 订单报价
 @property (nonatomic,strong) UILabel *orderPriceLB;
-@property (nonatomic,strong) XTextField *firstTF,*secondTF;
+@property (nonatomic,strong) XTextField *firstTF,*secondTF,*threeTF;
 @property (nonatomic,strong) UIButton *confirmBtn;
 
 // 订货单详情
@@ -26,7 +28,17 @@
 @property (nonatomic,strong) UILabel *firstTitleLB,*secondTitleLB,*threeTitleLB,*fourTitleLB;
 @property (nonatomic,strong) UILabel *projectNameLB,*materialKindLB,*materialNumberLB,*partmentSquoreLB,*materialSumLB,*partNumberLB,*materialLB,*heightLB,*materialColorLB,*materialGGLB,*cutNumberLB,*renderCutLB,*riverLB;
 
+@property (nonatomic,strong) OrderDetailListModel *orderDetailListModel;
 
+@property (nonatomic,strong) OrderDetalModel *orderDetalModel;
+@property (nonatomic,strong) NSMutableArray *orderDetailDataSource;
+@property (nonatomic,strong) OrderDetalArgsMapModel *orderDetalArgsMapModel;
+@property (nonatomic,strong) OrderDetalTempGraphicalSepcListModel *orderDetalTempGraphicalSepcListModel;
+
+// 商家列表
+@property (nonatomic,strong) BusListModel *busListModel;
+@property (nonatomic,strong) BusListDataModel *busListDataModel;
+@property (nonatomic,strong) NSMutableArray *busDataSource;
 @end
 
 @implementation ComSecondVC
@@ -37,13 +49,21 @@
     WHITE_BG
     [self initNavigationView];
     if (self.currentPage == 4) {
+        self.busDataSource = [NSMutableArray array];
+        [self initBusDataWithEnquireID:self.enquireID];
         [self initTableView];
     }else if(self.currentPage == -1){
         // 订单报价
         [self initOrderPriceView];
     }else if (self.currentPage == -2){
         // 订货单详情
-        [self initOrderDetailView];
+        self.orderDetailDataSource = [NSMutableArray array];
+        self.enquireID = _enquireID;
+        WHITE_BG
+        [self initOrderDetailData];
+        [self initHeaderView];
+        [self initOrderDetailTableView];
+        
     }
     
     
@@ -65,7 +85,7 @@
     UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithCustomView:backView];
     self.navigationItem.leftBarButtonItem = leftBtn;
     
-    if (self.currentPage == 4) {
+    if (self.currentPage == 5) {
         UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_job_user"] style:(UIBarButtonItemStylePlain) target:self action:@selector(operateBtn)];
         rightBtn.tintColor = [UIColor whiteColor];
         self.navigationItem.rightBarButtonItem = rightBtn;
@@ -77,6 +97,30 @@
 
 - (void) goToBack {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+/**
+ 初始化商家列表
+ */
+- (void) initBusDataWithEnquireID:(NSString *) enquireid {
+    _weekSelf(weakSelf);
+    NSDictionary *dict = @{
+                           @"match_enqu_id":enquireid
+                           };
+    [[NetAPIManager sharedManager] request_common_WithPath:APP_BUS_LIST_URL Params:dict autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
+        self.busListModel = [BusListModel mj_objectWithKeyValues:data];
+        if (_busListModel.code == 200) {
+            NSMutableArray *arr = [BusListDataModel mj_objectArrayWithKeyValuesArray:_busListModel.data];
+            _busDataSource = [NSMutableArray arrayWithArray:arr];
+            [weakSelf.busTableView reloadData];
+        }else{
+            [NSObject showHudTipStr:@"请求出错!"];
+        }
+        
+    } failue:^(id data, NSError *error) {
+        
+    }];
 }
 
 - (void) initTableView {
@@ -91,25 +135,25 @@
         make.top.equalTo(weakSelf.view).offset(0);
         make.left.equalTo(weakSelf.view).offset(0);
         make.right.equalTo(weakSelf.view).offset(0);
-        make.bottom.equalTo(weakSelf.view).offset(-44);
-    }];
-    
-    // 底部绿色
-    self.bottomBtn = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
-                                                           withFrame:CGRectZero
-                                                           withTitle:@"查看询价单详情"
-                                                      withTitleColor:[UIColor whiteColor]
-                                                              withGB:RGBA(50, 198, 7, 1)
-                                                            withFont:PINGFANG_FONT_SIZE(16)];
-    
-    [self.view addSubview:_bottomBtn];
-    
-    [_bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(weakSelf.view).offset(0);
-        make.left.equalTo(weakSelf.view).offset(0);
-        make.right.equalTo(weakSelf.view).offset(0);
-        make.height.equalTo(@44);
     }];
+    
+//    // 底部绿色
+//    self.bottomBtn = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
+//                                                           withFrame:CGRectZero
+//                                                           withTitle:@"查看询价单详情"
+//                                                      withTitleColor:[UIColor whiteColor]
+//                                                              withGB:RGBA(50, 198, 7, 1)
+//                                                            withFont:PINGFANG_FONT_SIZE(16)];
+//
+//    [self.view addSubview:_bottomBtn];
+//
+//    [_bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.equalTo(weakSelf.view).offset(0);
+//        make.left.equalTo(weakSelf.view).offset(0);
+//        make.right.equalTo(weakSelf.view).offset(0);
+//        make.height.equalTo(@44);
+//    }];
     
 }
 #pragma mark mark  - uitableview 代理方法
@@ -117,7 +161,12 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    if (_partmentTableView) {
+        return _orderDetailDataSource.count;
+    }else if(_busTableView){
+        return _busDataSource.count;
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
@@ -125,11 +174,12 @@
         static NSString *rid=@"BussListCell";
         BussListCell *cell=[tableView dequeueReusableCellWithIdentifier:rid forIndexPath:indexPath];
         [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
-        cell.firstLB.text = @"天津鑫利恒发有限公司";
-        cell.secondLB.text = @"报价时间：2017-12-20";
+        _busListDataModel = _busDataSource[indexPath.row];
+        cell.firstLB.text = [NSString stringWithFormat:@"%@",_busListDataModel.org_name];
+        cell.secondLB.text = [NSString stringWithFormat:@"报价时间：%@",_busListDataModel.create_ts];
         cell.threeLB.text = @"总金额(元): ";
-        cell.fourLB.text = @"3000";
-        cell.fiveLB.text = @"备注:  测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注";
+        cell.fourLB.text = [NSString stringWithFormat:@"%@",_busListDataModel.price];
+        cell.fiveLB.text = [NSString stringWithFormat:@"备注: %@",_busListDataModel.remark];
         
         return cell;
     }else if(_partmentTableView){
@@ -137,23 +187,24 @@
         static NSString *rid=@"OrderDetailListCell";
         OrderDetailListCell *cell=[tableView dequeueReusableCellWithIdentifier:rid forIndexPath:indexPath];
         [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
-        
-        cell.materialLB.text = @"材质：201";
-        cell.numberLB.text = @"个数(个)：2";
-        cell.heightLB.text = @"厚度：0.3";
-        cell.flowerRoadLB.text = @"纹路：无";
-        cell.itchLB.text = @"内尺：外尺";
-        cell.towardLB.text = @"面朝向：朝内";
-        cell.colorLB.text = @"颜色：宝石蓝拉丝";
-        cell.profileLB.text = @"剖面：198";
-        cell.technologyLB.text = @"工艺：";
-        cell.xlwidthLB.text = @"下料宽度：193";
-        cell.partNameLB.text = @"部件名称";
-        cell.partHeightLB.text = @"长度";
-        cell.partNumLB.text = @"数量";
-        cell.partNameContentLB.text = @"7#2#";
-        cell.partHeightContentLB.text = @"10";
-        cell.partNumContentLB.text = @"12";
+        _orderDetalTempGraphicalSepcListModel = _orderDetailDataSource[indexPath.row];
+        NSString *te = _orderDetalTempGraphicalSepcListModel.filepathList[0];
+        NSString *teX = [APP_IMAGE_URL stringByAppendingFormat:@"%@",te];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",teX]];
+        [cell.firstPic sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placerholder"]];
+        cell.materialLB.text = [NSString stringWithFormat:@"材质：%@",_orderDetalTempGraphicalSepcListModel.typeChina];
+        cell.heightLB.text = [NSString stringWithFormat:@"厚度：%@",_orderDetalTempGraphicalSepcListModel.thickness_num];
+        cell.itchLB.text = [NSString stringWithFormat:@"内外尺：%@",_orderDetalTempGraphicalSepcListModel.issizeChina];
+        cell.towardLB.text = [NSString stringWithFormat:@"朝向：%@",_orderDetalTempGraphicalSepcListModel.orientationChina];
+        cell.colorLB.text = [NSString stringWithFormat:@"颜色：%@",_orderDetalTempGraphicalSepcListModel.colorChina];
+        cell.profileLB.text = [NSString stringWithFormat:@"是否拉丝：%@",_orderDetalTempGraphicalSepcListModel.is_linesChina];
+        cell.technologyLB.text = [NSString stringWithFormat:@"工艺：%@",_orderDetalTempGraphicalSepcListModel.craftsChina];
+        NSString *gg = @"";
+        for (int i = 0; i<_orderDetalTempGraphicalSepcListModel.widthAndHeightList.count; i++) {
+            NSString *tem = [NSString stringWithFormat:@"%@     %@\n",_orderDetalTempGraphicalSepcListModel.widthAndHeightList[i],_orderDetalTempGraphicalSepcListModel.grapNameList[i]];
+            gg = [gg stringByAppendingFormat:@"%@",tem];
+        }
+        cell.xlwidthLB.text = [NSString stringWithFormat:@"规格：\n%@",gg];
         
         return cell;
     }
@@ -161,24 +212,45 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([tableView isEqual:_busTableView]) {
-        ComThreeVC *threeVC = [ComThreeVC new];
-        [self.navigationController pushViewController:threeVC animated:YES];
-        
-    }
+//    if (_busTableView) {
+//        ComThreeVC *threeVC = [ComThreeVC new];
+//        [self.navigationController pushViewController:threeVC animated:YES];
+//    }
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_busTableView) {
         return [tableView fd_heightForCellWithIdentifier:@"BussListCell" cacheByIndexPath:indexPath configuration:^(BussListCell *cell) {
-            cell.firstLB.text = @"天津鑫利恒发有限公司";
-            cell.secondLB.text = @"报价时间：2017-12-20";
+            _busListDataModel = _busDataSource[indexPath.row];
+            cell.firstLB.text = [NSString stringWithFormat:@"%@",_busListDataModel.org_name];
+            cell.secondLB.text = [NSString stringWithFormat:@"报价时间：%@",_busListDataModel.create_ts];
             cell.threeLB.text = @"总金额(元): ";
-            cell.fourLB.text = @"3000";
-            cell.fiveLB.text = @"备注:  测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注测试备注";
+            cell.fourLB.text = [NSString stringWithFormat:@"%@",_busListDataModel.price];
+            cell.fiveLB.text = [NSString stringWithFormat:@"备注: %@",_busListDataModel.remark];
         }];
     }else if (_partmentTableView){
-        return 190;
+        return [tableView fd_heightForCellWithIdentifier:@"OrderDetailListCell" cacheByIndexPath:indexPath configuration:^(OrderDetailListCell *cell) {
+            _orderDetalTempGraphicalSepcListModel = _orderDetailDataSource[indexPath.row];
+            NSString *te = _orderDetalTempGraphicalSepcListModel.filepathList[0];
+            NSString *teX = [APP_IMAGE_URL stringByAppendingFormat:@"%@",te];
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",teX]];
+            [cell.firstPic sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placerholder"]];
+            cell.materialLB.text = [NSString stringWithFormat:@"材质：%@",_orderDetalTempGraphicalSepcListModel.typeChina];
+            cell.heightLB.text = [NSString stringWithFormat:@"厚度：%@",_orderDetalTempGraphicalSepcListModel.thickness_num];
+            cell.itchLB.text = [NSString stringWithFormat:@"内外尺：%@",_orderDetalTempGraphicalSepcListModel.issizeChina];
+            cell.towardLB.text = [NSString stringWithFormat:@"朝向：%@",_orderDetalTempGraphicalSepcListModel.orientationChina];
+            cell.colorLB.text = [NSString stringWithFormat:@"颜色：%@",_orderDetalTempGraphicalSepcListModel.colorChina];
+            cell.profileLB.text = [NSString stringWithFormat:@"是否拉丝：%@",_orderDetalTempGraphicalSepcListModel.is_linesChina];
+            cell.technologyLB.text = [NSString stringWithFormat:@"工艺：%@",_orderDetalTempGraphicalSepcListModel.craftsChina];
+            NSString *gg = @"";
+            for (int i = 0; i<_orderDetalTempGraphicalSepcListModel.widthAndHeightList.count; i++) {
+                NSString *tem = [NSString stringWithFormat:@"%@     %@\n",_orderDetalTempGraphicalSepcListModel.widthAndHeightList[i],_orderDetalTempGraphicalSepcListModel.grapNameList[i]];
+                gg = [gg stringByAppendingFormat:@"%@",tem];
+            }
+            cell.xlwidthLB.text = [NSString stringWithFormat:@"规格：\n%@",gg];
+            
+            
+        }];
     }
     return 0;
 }
@@ -224,11 +296,14 @@
         make.height.equalTo(@33);
     }];
     self.firstTF = [[XTextField alloc] initWithFrame:CGRectZero];
-    _firstTF.placehoder = @"请输入订单报价";
+    _firstTF.placehoder = @"2000";
     _firstTF.font = PINGFANG_FONT_SIZE(30);
     _firstTF.textColor = [UIColor blackColor];
     _firstTF.textAlignment = NSTextAlignmentCenter;
     _firstTF.placehoderColor = RGBA(102, 102, 102, 1);
+    _firstTF.keyboardType = UIKeyboardTypeDecimalPad;
+    _firstTF.selectedRange=NSMakeRange(0,0) ;
+    _firstTF.delegate = self;
     [self.view addSubview:_firstTF];
     
     [_firstTF mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -247,15 +322,40 @@
         make.height.equalTo(@1);
     }];
     self.secondTF = [[XTextField alloc] initWithFrame:CGRectZero];
-    _secondTF.placehoder = @"添加备注";
+    _secondTF.placehoder = @"预计工期";
     _secondTF.font = PINGFANG_FONT_SIZE(14);
     _secondTF.textColor = [UIColor blackColor];
-    _secondTF.textAlignment = NSTextAlignmentCenter;
+    _secondTF.textAlignment = NSTextAlignmentLeft;
     _secondTF.placehoderColor = RGBA(102, 102, 102, 1);
     [self.view addSubview:_secondTF];
     
     [_secondTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView.mas_bottom).offset(15);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+        make.height.equalTo(@42);
+    }];
+    
+    UIView *lineView2 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
+    [self.view addSubview:lineView2];
+    
+    [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(weakSelf.secondTF.mas_bottom).offset(10);
+        make.left.equalTo(weakSelf.view).offset(16);
+        make.right.equalTo(weakSelf.view).offset(-16);
+        make.height.equalTo(@1);
+    }];
+    
+    self.threeTF = [[XTextField alloc] initWithFrame:CGRectZero];
+    _threeTF.placehoder = @"添加备注";
+    _threeTF.font = PINGFANG_FONT_SIZE(14);
+    _threeTF.textColor = [UIColor blackColor];
+    _threeTF.textAlignment = NSTextAlignmentLeft;
+    _threeTF.placehoderColor = RGBA(102, 102, 102, 1);
+    [self.view addSubview:_threeTF];
+    
+    [_threeTF mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(lineView2.mas_bottom).offset(15);
         make.left.equalTo(weakSelf.view).offset(16);
         make.right.equalTo(weakSelf.view).offset(-16);
         make.height.equalTo(@42);
@@ -269,9 +369,9 @@
                                                             withFont:PINGFANG_FONT_SIZE(16)];
     
     [self.view addSubview:_confirmBtn];
-    
+    [_confirmBtn addTarget:self action:@selector(handleOrderPrice) forControlEvents:(UIControlEventTouchUpInside)];
     [_confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.secondTF.mas_bottom).offset(30);
+        make.top.equalTo(weakSelf.threeTF.mas_bottom).offset(30);
         make.left.equalTo(weakSelf.view).offset(16);
         make.right.equalTo(weakSelf.view).offset(-16);
         make.height.equalTo(@44);
@@ -283,19 +383,117 @@
 }
 
 
+/**
+ * 订单报价接口
+ */
+- (void) handleOrderPrice {
+    NSString *price = _firstTF.text;
+    if (!price || price.length <= 0) {
+        [NSObject showHudTipStr:@"你还没有报价!"];
+        return;
+    }
+    NSString *limit_day = _secondTF.text;
+    if (!limit_day || limit_day.length <= 0) {
+        [NSObject showHudTipStr:@"请输入预计工期!"];
+        return;
+    }
+    NSString *remark = _threeTF.text;
+    if (!remark || remark.length <= 0) {
+        [NSObject showHudTipStr:@"请输入备注!"];
+        return;
+    }
+
+    NSDictionary *dict = @{
+                           @"enquiry_id":self.enquireID,
+                           @"price":price,
+                           @"response_remark":remark,
+                           @"response_day_limit":limit_day,
+                           @"save_type":@"1"
+                           };
+    [[NetAPIManager sharedManager] request_common_WithPath:APP_OFFER_SPEAK_PRICE_URL Params:dict autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
+        BaseModel *baseModel = [MTLJSONAdapter modelOfClass:[BaseModel class] fromJSONDictionary:data error:nil];
+        if (baseModel.code == 200) {
+            [NSObject showHudTipStr:@"添加成功!"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [NSObject showHudTipStr:@"添加失败!"];
+        }
+    } failue:^(id data, NSError *error) {
+        
+    }];
+    
+    
+}
+
+
+
 
 /**
  * 订货单详情
  */
+- (void) initOrderDetailData {
+    NSDictionary *dict = @{
+                           @"item_id":_enquireID
+                           };
+    [[NetAPIManager sharedManager] request_common_WithPath:APP_ORDER_DETAIL_LIST_URL Params:dict autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
+        self.orderDetalModel = [OrderDetalModel mj_objectWithKeyValues:data];
+        if (_orderDetalModel.code == 200) {
+            [NSObject showHudTipStr:@"请求成功!"];
+            DebugLog(@"解析的数据为%@",_orderDetalModel.data.argsMap.name);
+            self.orderDetalArgsMapModel = [OrderDetalArgsMapModel mj_objectWithKeyValues:_orderDetalModel.data.argsMap];
+            [self setValueForHeader];
+            
+            NSMutableArray *tempArr = [OrderDetalTempGraphicalSepcListModel mj_objectArrayWithKeyValuesArray:_orderDetalModel.data.tempGraphicalSepcList];
+            _orderDetailDataSource = [NSMutableArray arrayWithArray:tempArr];
+            [_partmentTableView reloadData];
+            
+        }else{
+
+        }
+    } failue:^(id data, NSError *error) {
+        
+    }];
+    
+    
+}
+
+
+/**
+ * 初始化头部数据
+ */
+- (void) setValueForHeader {
+    _projectNameLB.text = [NSString stringWithFormat:@"项目名称：%@",_orderDetalArgsMapModel.name];
+    _materialKindLB.text = [NSString stringWithFormat:@"材质种类：%@",_orderDetalArgsMapModel.materialType];
+    _materialNumberLB.text = [NSString stringWithFormat:@"板材总数量(张)：%@",_orderDetalArgsMapModel.materialNum];
+    _partmentSquoreLB.text = [NSString stringWithFormat:@"部件总面积(㎡)：%@",_orderDetalArgsMapModel.totalGraphicalArea];
+    _materialSumLB.text = [NSString stringWithFormat:@"板材总面积(㎡)：%@",_orderDetalArgsMapModel.consumMaterialArea];
+    _partNumberLB.text = [NSString stringWithFormat:@"部件数量(个)：%@",_orderDetalArgsMapModel.graphical_num];
+    NSString *typeList = @"";
+    for (int i = 0; i<_orderDetalArgsMapModel.byTypeList_2.count; i++) {
+        typeList = [typeList stringByAppendingFormat:@"%@",[NSString stringWithFormat:@"\n %d、%@",(i+1),_orderDetalArgsMapModel.byTypeList_2[i]]] ;
+    }
+    _materialLB.text = [NSString stringWithFormat:@"%@",typeList];
+    _cutNumberLB.text = [NSString stringWithFormat:@"下料刀数(刀)：%@",_orderDetalArgsMapModel.countcuttingnum];
+    _renderCutLB.text = [NSString stringWithFormat:@"折弯(刀)：%@",_orderDetalArgsMapModel.countbendnum];
+    _riverLB.text = [NSString stringWithFormat:@"刨槽(m)：%@",_orderDetalArgsMapModel.countgroovingnum];
+    
+    _weekSelf(weakSelf);
+    // 动态设置header高度
+    CGFloat height = [weakSelf.headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGRect frame = weakSelf.headerView.bounds;
+    frame.size.height = height;
+    weakSelf.headerView.frame = frame;
+    [weakSelf.partmentTableView setTableHeaderView:weakSelf.headerView];
+}
+
+
+
 - (void) initOrderDetailView {
-    WHITE_BG
-    [self initHeaderView];
-    [self initOrderDetailTableView];
+    
     
 }
 - (void) initHeaderView {
-    self.headerView = [UIView initWithUIViewWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, 480) withBackground:[UIColor whiteColor]];
-    [self.view addSubview:_headerView];
+    self.headerView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor whiteColor]];
     self.firstTitleLB = [UILabel initUILabelWithFrame:CGRectZero
                                                        withText:@"概要信息"
                                                   withTextColor:RGBA(0, 118, 255, 1)
@@ -435,52 +633,54 @@
                                              withFont:PINGFANG_FONT_SIZE(14)
                                           withGbColor:[UIColor whiteColor]
                                     withTextAlignment:NSTextAlignmentLeft];
+    _materialLB.numberOfLines = 0;
     [self.headerView addSubview:_materialLB];
     
     [_materialLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(lineView2.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
-        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
-    }];
-    self.heightLB = [UILabel initUILabelWithFrame:CGRectZero
-                                         withText:@"厚度: 0.3"
-                                      withTextColor:[UIColor blackColor]
-                                           withFont:PINGFANG_FONT_SIZE(14)
-                                        withGbColor:[UIColor whiteColor]
-                                  withTextAlignment:NSTextAlignmentLeft];
-    [self.headerView addSubview:_heightLB];
-    
-    [_heightLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(lineView2.mas_bottom).offset(10);
         make.right.equalTo(weakSelf.headerView).offset(-26);
-        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
+        
     }];
-    self.materialColorLB = [UILabel initUILabelWithFrame:CGRectZero
-                                           withText:@"板材颜色：宝石蓝"
-                                      withTextColor:[UIColor blackColor]
-                                           withFont:PINGFANG_FONT_SIZE(14)
-                                        withGbColor:[UIColor whiteColor]
-                                  withTextAlignment:NSTextAlignmentLeft];
-    [self.headerView addSubview:_materialColorLB];
-    
-    [_materialColorLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.materialLB.mas_bottom).offset(10);
-        make.left.equalTo(weakSelf.headerView).offset(26);
-        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
-    }];
-    self.materialGGLB = [UILabel initUILabelWithFrame:CGRectZero
-                                         withText:@"材料规格：1000*2000*5"
-                                    withTextColor:[UIColor blackColor]
-                                         withFont:PINGFANG_FONT_SIZE(14)
-                                      withGbColor:[UIColor whiteColor]
-                                withTextAlignment:NSTextAlignmentLeft];
-    [self.headerView addSubview:_materialGGLB];
-    
-    [_materialGGLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.heightLB.mas_bottom).offset(10);
-        make.right.equalTo(weakSelf.headerView).offset(-26);
-        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
-    }];
+//    self.heightLB = [UILabel initUILabelWithFrame:CGRectZero
+//                                         withText:@"厚度: 0.3"
+//                                      withTextColor:[UIColor blackColor]
+//                                           withFont:PINGFANG_FONT_SIZE(14)
+//                                        withGbColor:[UIColor whiteColor]
+//                                  withTextAlignment:NSTextAlignmentLeft];
+//    [self.headerView addSubview:_heightLB];
+//
+//    [_heightLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(lineView2.mas_bottom).offset(10);
+//        make.right.equalTo(weakSelf.headerView).offset(-26);
+//        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
+//    }];
+//    self.materialColorLB = [UILabel initUILabelWithFrame:CGRectZero
+//                                           withText:@"板材颜色：宝石蓝"
+//                                      withTextColor:[UIColor blackColor]
+//                                           withFont:PINGFANG_FONT_SIZE(14)
+//                                        withGbColor:[UIColor whiteColor]
+//                                  withTextAlignment:NSTextAlignmentLeft];
+//    [self.headerView addSubview:_materialColorLB];
+//
+//    [_materialColorLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(weakSelf.materialLB.mas_bottom).offset(10);
+//        make.left.equalTo(weakSelf.headerView).offset(26);
+//        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
+//    }];
+//    self.materialGGLB = [UILabel initUILabelWithFrame:CGRectZero
+//                                         withText:@"材料规格：1000*2000*5"
+//                                    withTextColor:[UIColor blackColor]
+//                                         withFont:PINGFANG_FONT_SIZE(14)
+//                                      withGbColor:[UIColor whiteColor]
+//                                withTextAlignment:NSTextAlignmentLeft];
+//    [self.headerView addSubview:_materialGGLB];
+//
+//    [_materialGGLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(weakSelf.heightLB.mas_bottom).offset(10);
+//        make.right.equalTo(weakSelf.headerView).offset(-26);
+//        make.width.equalTo(@((SCREEN_WIDTH-52)/2));
+//    }];
     
     self.threeTitleLB = [UILabel initUILabelWithFrame:CGRectZero
                                               withText:@"加工统计"
@@ -491,7 +691,7 @@
     [self.headerView addSubview:_threeTitleLB];
     
     [_threeTitleLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.materialGGLB.mas_bottom).offset(20);
+        make.top.equalTo(weakSelf.materialLB.mas_bottom).offset(20);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.right.equalTo(weakSelf.headerView).offset(0);
     }];
@@ -566,6 +766,7 @@
         make.left.equalTo(weakSelf.headerView).offset(16);
         make.right.equalTo(weakSelf.headerView).offset(-16);
         make.height.equalTo(@1);
+        make.bottom.equalTo(weakSelf.headerView.mas_bottom).offset(-10);
     }];
     
     
@@ -587,7 +788,9 @@
     
 }
 
-
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    return YES;
+}
 
 
 - (void)didReceiveMemoryWarning {

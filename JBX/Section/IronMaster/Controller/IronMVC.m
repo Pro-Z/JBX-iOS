@@ -60,8 +60,7 @@
     if (DEFAULTS_GET_OBJ(@"token") != nil) {
         urlStr = [APP_IRON_MASETER_URL stringByAppendingString:DEFAULTS_GET_OBJ(@"token")];
     }else{
-        [NSObject showInfoHudTipStr:@"请先登录!"];
-        return;
+        urlStr = APP_IRON_MASETER_URL;
     }
     DebugLog(@"钣金大师的访问路径%@",urlStr);
     

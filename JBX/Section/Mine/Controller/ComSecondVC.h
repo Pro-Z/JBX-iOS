@@ -12,4 +12,5 @@
 @property (nonatomic,assign) NSInteger currentPage;
 @property (nonatomic,strong) NSString *currentTitle;
 @property (nonatomic,assign) NSInteger currentID;
+@property (nonatomic,strong) NSString *enquireID;
 @end

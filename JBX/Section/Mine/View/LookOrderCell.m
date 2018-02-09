@@ -28,7 +28,7 @@
         [self.contentView addSubview:self.firstPic];
         
         [_firstPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(lineView.mas_bottom).offset(10);
+            make.centerY.equalTo(weakSelf.contentView.mas_centerY).offset(0);
             make.left.equalTo(weakSelf.contentView).offset(16);
             make.width.equalTo(@99);
             make.height.equalTo(@66);
@@ -55,12 +55,13 @@
             make.top.equalTo(weakSelf.secondLB.mas_bottom).offset(3);
             make.left.equalTo(weakSelf.firstPic.mas_right).offset(10);
             make.right.equalTo(weakSelf.contentView).offset(-38);
+            make.bottom.equalTo(weakSelf.contentView).offset(-10);
         }];
         
         [self.contentView addSubview:self.secondPic];
         
         [_secondPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(weakSelf.contentView).offset(25);
+            make.centerY.equalTo(weakSelf.contentView.mas_centerY).offset(0);
             make.right.equalTo(weakSelf.contentView).offset(-16);
             make.height.equalTo(@22);
             make.width.equalTo(@22);
@@ -102,7 +103,7 @@
                                                            withFont:PINGFANG_FONT_SIZE(16)
                                                         withGbColor:[UIColor whiteColor]
                                                   withTextAlignment:NSTextAlignmentLeft];
-        
+        _firstLB.numberOfLines = 0;
     }
     return _firstLB;
 }

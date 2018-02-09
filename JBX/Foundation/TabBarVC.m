@@ -11,7 +11,7 @@
 #import "IronMVC.h"
 
 
-@interface TabBarVC ()<DZTabBarDelegate>
+@interface TabBarVC ()<DZTabBarDelegate,UITabBarControllerDelegate>
 @property (nonatomic,strong) WorkVC *workTab;
 @property (nonatomic,strong) NewsVC *newsTab;
 @property (nonatomic,strong) ShopVC *shopTab;
@@ -26,13 +26,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = RGBA(238, 238, 238, 1);
+    self.delegate = self;
     [self initTabBarController];
     [self initTabNavigation];
+    
     // 代替中间的tabbar
     DZTabBar *tabbar = [DZTabBar new];
     tabbar.myDelegate = self;
     [self setValue:tabbar forKey:@"tabBar"];
 }
+
+
 
 /**
  初始化TabBar
@@ -44,7 +48,7 @@
     self.shopTab = [ShopVC new];
     self.messageTab = [MessageVC new];
     self.mineTab = [MineVC new];
-    _workTab.title = COMPANY_NAME;
+//    _workTab.title = COMPANY_NAME;
 
 //    UIViewController *naviA = [[UIViewController alloc] init];
     
@@ -84,6 +88,15 @@
     [self presentViewController:naviVC animated:YES completion:nil];
     
 }
+
+// 监听Tabbar
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    DebugLog(@"点击的Tab为%@",item.title);
+    if ([item.title isEqualToString:@"商家"]) {
+        [NOTIFICATIONCENTER postNotification:NOTIFICATION(@"SHOP", @{@"isShop":@"商家"})];
+    }
+}
+
 
 
 - (void)didReceiveMemoryWarning {

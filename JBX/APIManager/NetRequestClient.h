@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger,NetwrkType) {
 
 // 单例模式
 + (instancetype)shareNetAPIClient;
-
+//+ (instancetype)shareNetsAPIClient;
 
 /**
  带自动提示错误的请求接口

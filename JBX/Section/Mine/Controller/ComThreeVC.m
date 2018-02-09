@@ -9,12 +9,20 @@
 #import "ComThreeVC.h"
 #import "LookOrderCell.h"
 #import "ComSecondVC.h"
+#import "MineOfferListModel.h"
 
 @interface ComThreeVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UIView *headerView;
 @property (nonatomic,strong) UITableView *detailTableView;
 @property (nonatomic,strong) UILabel *titleLB,*orderServiceLB,*orderServiceContentLB,*timeRequireLb,*timeRequireContentLB,*pickTimeLB,*pickTimeContentLB,*otherLB,*otherContentLB,*lookOrderDetailLB;
 @property (nonatomic,strong) UIButton *bottomBtn;
+
+@property (nonatomic,strong) OfferDetailModel *offerDetailModel;
+
+@property (nonatomic,strong) NSMutableArray *dataSource;
+
+@property (nonatomic,strong) OfferDetailItemMapModel *offerDetailItemMapModel;
+
 @end
 
 @implementation ComThreeVC
@@ -23,6 +31,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     WHITE_BG
+    DebugLog(@"当前的询价单号为%@",self.requireNumber);
+    self.currentID = _currentID;
+    self.dataSource = [NSMutableArray array];
+    // 初始化数据
+    [self initDataWithRequireOrderNum:self.requireNumber];
     [self initNavigationView];
     [self initHeaderView];
     [self initTableView];
@@ -62,14 +75,16 @@
 
 - (void) initHeaderView {
     _weekSelf(weakSelf);
-    self.headerView = [UIView initWithUIViewWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, 270) withBackground:[UIColor whiteColor]];
-   
+    self.headerView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor whiteColor]];
     
+
     UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [self.headerView addSubview:lineView];
     
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.and.right.equalTo(weakSelf.headerView).offset(0);
+        make.top.equalTo(weakSelf.headerView).offset(0);
+        make.left.equalTo(weakSelf.headerView).offset(0);
+        make.right.equalTo(weakSelf.headerView).offset(0);
         make.height.equalTo(@10);
     }];
     self.titleLB = [UILabel initUILabelWithFrame:CGRectZero
@@ -84,6 +99,7 @@
         make.top.equalTo(lineView.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.right.equalTo(weakSelf.headerView).offset(-26);
+        make.height.equalTo(@22);
     }];
     UIView *lineView2 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [self.headerView addSubview:lineView2];
@@ -107,17 +123,21 @@
         make.top.equalTo(lineView2.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.width.equalTo(@((SCREEN_WIDTH-52)/5));
+        make.height.equalTo(@22);
     }];
     self.orderServiceContentLB = [UILabel initUILabelWithFrame:CGRectZero
-                                                       withText:@"激光服务"
+                                                       withText:@""
                                                   withTextColor:[UIColor blackColor]
                                                        withFont:PINGFANG_FONT_SIZE(14)
                                                     withGbColor:[UIColor whiteColor]
                                               withTextAlignment:NSTextAlignmentLeft];
+    _orderServiceContentLB.numberOfLines = 0;
+    _orderServiceContentLB.preferredMaxLayoutWidth = (SCREEN_WIDTH-52)/5*4;
+    [_orderServiceContentLB setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.headerView addSubview:_orderServiceContentLB];
     
     [_orderServiceContentLB mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(lineView2.mas_bottom).offset(10);
+        make.topMargin.equalTo(weakSelf.orderServiceLB.mas_topMargin).offset(0);
         make.left.equalTo(weakSelf.orderServiceLB.mas_right).offset(0);
         make.right.equalTo(weakSelf.headerView).offset(-26);
     }];
@@ -131,12 +151,13 @@
     [self.headerView addSubview:_timeRequireLb];
     
     [_timeRequireLb mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.orderServiceLB.mas_bottom).offset(10);
+        make.top.equalTo(weakSelf.orderServiceContentLB.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.width.equalTo(@((SCREEN_WIDTH-52)/5));
+        make.height.equalTo(@22);
     }];
     self.timeRequireContentLB = [UILabel initUILabelWithFrame:CGRectZero
-                                                      withText:@"10天"
+                                                      withText:@""
                                                  withTextColor:[UIColor blackColor]
                                                       withFont:PINGFANG_FONT_SIZE(14)
                                                    withGbColor:[UIColor whiteColor]
@@ -147,6 +168,7 @@
         make.top.equalTo(weakSelf.orderServiceContentLB.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.timeRequireLb.mas_right).offset(0);
         make.right.equalTo(weakSelf.headerView).offset(-26);
+        make.height.equalTo(@22);
     }];
     
     
@@ -162,9 +184,10 @@
         make.top.equalTo(weakSelf.timeRequireLb.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.width.equalTo(@((SCREEN_WIDTH-52)/5));
+        make.height.equalTo(@22);
     }];
     self.pickTimeContentLB = [UILabel initUILabelWithFrame:CGRectZero
-                                                     withText:@"2018-01-20"
+                                                     withText:@""
                                                 withTextColor:[UIColor blackColor]
                                                      withFont:PINGFANG_FONT_SIZE(14)
                                                   withGbColor:[UIColor whiteColor]
@@ -175,6 +198,7 @@
         make.top.equalTo(weakSelf.timeRequireLb.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.pickTimeLB.mas_right).offset(0);
         make.right.equalTo(weakSelf.headerView).offset(-26);
+        make.height.equalTo(@22);
     }];
     
     
@@ -190,14 +214,18 @@
         make.top.equalTo(weakSelf.pickTimeLB.mas_bottom).offset(10);
         make.left.equalTo(weakSelf.headerView).offset(26);
         make.width.equalTo(@((SCREEN_WIDTH-52)/5));
+        make.height.equalTo(@22);
     }];
     self.otherContentLB = [UILabel initUILabelWithFrame:CGRectZero
-                                                  withText:@"补充信息阿什顿发斯蒂芬阿斯顿发生发生的阿什顿发斯蒂芬阿斯蒂芬法法师的发斯蒂芬啊爱迪生"
+                                                  withText:@""
                                              withTextColor:[UIColor blackColor]
                                                   withFont:PINGFANG_FONT_SIZE(14)
                                                withGbColor:[UIColor whiteColor]
                                          withTextAlignment:NSTextAlignmentLeft];
     _otherContentLB.numberOfLines = 0;
+    _otherContentLB.preferredMaxLayoutWidth = (SCREEN_WIDTH-52)/5*4;
+    [_otherContentLB setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    
     [self.headerView addSubview:_otherContentLB];
     
     [_otherContentLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -205,6 +233,14 @@
         make.left.equalTo(weakSelf.otherLB.mas_right).offset(0);
         make.right.equalTo(weakSelf.headerView).offset(-26);
     }];
+//    [_otherContentLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(10.0);
+//        make.right.mas_equalTo(-10.0);
+//        make.top.mas_equalTo(currentView.mas_bottom).offset(10.0);
+//
+//        // 自适应label多行显示时，无需设置label高度
+//        // make.height.mas_equalTo(40.0);
+//    }];
     
     UIView *lineView3 = [UIView initWithUIViewWithFrame:CGRectZero withBackground:RGBA(242, 242, 242, 1)];
     [self.headerView addSubview:lineView3];
@@ -248,26 +284,31 @@
         make.top.equalTo(weakSelf.view).offset(0);
         make.left.equalTo(weakSelf.view).offset(0);
         make.right.equalTo(weakSelf.view).offset(0);
-        make.bottom.equalTo(weakSelf.view).offset(-44);
+        if (weakSelf.currentID == 1) {
+            make.bottom.equalTo(weakSelf.view).offset(-44);
+        }else{
+            make.bottom.equalTo(weakSelf.view).offset(0);
+        }
+        
     }];
-    self.bottomBtn = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
-                                                           withFrame:CGRectZero
-                                                           withTitle:@"立即报价"
-                                                      withTitleColor:[UIColor whiteColor]
-                                                              withGB:RGBA(50, 198, 7, 1)
-                                                            withFont:PINGFANG_FONT_SIZE(16)];
-    
-    [self.view addSubview:_bottomBtn];
-    
-    [_bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(weakSelf.view).offset(0);
-        make.left.equalTo(weakSelf.view).offset(0);
-        make.right.equalTo(weakSelf.view).offset(0);
-        make.height.equalTo(@44);
-    }];
-    [_bottomBtn addTarget:self action:@selector(orderPriceNow) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    
+    if (_currentID == 1) {
+        self.bottomBtn = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
+                                                  withFrame:CGRectZero
+                                                  withTitle:@"立即报价"
+                                             withTitleColor:[UIColor whiteColor]
+                                                     withGB:RGBA(50, 198, 7, 1)
+                                                   withFont:PINGFANG_FONT_SIZE(16)];
+        
+        [self.view addSubview:_bottomBtn];
+        
+        [_bottomBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(weakSelf.view).offset(0);
+            make.left.equalTo(weakSelf.view).offset(0);
+            make.right.equalTo(weakSelf.view).offset(0);
+            make.height.equalTo(@44);
+        }];
+        [_bottomBtn addTarget:self action:@selector(orderPriceNow) forControlEvents:(UIControlEventTouchUpInside)];
+    }
 }
 
 - (void) orderPriceNow {
@@ -275,6 +316,7 @@
     ComSecondVC *secondVC = [ComSecondVC new];
     secondVC.currentPage = -1;
     secondVC.currentTitle = @"订单报价";
+    secondVC.enquireID = self.requireNumber;
     [self.navigationController pushViewController:secondVC animated:YES];
 }
 
@@ -283,33 +325,94 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return _dataSource.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
     static NSString *rid=@"LookOrderCell";
     LookOrderCell *cell=[tableView dequeueReusableCellWithIdentifier:rid forIndexPath:indexPath];
     [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
-    
-    cell.firstLB.text = @"订货单号：123";
-    cell.secondLB.text = @"部件个数：123";
-    cell.threeLB.text = @"定制状态：已完成";
+    self.offerDetailItemMapModel = [MTLJSONAdapter modelOfClass:[OfferDetailItemMapModel class] fromJSONDictionary:_dataSource[indexPath.row] error:nil];
+    cell.firstLB.text = [NSString stringWithFormat:@"订货单号：%@",_offerDetailItemMapModel.item_id];
+    cell.secondLB.text = [NSString stringWithFormat:@"部件个数：%ld",_offerDetailItemMapModel.count];
+    cell.threeLB.text = [NSString stringWithFormat:@"定制状态：%@",_offerDetailItemMapModel.respStatus];
     cell.fourLB.text = @"详情";
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 订货单详情
+    self.offerDetailItemMapModel = [MTLJSONAdapter modelOfClass:[OfferDetailItemMapModel class] fromJSONDictionary:_dataSource[indexPath.row] error:nil];
     ComSecondVC *secondVC = [ComSecondVC new];
     secondVC.currentPage = -2;
     secondVC.currentTitle = @"订货单详情";
+    secondVC.enquireID = _offerDetailItemMapModel.item_id;
     [self.navigationController pushViewController:secondVC animated:YES];
     
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 88;
+    return [_detailTableView fd_heightForCellWithIdentifier:@"LookOrderCell" cacheByIndexPath:indexPath configuration:^(LookOrderCell *cell) {
+        self.offerDetailItemMapModel = [MTLJSONAdapter modelOfClass:[OfferDetailItemMapModel class] fromJSONDictionary:_dataSource[indexPath.row] error:nil];
+        cell.firstLB.text = [NSString stringWithFormat:@"订货单号：%@",_offerDetailItemMapModel.item_id];
+        cell.secondLB.text = [NSString stringWithFormat:@"部件个数：%ld",_offerDetailItemMapModel.count];
+        cell.threeLB.text = [NSString stringWithFormat:@"定制状态：%@",_offerDetailItemMapModel.respStatus];
+        cell.fourLB.text = @"详情";
+    }];
 }
+
+
+/**
+ 初始化询价详情的数据
+
+ @param number 询价单号
+ */
+- (void) initDataWithRequireOrderNum:(NSString*)number {
+    NSString *ids = @"";
+    if (_currentID == 1) {
+        ids = @"1";
+    }else if(_currentID == 3){
+        ids = @"0";
+    }
+    NSDictionary *dict = @{
+                           @"enquiry_id":number,
+                           @"sort":ids
+                           };
+    _weekSelf(weakSelf);
+    [[NetAPIManager sharedManager] request_common_WithPath:APP_REQUIRE_DETAIL_LIST_URL Params:dict autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
+        
+        if (_currentID == 3 || _currentID == 1) {
+            self.offerDetailModel = [MTLJSONAdapter modelOfClass:[OfferDetailModel class] fromJSONDictionary:data error:nil];
+            if (_offerDetailModel.code == 200) {
+                [NSObject showHudTipStr:@"返回成功"];
+                // 开始赋值
+                _orderServiceContentLB.text = _offerDetailModel.data.enquiryMap.demands;
+                _timeRequireContentLB.text = [NSString stringWithFormat:@"%ld天",_offerDetailModel.data.enquiryMap.day_limit];
+                _pickTimeContentLB.text = [NSString stringWithFormat:@"%ld",_offerDetailModel.data.enquiryMap.pickup_day];
+                _otherContentLB.text = _offerDetailModel.data.enquiryMap.remark;
+                
+                CGFloat height = [weakSelf.headerView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+                CGRect frame = weakSelf.headerView.bounds;
+                frame.size.height = height;
+                weakSelf.headerView.frame = frame;
+                [weakSelf.detailTableView setTableHeaderView:weakSelf.headerView];
+                
+                // tableView
+                _dataSource = [NSMutableArray arrayWithArray:_offerDetailModel.data.itemmap];
+                [weakSelf.detailTableView reloadData];
+            }else{
+                [NSObject showHudTipStr:_offerDetailModel.msg];
+            }
+        }
+        
+        
+        
+    } failue:^(id data, NSError *error) {
+        
+    }];
+    
+}
+
 
 
 

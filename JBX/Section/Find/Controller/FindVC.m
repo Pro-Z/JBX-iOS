@@ -16,6 +16,8 @@
 #import "NewsTitleListModel.h"
 #import "NewsListVC.h"
 #import "NoNetView.h"
+#import "NewsListModel.h"
+#import "IronMasterVC.h"
 
 @interface CollectionCellWhite : UICollectionViewCell
 
@@ -43,6 +45,9 @@
 @property (nonatomic,strong) NewsTitleListModel *newsTitleListModel;
 @property (nonatomic,strong) NSArray *picArr;
 @property (nonatomic,strong) NSMutableArray *dataSource;
+@property (nonatomic,strong) NewsListModel *newsListModel;
+@property (nonatomic,strong) NSMutableArray *newsListDataSource;
+@property (nonatomic,strong) NewsEcInformationArrModel *newsEcInformationArrModel;
 @end
 
 @implementation FindVC
@@ -51,6 +56,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataSource = [NSMutableArray array];
+    self.newsListDataSource = [NSMutableArray array];
     [self initCenterSearchView];
     [self initDataSource];
 }
@@ -115,6 +121,13 @@
             [_dataSource addObjectsFromArray:arr];
             [self initHeaderView];
             [self initTableView];
+            
+            
+            
+            // 初始化新闻模块的数据
+            int x = arc4random() % _newsTitleListModel.data.EcInformationCat.count;
+            NSString *idxs = [_newsTitleListModel.data.EcInformationCat[x] ids];
+            [self initData:idxs withPage:1 withSearchTxt:@""];
             
         }else{
             [NSObject showHudTipStr:_newsTitleListModel.msg];
@@ -376,7 +389,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return _newsListDataSource.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView setSeparatorStyle:(UITableViewCellSeparatorStyleNone)];
@@ -385,19 +398,48 @@
     if(cell==nil){
         cell=[[NewsListCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         [cell setSelectionStyle:(UITableViewCellSelectionStyleNone)];
-        cell.titleLabel.text = @"测试标题";
-        cell.timeMillsLabel.text = @"测试副标题";
+        self.newsEcInformationArrModel = [MTLJSONAdapter modelOfClass:[NewsEcInformationArrModel class] fromJSONDictionary:_newsListDataSource[indexPath.row] error:nil];
+        [cell setValueForCellWithtitle:_newsEcInformationArrModel.title withAddTime:_newsEcInformationArrModel.add_time withPicUrl:_newsEcInformationArrModel.imgUrl];
     }
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DEFAULTS_SET_INTEGER(2, @"WEBTYPE");
+    IronMasterVC *ironMasterVC = [IronMasterVC new];
+    self.newsEcInformationArrModel = [MTLJSONAdapter modelOfClass:[NewsEcInformationArrModel class] fromJSONDictionary:_newsListDataSource[indexPath.row] error:nil];
+    ironMasterVC.content = _newsEcInformationArrModel.content;
+    ironMasterVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ironMasterVC animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
 }
 
+
+- (void) initData:(NSString*)newsID withPage:(NSInteger) indexs withSearchTxt:(NSString *)searchTxt{
+    // 初始化数据
+    NSString *indexStr = [NSString stringWithFormat:@"%ld",indexs];
+    NSDictionary *dict = @{
+                           @"Information_id":newsID,
+                           @"page":indexStr,
+                           @"pageNum":@"10",
+                           @"titleName":searchTxt
+                           };
+    //    DebugLog(@"传递的参数为%@",dict);
+    _weekSelf(weakSelf);
+    [[NetAPIManager sharedManager] request_common_WithPath:APP_GET_NEWS_LIST_URL Params:dict autoShowProgressHUD:NO typeGets:YES succesBlack:^(id data) {
+        self.newsListModel = [MTLJSONAdapter modelOfClass:[NewsListModel class] fromJSONDictionary:data error:nil];
+        if (_newsListModel.code == 200) {
+            self.newsListDataSource = [NSMutableArray arrayWithArray:_newsListModel.data.EcInformation];
+            [weakSelf.findTableView reloadData];
+        }else{
+            [NSObject showHudTipStr:_newsListModel.msg];
+        }
+    } failue:^(id data, NSError *error) {
+        
+    }];
+}
 
 
 

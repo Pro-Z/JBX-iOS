@@ -29,6 +29,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     BLACK_STATUS_BAR_COLOR
+    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
+    [self.navigationController.navigationBar setTintColor:APP_COLOR_BASE_NAV];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -65,14 +67,14 @@
 }
 
 - (void) backBtn:(UIButton *)btn {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
 - (void) handleEnsure {
     // 点击确定
     if (self.org_id == nil) {
-        [NSObject showInfoHudTipStr:@"组织机构不能为空!"];
+        [NSObject showHudTipStr:@"组织机构不能为空!"];
         return;
     }
     [self initSetOrganData:_org_id];
@@ -87,7 +89,7 @@
     [self.view addSubview:_checkOrganTableView];
     _weekSelf(weakSelf);
     [_checkOrganTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(weakSelf.view).offset(10);
+        make.top.equalTo(weakSelf.view).offset(NAVIGATION_HEIGHTS+STATUS_BAR_HEIGHT);
         make.left.equalTo(weakSelf.view).offset(0);
         make.right.equalTo(weakSelf.view).offset(0);
         make.bottom.equalTo(weakSelf.view).offset(0);
@@ -101,13 +103,14 @@
     setOrgidModel.token = tokens;
     setOrgidModel.org_id = org_id;
     [[NetAPIManager sharedManager] request_SetOrgan_WithParams:setOrgidModel successBlock:^(id data) {
-        RequestModel *requestModel = data;
-        if (requestModel.status == 200) {
-            [NSObject showSuccessHudTipStr:@"设置成功!"];
+        BaseModel *requestModel = data;
+        if (requestModel.code == 200) {
+            [NSObject showHudTipStr:@"设置成功!"];
             DEFAULTS_SET_OBJ(_appName,@"appname");
             DEFAULTS_SET_OBJ(org_id, @"org_id");
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
-            [NSObject showInfoHudTipStr:requestModel.msg];
+            [NSObject showHudTipStr:requestModel.msg];
         }
     } failure:^(id data, NSError *error) {
         

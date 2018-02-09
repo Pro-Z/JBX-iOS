@@ -8,11 +8,32 @@
 
 #import "ShopListCell.h"
 #import "ShopListItemCell.h"
+
+
+
+
 @implementation ShopListCell
 
-- (void)setFirstTxt:(NSString *)firstTxt withFirstPic:(NSString *)firstPicName {
+- (void)setFirstTxt:(NSString *)firstTxt withFirstPic:(NSString *)firstPicName withFirstPic:(NSArray*)picArr withFirstTxt:(NSArray*)firstsTxt withFirstPrice:(NSArray*)priceArr{
     self.firstIconPic.image = [UIImage imageNamed:firstPicName];
     self.firstLabel.text = firstTxt;
+    
+    self.firstPicArr = [NSMutableArray arrayWithArray:picArr];
+    self.firstTxtArr = [NSMutableArray arrayWithArray:firstsTxt];
+    self.firstPriceArr = [NSMutableArray arrayWithArray:priceArr];
+    
+}
+
+- (void) initDataSource {
+//    NSArray *firstPic = @[@"xianhuo1",@"xianhuo2",@"xianhuo3"
+//                          ,@"xianhuo4",@"xianhuo5",@"xianhuo6"];
+//    NSArray *firstTxt = @[@"201不锈钢板",@"不锈钢方管",@"304不锈钢板",
+//                          @"不锈钢圆管",@"不锈钢圆管",@"不锈钢卷"];
+//    NSArray *firstPrice = @[@"¥ 16.8/kg",@"¥ 10.0/kg",@"¥ 16.9/kg",
+//                            @"¥ 18.7/kg",@"¥ 16.0/kg",@"¥ 16.8/kg"];
+//
+//    [self.horiztalCollectionView reloadData];
+    
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -75,7 +96,7 @@
             make.bottom.equalTo(weakSelf.contentView).offset(0);
         }];
         
-    
+        [self initDataSource];
         
         
     }
@@ -126,13 +147,18 @@
 
 /** 每组cell的个数*/
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 20;
+    return 6;
 }
 
 /** cell的内容*/
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ShopListItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ShopListItemCell" forIndexPath:indexPath];
 //    cell.backgroundColor = [UIColor orangeColor];
+    cell.itemPic.image = [UIImage imageNamed:_firstPicArr[indexPath.row]];
+    cell.itemFirstLabel.text = [NSString stringWithFormat:@"%@",_firstTxtArr[indexPath.row]];
+    cell.itemSecondLabel.text = [NSString stringWithFormat:@"%@",_firstPriceArr[indexPath.row]];
+    
+    
     return cell;
 }
 

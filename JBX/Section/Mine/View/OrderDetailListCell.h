@@ -10,5 +10,5 @@
 
 @interface OrderDetailListCell : UITableViewCell
 @property (nonatomic,strong) UIImageView *firstPic;
-@property (nonatomic,strong) UILabel *materialLB,*numberLB,*heightLB,*flowerRoadLB,*itchLB,*towardLB,*colorLB,*profileLB,*technologyLB,*xlwidthLB,*partNameLB,*partHeightLB,*partNumLB,*partNameContentLB,*partHeightContentLB,*partNumContentLB;
+@property (nonatomic,strong) UILabel *materialLB,*heightLB,*itchLB,*towardLB,*colorLB,*profileLB,*technologyLB,*xlwidthLB;
 @end

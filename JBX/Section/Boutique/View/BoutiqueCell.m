@@ -80,16 +80,17 @@
         [_firstBTN mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(weakSelf.contentLB.mas_bottom).offset(10);
             make.left.equalTo(weakSelf.contentView).offset(10);
-            make.width.equalTo(@40);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
+//            make.width.equalTo(@40);
         }];
         
-        [self.contentView addSubview:self.secondBTN];
+//        [self.contentView addSubview:self.secondBTN];
         
-        [_secondBTN mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(weakSelf.contentLB.mas_bottom).offset(10);
-            make.left.equalTo(weakSelf.firstBTN.mas_right).offset(10);
-            make.width.equalTo(@40);
-        }];
+//        [_secondBTN mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.equalTo(weakSelf.contentLB.mas_bottom).offset(10);
+//            make.left.equalTo(weakSelf.firstBTN.mas_right).offset(10);
+//            make.width.equalTo(@40);
+//        }];
         
         UIView *lineView = [UIView initWithUIViewWithFrame:CGRectZero withBackground:[UIColor whiteColor]];
         [self.contentView addSubview:lineView];
@@ -143,8 +144,8 @@
     if (_partPic==nil) {
         self.partPic = [UIImageView initWithImageViewWithFrame:CGRectZero
                                                                 withImageName:@"placerholder"];
-//        _partPic.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-//        _partPic.contentMode = UIViewContentModeScaleAspectFit;
+        _partPic.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _partPic.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _partPic;
 }
@@ -162,33 +163,33 @@
     return _contentLB;
 }
 
-- (UIButton *)firstBTN {
+- (UILabel *)firstBTN {
     if (_firstBTN==nil) {
-        self.firstBTN = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
-                                                               withFrame:CGRectZero
-                                                               withTitle:@""
-                                                          withTitleColor:RGBA(3, 115, 228, 1)
-                                                                  withGB:[UIColor whiteColor]
-                                                                withFont:PINGFANG_FONT_SIZE(9)];
+        self.firstBTN = [UILabel initUILabelWithFrame:CGRectZero
+                                             withText:@""
+                                        withTextColor:RGBA(3, 115, 228, 1)
+                                             withFont:PINGFANG_FONT_SIZE(9)
+                                          withGbColor:[UIColor whiteColor]
+                                    withTextAlignment:NSTextAlignmentLeft];
         
         
     }
     return _firstBTN;
 }
 
-- (UIButton *)secondBTN {
-    if (_secondBTN==nil) {
-        self.secondBTN = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
-                                                 withFrame:CGRectZero
-                                                 withTitle:@""
-                                            withTitleColor:RGBA(3, 115, 228, 1)
-                                                    withGB:[UIColor whiteColor]
-                                                  withFont:PINGFANG_FONT_SIZE(9)];
-        
-        
-    }
-    return _secondBTN;
-}
+//- (UIButton *)secondBTN {
+//    if (_secondBTN==nil) {
+//        self.secondBTN = [UIButton initButtonWithButtonType:(UIButtonTypeCustom)
+//                                                 withFrame:CGRectZero
+//                                                 withTitle:@""
+//                                            withTitleColor:RGBA(3, 115, 228, 1)
+//                                                    withGB:[UIColor whiteColor]
+//                                                  withFont:PINGFANG_FONT_SIZE(9)];
+//
+//
+//    }
+//    return _secondBTN;
+//}
 
 
 @end

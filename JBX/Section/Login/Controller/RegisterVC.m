@@ -7,7 +7,8 @@
 //
 
 #import "RegisterVC.h"
-
+#import "RegModel.h"
+#import "NetSsoClient.h"
 @interface RegisterVC ()
 @property (nonatomic,strong) UIImageView *registerIcon;
 @property (nonatomic,strong) UITextField *usernameEdt;
@@ -17,6 +18,8 @@
 @property (nonatomic,strong) UIImageView *checkIcon;
 @property (nonatomic,strong) UILabel *agreeLabel;
 @property (nonatomic,strong) UIButton *sendVerifyBtn;
+@property (nonatomic,strong) RegModel *regModel;
+@property (nonatomic,strong) NSString *codeData;
 @end
 
 @implementation RegisterVC
@@ -24,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.codeData = @"";
     [self initNavigationBar];
     [self initRegsiterView];
 }
@@ -193,26 +197,48 @@
 
 // 注册
 - (void)handleRegister {
-    RegisterModel *registerModel = [RegisterModel new];
-    registerModel.userName = self.usernameEdt.text;
-    registerModel.password = _passwordEdt.text;
-    registerModel.verifyCode = _verifyCodeEdt.text;
-    NSString *isEmpty = [registerModel checkIsEmpty];
-    if (isEmpty) {
-        [NSObject showInfoHudTipStr:isEmpty];
+    NSString *username = _usernameEdt.text;
+    if (!username || username.length <= 0) {
+        [NSObject showHudTipStr:@"请输入手机号!"];
         return;
     }
-    [[NetAPIManager sharedManager] request_register_WithParams:registerModel successBlock:^(id data) {
-        
+    NSString *password = _passwordEdt.text;
+    if (!password || password.length <= 0) {
+        [NSObject showHudTipStr:@"请输入密码!"];
+        return;
+    }
+    NSString *verifyCode = _verifyCodeEdt.text;
+    if (!verifyCode || verifyCode.length <= 0) {
+        [NSObject showHudTipStr:@"验证码不能为空!"];
+        return;
+    }
+    NSDictionary *dict = @{
+                           @"phone":username,
+                           @"password":password,
+                           @"verifyCode":verifyCode,
+                           @"smsToken":_codeData,
+                           @"isWap":@"1"
+                           };
+    [[NetSsoClient shareNetAPIClient] requestJsonDataWithPath:APP_REGISTER_URL withParams:dict withMethedType:NetwrkType_Post autoShowProgressHUD:YES success:^(id data) {
+        RequestModel *requestModel = [MTLJSONAdapter modelOfClass:[RequestModel class] fromJSONDictionary:data error:nil];
+        if (requestModel.status == 200) {
+            DEFAULTS_SET_OBJ(username, @"APP_USERNAME");
+            DEFAULTS_SET_OBJ(password, @"APP_PAW");
+            [NSObject showHudTipStr:@"注册成功!"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [NSObject showHudTipStr:requestModel.msg];
+        }
+
     } failure:^(id data, NSError *error) {
-        
+        [NSObject showError:error];
     }];
 }
 
 // 获取验证码
 - (void) sendVerifyCode {
     if (_usernameEdt.text.length<=0) {
-        [NSObject showInfoHudTipStr:@"请输入手机号码!"];
+        [NSObject showHudTipStr:@"请输入手机号码!"];
         return;
     }
     [self openCountdown];
@@ -220,13 +246,21 @@
     sendSMSModel.toPhone = _usernameEdt.text;
     NSString *isEmpty = [sendSMSModel checkIsEmpty];
     if (isEmpty) {
-        [NSObject showInfoHudTipStr:isEmpty];
+        [NSObject showHudTipStr:isEmpty];
         return ;
     }
-    [[NetAPIManager sharedManager] request_SendSms_WithParams:sendSMSModel successBlock:^(id data) {
+    NSDictionary *dict = @{@"toPhone":sendSMSModel.toPhone};
+    [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:APP_GET_SMS_URL withParams:dict withMethedType:NetwrkTyp_Get autoShowProgressHUD:YES success:^(id data) {
+        self.regModel = [RegModel mj_objectWithKeyValues:data];
+        if (_regModel.code == 200) {
+            [NSObject showHudTipStr:@"发送成功!"];
+            _codeData = _regModel.data;
+        }else{
+            [NSObject showHudTipStr:_regModel.msg];
+        }
         
     } failure:^(id data, NSError *error) {
-        
+        DebugLog(@"出错!");
     }];
     
     

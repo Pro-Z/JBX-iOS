@@ -141,7 +141,7 @@
     NSString *arr = [[self.dataArr objectAtIndex:indexPath.row]objectForKey:@"menuname"];
     NSString *arrPic = [[self.dataArr objectAtIndex:indexPath.row]objectForKey:@"menupic"];
 //    DebugLog(@"遍历%@",[arr objectAtIndex:indexPath.row]);
-    [cell setFirstTxt:arr  withFirstPic:arrPic];
+//    [cell setFirstTxt:arr  withFirstPic:arrPic ];
 //    cell.textLabel.text = @"测试";
     return cell;
 }

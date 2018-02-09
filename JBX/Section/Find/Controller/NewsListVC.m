@@ -115,7 +115,7 @@
 
     }];
     
-    _newsTableView.zh_reloadAnimationType = zhTableViewAnimationTypeSlideFromLeft;
+//    _newsTableView.zh_reloadAnimationType = zhTableViewAnimationTypeSlideFromLeft;
     [self.view addSubview:_newsTableView];
     _weekSelf(weakSelf)
     [_newsTableView mas_makeConstraints:^(MASConstraintMaker *make) {

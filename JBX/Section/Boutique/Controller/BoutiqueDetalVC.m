@@ -33,7 +33,7 @@
 }
 - (void) initScrollView {
     self.scrollView = [[UIScrollView alloc] initWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, SCREEN_HIGHT)];
-    _scrollView.backgroundColor = [UIColor whiteColor];
+    _scrollView.backgroundColor = RGBA(246, 246, 246, 1);
     _scrollView.bounces = YES;
     _scrollView.delegate = self;
     [self.view addSubview:_scrollView];

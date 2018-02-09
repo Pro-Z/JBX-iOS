@@ -28,15 +28,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    WHITE_STATUS_BAR_COLOR
     [self initDataSource];
     [self initConfigurationNavigation];
     [self initHeaderCardView];
     [self initMineListTableview];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+//    WHITE_STATUS_BAR_COLOR
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBarTintColor:APP_COLOR_BASE_NAV];
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+//    BLACK_STATUS_BAR_COLOR
+}
+
 // 配置导航头
 - (void) initConfigurationNavigation {
     self.navigationItem.title = @"我的";
+    [self.navigationController.navigationBar setBarTintColor:APP_COLOR_BASE_NAV];
     UIButton *rightBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     rightBtn.frame = CGRectMake(0, 0, 44, 44);
     [rightBtn setImage:[UIImage imageNamed:@"my_nav_invitation"] forState:(UIControlStateNormal)];
@@ -46,7 +59,9 @@
 }
 // 扫描二维码
 - (void) contactBtn {
-    
+//    LoginVC *loginVC = [LoginVC new];
+//    loginVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:loginVC animated:YES];
 }
 
 // 数据源
@@ -82,6 +97,10 @@
                          },
                      @{
                          @"itemTxt":@"设置",
+                         @"itemPic":@"my_list_set"
+                         },
+                     @{
+                         @"itemTxt":@"退出登录",
                          @"itemPic":@"my_list_set"
                          }
                      ];
@@ -197,7 +216,7 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 8;
+    return _dataArr.count;
 }
 #pragma mark - UITableview 代理方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,12 +236,20 @@
     return 48;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 2||indexPath.row == 3) {
-        // 我的询价 我的报价
-        MineOfferVC *mineOffAC = [MineOfferVC new];
-        mineOffAC.currentID = indexPath.row;
-        mineOffAC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:mineOffAC animated:YES];
+//    if (indexPath.row == 2||indexPath.row == 3) {
+//        // 我的询价 我的报价
+//        MineOfferVC *mineOffAC = [MineOfferVC new];
+//        mineOffAC.currentID = indexPath.row;
+//        mineOffAC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:mineOffAC animated:YES];
+//    }
+    if (indexPath.row == 8) {
+        DEFAULTS_SET_OBJ(@"", @"APP_USERNAME");
+        DEFAULTS_SET_OBJ(@"", @"APP_PAW");
+        [NOTIFICATIONCENTER postNotification:NOTIFICATION(@"LOGIN", @{@"isLogin":@(NO)})];
+        LoginVC *loginVC = [LoginVC new];
+        loginVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
     }
     
 }

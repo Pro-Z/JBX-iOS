@@ -27,4 +27,6 @@
 #define DEFAULTS_GET_INTEGER(key)           [DEFAULTS() integerForKey:key]
 #define DEFAULTS_SET_INTEGER(Integer, key)  [DEFAULTS() setInteger:Integer forKey:key]
 
+#define NOTIFICATION(NAME,dictionary)       [NSNotification notificationWithName:NAME object:nil userInfo:dictionary]
+
 #endif /* UserDefaultMacro_h */

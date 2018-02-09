@@ -29,7 +29,7 @@
     // 设置qq
     [[UMSocialManager defaultManager] setPlaform:(UMSocialPlatformType_QQ) appKey:@"1106627131" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     // 设置微信
-    [[UMSocialManager defaultManager] setPlaform:(UMSocialPlatformType_WechatSession) appKey:@"" appSecret:@"" redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:(UMSocialPlatformType_WechatSession) appKey:@"wx06f743d492caa4c3" appSecret:@"e380fe2466a5413506b1ea0860c7ac93" redirectURL:@"http://mobile.umeng.com/social"];
     
     
     // 配置键盘
@@ -49,13 +49,13 @@
     }
     BOOL isFirst = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirst1"];
     DebugLog(@"打印%@",isFirst?@"YES":@"NO");
-    if (!isFirst) {
-        GuideVC *guideVC = [GuideVC new];
-        self.window.rootViewController = guideVC;
-    }else{
+//    if (!isFirst) {
+//        GuideVC *guideVC = [GuideVC new];
+//        self.window.rootViewController = guideVC;
+//    }else{
         LaunchVC *launch = [LaunchVC new];
         self.window.rootViewController = launch;
-    }
+//    }
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

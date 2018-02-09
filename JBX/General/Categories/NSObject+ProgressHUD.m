@@ -89,14 +89,14 @@
 - (id)handleResponse:(id)responseJSON autoShowError:(BOOL)autoShowError{
     NSError *error = nil;
     //TODO:code为非0值时，表示有错
-    NSNumber *resultCode = [responseJSON valueForKeyPath:@"status"];
-    NSString *resultString = [responseJSON valueForKeyPath:@"msg"];
-    // 系统异常处理
-    if (resultCode.integerValue != 0) {
-        error = [NSError errorWithDomain:@"" code:resultCode.integerValue userInfo:responseJSON];
-        TipAlert(@"%@",resultString);
-        return error;
-    }
+//    NSNumber *resultCode = [responseJSON valueForKeyPath:@"code"];
+//    NSString *resultString = [responseJSON valueForKeyPath:@"msg"];
+//    // 系统异常处理
+//    if (resultCode.integerValue != 200) {
+//        error = [NSError errorWithDomain:@"" code:resultCode.integerValue userInfo:responseJSON];
+//        TipAlert(@"%@",resultString);
+//        return error;
+//    }
 //    if (resultCode.integerValue == 0) {
     
 //        error = [NSError errorWithDomain:@"" code:resultCode.integerValue userInfo:responseJSON];

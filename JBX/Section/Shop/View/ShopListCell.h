@@ -13,5 +13,8 @@
 @property (nonatomic,strong) UILabel *firstLabel;
 @property (nonatomic,strong) UIImageView *goPic;
 @property (nonatomic,strong) UICollectionView *horiztalCollectionView;
-- (void)setFirstTxt:(NSString*)firstTxt withFirstPic:(NSString*)firstPicName;
+//- (void)setFirstTxt:(NSString*)firstTxt withFirstPic:(NSString*)firstPicName;
+- (void)setFirstTxt:(NSString *)firstTxt withFirstPic:(NSString *)firstPicName withFirstPic:(NSArray*)picArr withFirstTxt:(NSArray*)firstsTxt withFirstPrice:(NSArray*)priceArr;
+
+@property (nonatomic,strong) NSMutableArray *firstPicArr,*firstTxtArr,*firstPriceArr;
 @end

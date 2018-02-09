@@ -52,6 +52,7 @@
 #import "zhTableViewAnimations.h"
 #import <UMCommon/UMCommon.h>
 #import <UShareUI/UShareUI.h>
+#import <MJExtension/MJExtension.h>
 
 #pragma mark - Categories
 #import "UILabel+Lazy.h"
@@ -67,6 +68,7 @@
 #import "NSDate+Lazy.h"
 #import "FastModel.h"
 #import "MBProgressHUD+Toast.h"
+#import "MJBaseModel.h"
 
 #pragma mark - custom view
 #import "DZSearchBar.h"

@@ -7,6 +7,7 @@
 //
 
 #import "ForgetVC.h"
+#import "RegModel.h"
 
 @interface ForgetVC ()
 @property (nonatomic,strong) UIImageView *forgetIcon;
@@ -14,6 +15,8 @@
 @property (nonatomic,strong) UITextField *verifyCodeEdt;
 @property (nonatomic,strong) UIButton *sendVerifyBtn;
 @property (nonatomic,strong) UIButton *forgetBtn;
+@property (nonatomic,strong) NSString *codeData;
+@property (nonatomic,strong) RegModel *regModel;
 @end
 
 @implementation ForgetVC
@@ -21,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.codeData = @"";
     [self initNavigationBar];
     [self initForgetView];
 }
@@ -146,10 +150,18 @@
         [NSObject showInfoHudTipStr:isEmpty];
         return;
     }
-    [[NetAPIManager sharedManager] request_SendSms_WithParams:sendSMSModel successBlock:^(id data) {
+    NSDictionary *dict = @{@"toPhone":sendSMSModel.toPhone};
+    [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:APP_GET_SMS_URL withParams:dict withMethedType:NetwrkTyp_Get autoShowProgressHUD:YES success:^(id data) {
+        self.regModel = [RegModel mj_objectWithKeyValues:data];
+        if (_regModel.code == 200) {
+            [NSObject showHudTipStr:@"发送成功!"];
+            _codeData = _regModel.data;
+        }else{
+            [NSObject showHudTipStr:_regModel.msg];
+        }
         
     } failure:^(id data, NSError *error) {
-        
+        DebugLog(@"出错!");
     }];
 }
 
@@ -189,6 +201,7 @@
     navi.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     confirmVC.phoneStr = _usernameEdt.text;
     confirmVC.verifyCodeStr = _verifyCodeEdt.text;
+    confirmVC.codeData = _codeData;
     NSString *isEmpty = [self checkIsEmpty];
     if (isEmpty) {
         [NSObject showInfoHudTipStr:isEmpty];

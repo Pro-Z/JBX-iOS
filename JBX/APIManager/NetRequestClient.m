@@ -23,30 +23,59 @@ static NetRequestClient *_sharedNetAPIClient = nil;
 + (instancetype)shareNetAPIClient {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedNetAPIClient = [[NetRequestClient alloc] initWithBaseUrl:[NSURL URLWithString:APP_BASE_URL]];
+        _sharedNetAPIClient = [[NetRequestClient alloc] initWithBaseUrl:[NSURL URLWithString:APP_BASE_URL] withType:0];
     });
     return _sharedNetAPIClient;
 }
+//+ (instancetype)shareNetsAPIClient {
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        _sharedNetAPIClient = [[NetRequestClient alloc] initWithBaseUrl:[NSURL URLWithString:APP_BASE_SSO_URL] withType:1];
+//    });
+//    return _sharedNetAPIClient;
+//}
 
-- (instancetype)initWithBaseUrl:(NSURL *)url {
+- (instancetype)initWithBaseUrl:(NSURL *)url withType:(NSInteger)index {
     self = [super init];
     if (self) {
-        self.sessionManager = [[AFHTTPSessionManager new] initWithBaseURL:url];
+        self.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:url];
         self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+//        self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
         self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
-        // 往header里面添加值
-        if (DEFAULTS_GET_OBJ(@"token") != nil) {
-            self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-            [self.sessionManager.requestSerializer setValue:[@"bearer;" stringByAppendingString:DEFAULTS_GET_OBJ(@"token")] forHTTPHeaderField:@"Authorization"];
-            [self.sessionManager.requestSerializer setValue:DEFAULTS_GET_OBJ(@"org_id") forHTTPHeaderField:@"org_id"];
+        if (index == 0) {
+            // 往header里面添加值
+            if (DEFAULTS_GET_OBJ(@"token") != nil) {
+                self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+                [self.sessionManager.requestSerializer setValue:[@"bearer;" stringByAppendingString:DEFAULTS_GET_OBJ(@"token")] forHTTPHeaderField:@"Authorization"];
+                [self.sessionManager.requestSerializer setValue:DEFAULTS_GET_OBJ(@"org_id") forHTTPHeaderField:@"org_id"];
+            }
         }
+        
         
         
         
     }
     return self;
 }
-
+//- (instancetype)initWithBasexUrl:(NSURL *)url {
+//    self = [super init];
+//    if (self) {
+//        self.sessionManager = [[AFHTTPSessionManager new] initWithBaseURL:url];
+////        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+//        self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
+////        // 往header里面添加值
+////        if (DEFAULTS_GET_OBJ(@"token") != nil) {
+////            self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+////            [self.sessionManager.requestSerializer setValue:[@"bearer;" stringByAppendingString:DEFAULTS_GET_OBJ(@"token")] forHTTPHeaderField:@"Authorization"];
+////            [self.sessionManager.requestSerializer setValue:DEFAULTS_GET_OBJ(@"org_id") forHTTPHeaderField:@"org_id"];
+////        }
+////
+////
+////
+//    }
+//    return self;
+//}
 
 #pragma mark - real
 // 不带参数GET

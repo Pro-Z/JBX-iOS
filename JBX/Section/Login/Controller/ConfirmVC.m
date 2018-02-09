@@ -7,6 +7,7 @@
 //
 
 #import "ConfirmVC.h"
+#import "NetSsoClient.h"
 
 @interface ConfirmVC ()
 @property (nonatomic,strong) UIImageView *forgetIcon;
@@ -143,10 +144,23 @@
         [NSObject showInfoHudTipStr:@"两次输入的密码不一致!"];
         return;
     }
-    [[NetAPIManager sharedManager] request_FindPaw_WithParams:forgetModel successBlock:^(id data) {
-        
+    self.codeData = _codeData;
+    NSDictionary *dict = @{@"phone":forgetModel.phone,@"verifyCode":forgetModel.verifyCode,@"smsToken":_codeData,@"password":confirmPawStr};
+    
+
+    
+    [[NetSsoClient shareNetAPIClient] requestJsonDataWithPath:APP_FORGETPAW_URL withParams:dict withMethedType:NetwrkType_Post autoShowProgressHUD:YES success:^(id data) {
+        RequestModel *loginModel = [MTLJSONAdapter modelOfClass:[RequestModel class] fromJSONDictionary:data error:nil];
+        if (loginModel.status == 200) {
+            DEFAULTS_SET_OBJ(forgetModel.phone, @"APP_USERNAME");
+            DEFAULTS_SET_OBJ(confirmPawStr, @"APP_PAW");
+            [NSObject showHudTipStr:@"密码找回成功!"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            [NSObject showHudTipStr:loginModel.msg];
+        }
     } failure:^(id data, NSError *error) {
-        
+        DebugLog(@"登陆出错!");
     }];
     
     

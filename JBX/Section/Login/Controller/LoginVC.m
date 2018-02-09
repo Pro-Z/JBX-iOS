@@ -30,6 +30,10 @@
     [self initLoginView];
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    BLACK_STATUS_BAR_COLOR
+}
 - (void)viewWillDisappear:(BOOL)animated{
     WHITE_STATUS_BAR_COLOR
 }
@@ -50,7 +54,8 @@
 }
 
 - (void) backBtn:(UIButton *)btn {
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    DebugLog(@"点击了返回");
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) initLoginView {
@@ -172,35 +177,49 @@
     // 登录
     [_loginBtn addTarget:self action:@selector(handleLogin) forControlEvents:(UIControlEventTouchUpInside)];
     
+    // 填充密码
+    NSString *usr = DEFAULTS_GET_OBJ(@"APP_USERNAME");
+    NSString *paw = DEFAULTS_GET_OBJ(@"APP_PAW");
+    _usernamreEdt.text = usr;
+    _passwordEdt.text = paw;
+    
 }
 - (void) handleLogin {
     // 判断不为空
     LoginModel *loginModel = [[LoginModel alloc] init];
     if ([_usernamreEdt.text  isEqual: @"001"]) {
-        loginModel.username = @"admin";
-        loginModel.password = @"qzq123456";
+        loginModel.username = @"15539910985";
+        loginModel.password = @"123456";
     }else{
         loginModel.username = _usernamreEdt.text;
         loginModel.password = _passwordEdt.text;
     }
     NSString *tips = [loginModel goToLoginModelWithCheck];
     if (tips) {
-        [NSObject showInfoHudTipStr:tips];
+        [NSObject showHudTipStr:tips];
         return;
     }
     [[NetAPIManager sharedManager] request_Login_WithParams:loginModel successBlock:^(id data) {
         TokenModel *tokenModel = data;
         DebugLog(@"登陆的JSON--:%@",tokenModel);
         if (tokenModel.code == 200) {
+            // 记住密码
+            DEFAULTS_SET_OBJ(loginModel.username, @"APP_USERNAME");
+            DEFAULTS_SET_OBJ(loginModel.password, @"APP_PAW");
             [NSObject showSuccessHudTipStr:@"登录成功!"];
             DebugLog(@"打印的token%@",tokenModel.data.token);
             DEFAULTS_SET_OBJ(tokenModel.data.token, @"token");
-            SelectVC *selectVC = [SelectVC new];
-//            selectVC.tabBarItem.title
-            selectVC.tokenModel = tokenModel;
-            [self.navigationController pushViewController:selectVC animated:YES];
+            if (tokenModel.otherData != nil) {
+                [NOTIFICATIONCENTER postNotification:NOTIFICATION(@"LOGIN", @{@"isLogin":@(YES)})];
+                SelectVC *selectVC = [SelectVC new];
+                //            selectVC.tabBarItem.title
+                selectVC.tokenModel = tokenModel;
+                [self.navigationController pushViewController:selectVC animated:YES];
+            }else{
+                [self.navigationController popViewControllerAnimated:YES];
+            }
         }else{
-            [NSObject showInfoHudTipStr:tokenModel.msg];
+            [NSObject showHudTipStr:tokenModel.msg];
         }
     } failure:^(id data, NSError *error) {
         DebugLog(@"登录失败!");

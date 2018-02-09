@@ -41,4 +41,6 @@
 
 #define TipAlert(_S_, ...)     [[[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@"知道了" otherButtonTitles:nil] show]
 
+#define REMOVE_ALL_VIEW     [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
 #endif /* SystemMacro_h */

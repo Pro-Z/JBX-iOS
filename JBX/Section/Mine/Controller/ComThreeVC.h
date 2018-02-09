@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ComThreeVC : UIViewController
-
+@property (nonatomic,strong) NSString *requireNumber;
+@property (nonatomic,assign) NSInteger currentID;
 @end

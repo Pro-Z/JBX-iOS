@@ -77,13 +77,12 @@
 // register
 - (void)request_register_WithParams:(id)params successBlock:(void (^)(id))successBlock failure:(void (^)(id, NSError *))failureBlock {
     NSDictionary *requestDic = [MTLJSONAdapter JSONDictionaryFromModel:params error:nil];
-    NSString *pathUrl = APP_REGISTER_URL;
-    [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:pathUrl withParams:requestDic withMethedType:NetwrkType_Post autoShowProgressHUD:YES success:^(id data) {
+    [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:APP_REGISTER_URL withParams:requestDic withMethedType:NetwrkType_Post autoShowProgressHUD:YES success:^(id data) {
         RequestModel *requestModel = [MTLJSONAdapter modelOfClass:[RequestModel class] fromJSONDictionary:data error:nil];
         if (requestModel.status == 200) {
-            [NSObject showInfoHudTipStr:@"注册成功!"];
+            [NSObject showHudTipStr:@"注册成功!"];
         }else{
-            [NSObject showInfoHudTipStr:requestModel.msg];
+            [NSObject showHudTipStr:requestModel.msg];
         }
         
     } failure:^(id data, NSError *error) {
@@ -99,24 +98,6 @@
         
         RequestModel *loginModel = [MTLJSONAdapter modelOfClass:[RequestModel class] fromJSONDictionary:data error:nil];
         if (loginModel.status == 200) {
-            
-            //获取cookie
-            NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage]cookiesForURL:[NSURL URLWithString:APP_WHOLE_URL]];
-            for (NSHTTPCookie *tempCookie in cookies)
-            {
-                //打印cookies
-                NSLog(@"getCookie:%@",tempCookie);
-            }
-            NSDictionary *Request = [NSHTTPCookie requestHeaderFieldsWithCookies:cookies];
-            
-            NSUserDefaults *userCookies = [NSUserDefaults standardUserDefaults];
-            [userCookies setObject:[Request objectForKey:@"Cookie"] forKey:@"mUserDefaultsCookie"];
-            [userCookies synchronize];
-            DebugLog(@"\n===========获取的COOKIE===========\n%@",[Request objectForKey:@"Cookie"]);
-            
-            
-            
-            
             [NSObject showInfoHudTipStr:@"验证码发送成功!"];
         }else{
             [NSObject showInfoHudTipStr:loginModel.msg];
@@ -148,7 +129,7 @@
     NSDictionary *requestDict = [MTLJSONAdapter JSONDictionaryFromModel:params error:nil];
     NSString *pathStr = APP_SET_ORGAN_URL;
     [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:pathStr withParams:requestDict withMethedType:NetwrkType_Post autoShowProgressHUD:YES success:^(id data) {
-        RequestModel *loginModel = [MTLJSONAdapter modelOfClass:[RequestModel class] fromJSONDictionary:data error:nil];
+        BaseModel *loginModel = [MTLJSONAdapter modelOfClass:[BaseModel class] fromJSONDictionary:data error:nil];
         successBlock(loginModel);
     } failure:^(id data, NSError *error) {
         DebugLog(@"请求出错!");

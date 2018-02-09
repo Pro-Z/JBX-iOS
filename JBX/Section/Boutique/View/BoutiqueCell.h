@@ -11,6 +11,6 @@
 @interface BoutiqueCell : UICollectionViewCell
 @property (nonatomic,strong) UIImageView *headerPic,*partPic;
 @property (nonatomic,strong) UILabel *nameLB,*timeLB,*contentLB;
-@property (nonatomic,strong) UIButton *firstBTN,*secondBTN;
+@property (nonatomic,strong) UILabel *firstBTN,*secondBTN;
 - (CGFloat)heightForCellWithContent:(NSString*)text;
 @end

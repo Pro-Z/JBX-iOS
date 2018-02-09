@@ -12,8 +12,9 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        
         //        self.backgroundColor = [UIColor whiteColor];
-        NSArray *imageUrls = @[@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512723728131&di=77b532cc1a170d49c0d360d788cd788c&imgtype=0&src=http%3A%2F%2Ffile06.16sucai.com%2F2016%2F0403%2Fb1deb707191a524e54c6fc17e57e9bb4.jpg",@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1512723809696&di=224908a5f2d282d1c56752a88aed0c90&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimage%2Fc0%253Dshijue1%252C0%252C0%252C294%252C40%2Fsign%3D55c7b643f1edab64607f45839f5fc5b6%2F024f78f0f736afc388f9f7edb919ebc4b6451245.jpg"];
+        NSArray *imageUrls = @[@"http://oot34wnx6.bkt.clouddn.com/banner1.png",@"http://oot34wnx6.bkt.clouddn.com/banner2.png"];
         [self addSubview:self.titleLabel];
         [self addSubview:self.lineView];
         [self addSubview:self.bannerSV];
