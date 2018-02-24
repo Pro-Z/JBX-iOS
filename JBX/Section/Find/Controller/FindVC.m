@@ -62,7 +62,6 @@
     [self initDataSource];
 }
 
-
 /**
  初始化搜索栏
  */
@@ -160,7 +159,7 @@
         ++_pageCount;
     }
     DebugLog(@"个数为%ld",_pageCount);
-    self.headerView = [[UIView alloc] initWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, 221)];
+    self.headerView = [[UIView alloc] initWithFrame:VIEWFRAME(0, 0, SCREEN_WIDTH, 240)];
     _headerView.backgroundColor = [UIColor whiteColor];
     
     HorizontalFlowLayout *layout = [[HorizontalFlowLayout alloc] init];
@@ -418,6 +417,12 @@
 }
 
 
+/**
+ 初始化新闻数据源
+ @param newsID 新闻模块ID
+ @param indexs 页数
+ @param searchTxt 搜索内容
+ */
 - (void) initData:(NSString*)newsID withPage:(NSInteger) indexs withSearchTxt:(NSString *)searchTxt{
     // 初始化数据
     NSString *indexStr = [NSString stringWithFormat:@"%ld",indexs];

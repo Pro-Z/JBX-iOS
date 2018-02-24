@@ -39,8 +39,8 @@
             make.bottomMargin.equalTo(weakSelf.contentView).offset(-10);
         }];
         [_rightPic mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.topMargin.equalTo(weakSelf.contentView).offset(20);
-            make.rightMargin.equalTo(weakSelf.contentView).offset(-10);
+            make.top.equalTo(weakSelf.contentView).offset(20);
+            make.right.equalTo(weakSelf.contentView).offset(-10);
             make.height.equalTo(@90);
             make.width.equalTo(@90);
         }];
@@ -89,6 +89,8 @@
     if (_rightPic==nil) {
         self.rightPic = [[UIImageView alloc] init];
         _rightPic.backgroundColor = [UIColor grayColor];
+        _rightPic.contentMode = UIViewContentModeScaleAspectFill;
+        _rightPic.clipsToBounds = YES;
     }
     return _rightPic;
 }

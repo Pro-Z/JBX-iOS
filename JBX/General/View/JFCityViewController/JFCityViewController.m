@@ -303,6 +303,13 @@ JFSearchViewDelegate>
         _rootTableView.sectionIndexColor = [UIColor colorWithRed:0/255.0f green:132/255.0f blue:255/255.0f alpha:1];
         [_rootTableView registerClass:[JFCityTableViewCell class] forCellReuseIdentifier:@"cityCell"];
         [_rootTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cityNameCell"];
+//
+//        if (@available(iOS 11.0, *)) {
+//            _rootTableView.contentInsetAdjustmentBehavior=UIScrollViewContentInsetAdjustmentNever;
+//        } else {
+//            // Fallback on earlier versions
+//            self.automaticallyAdjustsScrollViewInsets = YES;
+//        }
     }
     return _rootTableView;
 }
