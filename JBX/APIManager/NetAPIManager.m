@@ -13,6 +13,7 @@
 #import "TokenModel.h"
 #import "SelectVC.h"
 #import "SetOrganIDModel.h"
+#import "NetSsoClient.h"
 
 
 @implementation NetAPIManager
@@ -67,7 +68,7 @@
 - (void)request_Login_WithParams:(id)params successBlock:(void (^)(id))successBlock failure:(void (^)(id, NSError *))failureBlock {
     NSDictionary *requestDict = [MTLJSONAdapter JSONDictionaryFromModel:params error:nil];
     NSString *pathStr = APP_LOGIN_URL;
-    [[NetRequestClient shareNetAPIClient] requestJsonDataWithPath:pathStr withParams:requestDict withMethedType:NetwrkTyp_Get autoShowProgressHUD:YES success:^(id data) {
+    [[NetSsoClient shareNetAPIClient] requestJsonDataWithPath:pathStr withParams:requestDict withMethedType:NetwrkTyp_Get autoShowProgressHUD:YES success:^(id data) {
         TokenModel *loginModel = [MTLJSONAdapter modelOfClass:[TokenModel class] fromJSONDictionary:data error:nil];
         successBlock(loginModel);
     } failure:^(id data, NSError *error) {

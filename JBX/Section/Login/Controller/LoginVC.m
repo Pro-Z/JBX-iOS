@@ -9,6 +9,7 @@
 #import "LoginVC.h"
 #import "SelectVC.h"
 #import "TokenModel.h"
+#import "NetSsoClient.h"
 
 @interface LoginVC ()
 @property (nonatomic,strong) UITextField *usernamreEdt;

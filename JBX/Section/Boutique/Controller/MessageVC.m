@@ -24,10 +24,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.dataSource = [NSMutableArray array];
-    self.titleArr = [NSMutableArray array];
+//    self.titleArr = [NSMutableArray array];
     self.idArr = [NSMutableArray array];
     [self initNavigationView];
-    [self initTabLayoutData];
+//    [self initTabLayoutData];
+     [self initTabLayout];
     
 }
 - (void) initNavigationView {
@@ -46,44 +47,44 @@
 }
 
 
-/**
- 初始化tab数据
- */
-- (void) initTabLayoutData {
-    [[NetAPIManager sharedManager] request_common_WithPath:APP_BOUTIQUE_TAB_URL Params:nil autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
-        self.boutiqueListModel = [BoutiqueListModel mj_objectWithKeyValues:data];
-        if (_boutiqueListModel.code == 200) {
-//            NSArray *arr = [BoutiqueDataListModel mj_keyValuesArrayWithObjectArray:_boutiqueListModel.data];
-//            _dataSource = [NSMutableArray arrayWithArray:arr];
-            NSMutableArray *arr = [BoutiqueDataListModel mj_objectArrayWithKeyValuesArray:_boutiqueListModel.data];
-            for (int i = 0; i<arr.count; i++) {
-                self.boutiqueDataListModel = arr[i];
-                [_titleArr addObject:_boutiqueDataListModel.name];
-                [_idArr addObject:_boutiqueDataListModel.mID];
-            }
-            [self initTabLayout];
-        }else{
-            [NSObject showHudTipStr:@"请求失败!"];
-        }
-    } failue:^(id data, NSError *error) {
-        
-    }];
-}
+///**
+// 初始化tab数据
+// */
+//- (void) initTabLayoutData {
+//    [[NetAPIManager sharedManager] request_common_WithPath:APP_BOUTIQUE_TAB_URL Params:nil autoShowProgressHUD:YES typeGets:YES succesBlack:^(id data) {
+//        self.boutiqueListModel = [BoutiqueListModel mj_objectWithKeyValues:data];
+//        if (_boutiqueListModel.code == 200) {
+////            NSArray *arr = [BoutiqueDataListModel mj_keyValuesArrayWithObjectArray:_boutiqueListModel.data];
+////            _dataSource = [NSMutableArray arrayWithArray:arr];
+//            NSMutableArray *arr = [BoutiqueDataListModel mj_objectArrayWithKeyValuesArray:_boutiqueListModel.data];
+//            for (int i = 0; i<arr.count; i++) {
+//                self.boutiqueDataListModel = arr[i];
+//                [_titleArr addObject:_boutiqueDataListModel.name];
+//                [_idArr addObject:_boutiqueDataListModel.mID];
+//            }
+//            [self initTabLayout];
+//        }else{
+//            [NSObject showHudTipStr:@"请求失败!"];
+//        }
+//    } failue:^(id data, NSError *error) {
+//
+//    }];
+//}
 
 // 初始化tabLayout
 - (void) initTabLayout {
     // 初始化tablayout
     self.navigationController.navigationBar.translucent = NO;
-//    NSArray *titleArr = @[@"展柜",@"屏风",@"制品",@"配件",@"雕塑"];
+    NSArray *titleArr = @[@"展柜",@"屏风",@"制品",@"配件",@"雕塑"];
 //    NSArray *newsIDArr = @[@"1",@"2",@"3",@"4",@"5"];
-    NSMutableArray *array  = [NSMutableArray arrayWithCapacity:_titleArr.count];
-    for (int i = 0; i<_titleArr.count; i++) {
+    NSMutableArray *array  = [NSMutableArray arrayWithCapacity:titleArr.count];
+    for (int i = 0; i<titleArr.count; i++) {
         self.boutiqueListVC = [BoutiqueListVC new];
-        _boutiqueListVC.pageID = _idArr[i];
+//        _boutiqueListVC.pageID = _idArr[i];
         [array addObject:_boutiqueListVC];
     }
     
-    self.segmentVC = [[DZSegmentController alloc] initWithFrame:self.view.bounds titles:_titleArr];
+    self.segmentVC = [[DZSegmentController alloc] initWithFrame:self.view.bounds titles:titleArr];
     self.segmentVC.segmentView.showSeparateLine = YES;
     self.segmentVC.segmentView.segmentTintColor = APP_COLOR_BASE_NAV;
     self.segmentVC.viewControllers = array;

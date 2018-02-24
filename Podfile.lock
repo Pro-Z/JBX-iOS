@@ -19,6 +19,9 @@ PODS:
   - CHTCollectionViewWaterfallLayout (0.9.7):
     - CHTCollectionViewWaterfallLayout/ObjC (= 0.9.7)
   - CHTCollectionViewWaterfallLayout/ObjC (0.9.7)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
   - IQKeyboardManager (5.0.7)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
@@ -62,6 +65,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - BRPickerView (~> 1.3.0)
   - CHTCollectionViewWaterfallLayout (~> 0.9.7)
+  - FMDB (= 2.7.2)
   - IQKeyboardManager (~> 5.0.7)
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.1.0)
@@ -85,6 +89,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   BRPickerView: 067c1ad2d1e4c135ef00b78f93227845968d9e5e
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -101,6 +106,6 @@ SPEC CHECKSUMS:
   UMCShare: d63008fcea9b2e1e52bc62816b1611ee7d5af50e
   zhUITableViewAnimations: 6ff53477cd4adec96384c12ebd5008748a3edf3a
 
-PODFILE CHECKSUM: cfabde9ec5be03604ae04f8ee0eae9d040f6d9e8
+PODFILE CHECKSUM: a9707c6ba2847adb698f9a2ba66df857e4c8d161
 
 COCOAPODS: 1.3.1

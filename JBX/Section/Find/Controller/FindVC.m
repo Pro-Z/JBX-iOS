@@ -57,7 +57,8 @@
     // Do any additional setup after loading the view.
     self.dataSource = [NSMutableArray array];
     self.newsListDataSource = [NSMutableArray array];
-    [self initCenterSearchView];
+//    [self initCenterSearchView];
+    self.navigationItem.title = @"发现";
     [self initDataSource];
 }
 

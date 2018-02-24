@@ -70,16 +70,23 @@
 
 //#define APP_BASE_URL   @"http://172.16.18.244:8089"
 
-//#define APP_BASE_URL   @"http://172.16.18.244:8089"
+//#define APP_BASE_URL   @"http://172.16.47.106:8089"
 
-#define APP_BASE_URL   @"http://apitest.jubuxiu.com"
+// 内部测试服务器
+//#define APP_BASE_URL   @"http://apitest.jubuxiu.com"
 
-#define APP_BASE_SSO_URL   @"http://ssotest.jubuxiu.com"
+//#define APP_BASE_SSO_URL   @"http://ssotest.jubuxiu.com"
+
+// 外部测试服务器
+#define APP_BASE_URL   @"http://api.jubuxiu.com"
+
+#define APP_BASE_SSO_URL   @"http://sso.jubuxiu.com"
 
 
 #define APP_WHOLE_URL  @"http://172.16.3.5:8085/rest-api/api/sms/getSmsCode"
 
-#define APP_LOGIN_URL   @"/api/api/token/getToken"
+//http://sso.jubuxiu.com/SSO/user/getToken?userName=17505926763&password=666666
+#define APP_LOGIN_URL   @"/SSO/user/getToken"
 
 #define APP_REGISTER_URL @"/SSO/sso/user/register"
 
@@ -98,7 +105,7 @@
  测试环境 钣金大师  http://172.16.3.8:8081
  @return return 测试服务
  */
-#define APP_IRON_MASETER_URL @"http://bjdstest.jubuxiu.com/GCGL/html/wap/gc/html/index.html?token="
+#define APP_IRON_MASETER_URL @"http://bjds.jubuxiu.com/GCGL/html/wap/gc/html/index.html?token="
 
 #define APP_GET_PARTMENT_BY_PARENTID_URL  @"/api/api/dept/queryByParentId"
 

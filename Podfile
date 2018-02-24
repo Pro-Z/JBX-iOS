@@ -21,6 +21,7 @@ target 'JBX' do
 	pod 'UMCSecurityPlugins'
 	pod 'UMCShare/UI'
 	pod 'UMCShare/Social/WeChat'
+	pod 'FMDB',		   '2.7.2'
 	pod 'UMCShare/Social/QQ'
 	pod 'MJExtension',	   '~>3.0.13'
 end
